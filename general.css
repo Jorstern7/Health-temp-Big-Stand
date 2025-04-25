@@ -95,6 +95,7 @@ body {
   text-decoration-thickness: 5px;
   text-decoration-color: #ced4da;
   margin-bottom: 2rem;
+  font-weight: bold;
 }
 
 .heading-secondary {
@@ -165,13 +166,15 @@ body {
 
 .custom-button__align::before {
   left: 0;
-  border-left: 0.3rem solid #fff; /* 3px */
+  border-left: 0.3rem solid #fff;
+  /* 3px */
   top: 40%;
 }
 
 .custom-button__align::after {
   right: 0;
-  border-right: 0.3rem solid #fff; /* 3px */
+  border-right: 0.3rem solid #fff;
+  /* 3px */
   bottom: 40%;
 }
 

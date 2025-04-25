@@ -28,10 +28,14 @@
 }
 
 .main-nav-link {
-  position: relative; /* Needed for positioning the pseudo-element */
-  text-decoration: none; /* Optional: Remove underlines for links */
-  color: #000; /* Default text color */
-  transition: color 0.3s ease; /* Smooth color transition */
+  position: relative;
+  /* Needed for positioning the pseudo-element */
+  text-decoration: none;
+  /* Optional: Remove underlines for links */
+  color: #000;
+  /* Default text color */
+  transition: color 0.3s ease;
+  /* Smooth color transition */
 }
 
 .main-nav-link:link,
@@ -56,10 +60,12 @@
 .main-nav-link.hovers.active::before {
   content: "";
   position: absolute;
-  bottom: -30%; /* Align the border directly at the bottom */
+  bottom: -30%;
+  /* Align the border directly at the bottom */
   left: 0;
   height: 5px;
-  width: 100%; /* Persistent border */
+  width: 100%;
+  /* Persistent border */
   background-color: #37b24d;
 }
 
@@ -67,12 +73,16 @@
 .main-nav-link.hovers::before {
   content: "";
   position: absolute;
-  bottom: -30%; /* Align the border directly at the bottom */
+  bottom: -30%;
+  /* Align the border directly at the bottom */
   left: 0;
-  height: 5px; /* Matches the active border-bottom thickness */
-  width: 0; /* Hidden by default */
+  height: 5px;
+  /* Matches the active border-bottom thickness */
+  width: 0;
+  /* Hidden by default */
   background-color: #37b24d;
-  transition: width 0.3s ease; /* Smooth transition for width */
+  transition: width 0.3s ease;
+  /* Smooth transition for width */
 }
 
 /* Hover effect */
@@ -95,16 +105,21 @@
 
 .btn--outline .fa-arrow-right {
   font-size: 2rem;
-  color: inherit; /* Inherits the button's text color */
-  transform: rotate(0); /* Default rotation */
-  transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and transform transition */
+  color: inherit;
+  /* Inherits the button's text color */
+  transform: rotate(0);
+  /* Default rotation */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Smooth color and transform transition */
 }
 
 /* Hover effect for the icon */
 .btn--outline:hover .fa-arrow-right,
 .btn--outline:active .fa-arrow-right {
-  transform: rotate(90deg); /* Rotate slightly on hover */
-  color: #b3b3b3; /* Matches the button's hover color */
+  transform: rotate(90deg);
+  /* Rotate slightly on hover */
+  color: #b3b3b3;
+  /* Matches the button's hover color */
 }
 
 /* STICKY NAVIGATION */
@@ -230,6 +245,7 @@
 .logos {
   display: flex;
   justify-content: space-around;
+  list-style: none;
 }
 
 .logos img {
@@ -392,9 +408,12 @@
   background-color: #d7f0db;
   padding: 6rem 0;
 
-  width: 10rem; /* Set a fixed width */
-  height: 10rem; /* Set a fixed height */
-  display: flex; /* Flexbox to center content */
+  width: 10rem;
+  /* Set a fixed width */
+  height: 10rem;
+  /* Set a fixed height */
+  display: flex;
+  /* Flexbox to center content */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -402,7 +421,23 @@
   border: none;
   border-radius: 40% 15%;
   transform: rotate(-15deg);
-  /* margin-bottom: 10rem; */
+  margin-top: 10px;
+
+}
+
+.icons-about {
+  transform: rotate(15deg);
+  text-align: center;
+  display: flex;
+  /* Flexbox to center content */
+  flex-direction: column;
+  gap: 10px;
+}
+
+.icons-about figcaption {
+  display: flex;
+  /* Flexbox to center content */
+  flex-direction: column;
 }
 
 .titles {
@@ -416,10 +451,14 @@
 
 .phase--1 {
   font-size: 1.4rem;
+  font-weight: bold;
+  display: inline-block;
 }
 
 .phase--2 {
   color: #37b24d;
+  font-weight: bold;
+  display: inline-block;
 }
 
 /* SERVICES & ICONS */
@@ -496,7 +535,8 @@
 
 .service-box--list div {
   padding: 0.8rem 0;
-  border-bottom: 1px solid #ccc; /* Light gray border */
+  border-bottom: 1px solid #ccc;
+  /* Light gray border */
 }
 
 /* Remove border from the last row */
@@ -519,6 +559,7 @@
   color: #ffd43b;
   margin-left: 0.5rem;
 }
+
 /* BTN Code */
 
 .btn-square {
@@ -557,7 +598,8 @@
 
 /* General styling for the pricing box */
 .pricing-plan__box {
-  width: 100%; /* Adjust width as needed */
+  width: 100%;
+  /* Adjust width as needed */
   /* padding: 2.4rem 4.8rem; */
   border-radius: 9px;
   text-align: center;
@@ -572,11 +614,13 @@
 .pricing-plan__box.last-box {
   height: 0;
   overflow: hidden;
-  transition: height 0.5s ease-in; /* Smooth height transition */
+  transition: height 0.5s ease-in;
+  /* Smooth height transition */
 }
 
 .pricing-plan__box.last-box.show {
-  height: 100%; /* Adjust height to match the content */
+  height: 100%;
+  /* Adjust height to match the content */
 }
 
 .show--more {
@@ -614,43 +658,43 @@
   background-position: center;
   margin: 0;
   width: 100%;
-  border-radius: 9px 9px 0 0; /* Match the box's corner rounding */
-  color: white; /* Ensure text is visible on the image */
+  border-radius: 9px 9px 0 0;
+  /* Match the box's corner rounding */
+  color: white;
+  /* Ensure text is visible on the image */
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .price-info__img-01 {
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)
-    ),
-    url("img/photos-doctors-01.jpg"); /* Add your image path */
+      rgba(209, 235, 169, 0.5)),
+    url("img/photos-doctors-01.jpg");
+  /* Add your image path */
 }
 
 .price-info__img-02 {
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)
-    ),
-    url("img/health-check.jpg"); /* Add your image path */
+      rgba(209, 235, 169, 0.5)),
+    url("img/health-check.jpg");
+  /* Add your image path */
 }
+
 .price-info__img-03 {
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)
-    ),
-    url("img/dental-care.jpg"); /* Add your image path */
+      rgba(209, 235, 169, 0.5)),
+    url("img/dental-care.jpg");
+  /* Add your image path */
 }
+
 .price-info__img-04 {
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)
-    ),
-    url("img/surgery-01.jpg"); /* Add your image path */
+      rgba(209, 235, 169, 0.5)),
+    url("img/surgery-01.jpg");
+  /* Add your image path */
 }
 
 /* Plan name */
@@ -672,14 +716,17 @@
   margin: 1rem 0;
   position: relative;
   display: inline-flex;
-  align-items: flex-start; /* Align the dollar sign and number to the top */
+  align-items: flex-start;
+  /* Align the dollar sign and number to the top */
 }
 
 /* Smaller dollar sign, positioned closer to the number */
 .plan-price span {
   font-size: 1.6rem;
-  margin-right: 0.4rem; /* Add a small gap if necessary */
-  line-height: 1.2; /* Adjust spacing to align it better */
+  margin-right: 0.4rem;
+  /* Add a small gap if necessary */
+  line-height: 1.2;
+  /* Adjust spacing to align it better */
 }
 
 /* Smaller "/year" text */
@@ -693,6 +740,7 @@
 .plan-list__box {
   padding: 4rem 0;
 }
+
 /* Centered list items */
 .plan-list {
   list-style: none;
@@ -734,9 +782,11 @@
 }
 
 .professionals {
-  display: flex; /* Align child elements in a row */
+  display: flex;
+  /* Align child elements in a row */
   justify-content: flex-start;
-  transition: transform 0.5s ease-out; /* Smooth scrolling */
+  transition: transform 0.5s ease-out;
+  /* Smooth scrolling */
 }
 
 .professional-box {
@@ -751,6 +801,7 @@
   flex: 0 0 48.5%;
   overflow: hidden;
 }
+
 /* .box--1,
 .box--3 {
   transition: opacity 0.3s ease;
@@ -767,18 +818,24 @@
 /* OVERLAY STYLING */
 
 .doctor-section {
-  position: relative; /* Constrain child elements to this section */
-  overflow: hidden; /* Prevent overlays from spilling out of the section */
+  position: relative;
+  /* Constrain child elements to this section */
+  overflow: hidden;
+  /* Prevent overlays from spilling out of the section */
 }
 
 .side-overlay {
   position: absolute;
   top: 10%;
   bottom: 0;
-  width: 9.2%; /* Adjust as needed */
-  background-color: #fff; /* Add a slight overlay effect */
-  z-index: 10; /* Ensure it stays above the scrolling content */
-  pointer-events: none; /* Prevent interactions */
+  width: 9.2%;
+  /* Adjust as needed */
+  background-color: #fff;
+  /* Add a slight overlay effect */
+  z-index: 10;
+  /* Ensure it stays above the scrolling content */
+  pointer-events: none;
+  /* Prevent interactions */
 }
 
 .left-overlay {
@@ -790,7 +847,8 @@
 }
 
 .professionals-container {
-  overflow: hidden; /* Hide the scrolling content overflow */
+  overflow: hidden;
+  /* Hide the scrolling content overflow */
   position: relative;
 }
 
@@ -869,23 +927,31 @@ svg.doctor-svg {
 
 /* General styling for all SVG icons */
 svg.size-6 {
-  width: 2.4rem; /* Adjust the size */
-  height: 2.4rem; /* Adjust the size */
-  stroke: #37b24d; /* Inherit color from the parent */
-  stroke-width: 1.5; /* Adjust stroke width for visibility */
-  transition: transform 0.2s ease, stroke 0.2s ease; /* Smooth transitions for interactions */
+  width: 2.4rem;
+  /* Adjust the size */
+  height: 2.4rem;
+  /* Adjust the size */
+  stroke: #37b24d;
+  /* Inherit color from the parent */
+  stroke-width: 1.5;
+  /* Adjust stroke width for visibility */
+  transition: transform 0.2s ease, stroke 0.2s ease;
+  /* Smooth transitions for interactions */
 }
 
 /* Optional hover effect for icons */
 .arrow-btn button:hover svg {
-  transform: scale(1.1); /* Slightly enlarge icon on hover */
-  stroke: #32a045; /* Change color on hover (example: blue) */
+  transform: scale(1.1);
+  /* Slightly enlarge icon on hover */
+  stroke: #32a045;
+  /* Change color on hover (example: blue) */
 }
 
 /* Container for the buttons */
 .arrow-btn {
   display: flex;
-  gap: 1rem; /* Space between the buttons */
+  gap: 1rem;
+  /* Space between the buttons */
   justify-content: center;
   align-items: center;
 }
@@ -895,25 +961,35 @@ svg.size-6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4rem; /* Adjust size */
-  height: 4rem; /* Adjust size */
-  background-color: transparent; /* Transparent background */
-  border: 1px solid #ccc; /* Subtle border for buttons */
-  border-radius: 50%; /* Circle shape */
-  cursor: pointer; /* Pointer cursor for buttons */
+  width: 4rem;
+  /* Adjust size */
+  height: 4rem;
+  /* Adjust size */
+  background-color: transparent;
+  /* Transparent background */
+  border: 1px solid #ccc;
+  /* Subtle border for buttons */
+  border-radius: 50%;
+  /* Circle shape */
+  cursor: pointer;
+  /* Pointer cursor for buttons */
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 /* Hover effect for buttons */
 .arrow-btn button:hover {
-  background-color: #f0f0f0; /* Slightly lighter background on hover */
-  border-color: #37b24d; /* Highlight border on hover */
+  background-color: #f0f0f0;
+  /* Slightly lighter background on hover */
+  border-color: #37b24d;
+  /* Highlight border on hover */
 }
 
 /* Active button state */
 .arrow-btn button:active {
-  background-color: #e0e0e0; /* Darker background when active */
-  border-color: #37b24d; /* Darker border color */
+  background-color: #e0e0e0;
+  /* Darker background when active */
+  border-color: #37b24d;
+  /* Darker border color */
 }
 
 /* ////////////////////////////////// */
@@ -922,12 +998,18 @@ svg.size-6 {
 /* Image */
 
 .testimonial-box {
-  text-align: center; /* Centers text and elements horizontally */
-  display: flex; /* Enables Flexbox for layout */
-  flex-direction: column; /* Aligns elements vertically */
-  justify-content: center; /* Centers items vertically */
-  align-items: center; /* Centers items horizontally */
-  padding: 2rem; /* Adds padding around the box */
+  text-align: center;
+  /* Centers text and elements horizontally */
+  display: flex;
+  /* Enables Flexbox for layout */
+  flex-direction: column;
+  /* Aligns elements vertically */
+  justify-content: center;
+  /* Centers items vertically */
+  align-items: center;
+  /* Centers items horizontally */
+  padding: 2rem;
+  /* Adds padding around the box */
 }
 
 .section-testimonial {
@@ -944,20 +1026,28 @@ svg.size-6 {
   width: 100%;
   opacity: 0;
   transform: translateX(150%);
-  transition: transform 0.6s ease, opacity 0.6s ease; /* Smooth animation */
-  z-index: 0; /* Inactive testimonials are below */
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  /* Smooth animation */
+  z-index: 0;
+  /* Inactive testimonials are below */
 }
 
 .testimonial-box.active {
-  transform: translateX(0); /* Bring the active testimonial into view */
-  opacity: 1; /* Fully visible */
-  z-index: 1; /* Ensure the active testimonial is on top */
+  transform: translateX(0);
+  /* Bring the active testimonial into view */
+  opacity: 1;
+  /* Fully visible */
+  z-index: 1;
+  /* Ensure the active testimonial is on top */
 }
 
 .testimonial-box.previous {
-  transform: translateX(-100%); /* Move the outgoing testimonial to the left */
-  opacity: 0; /* Fade out */
-  z-index: 0; /* Ensure it's behind the active testimonial */
+  transform: translateX(-100%);
+  /* Move the outgoing testimonial to the left */
+  opacity: 0;
+  /* Fade out */
+  z-index: 0;
+  /* Ensure it's behind the active testimonial */
 }
 
 .testimonial-dots {
@@ -966,21 +1056,29 @@ svg.size-6 {
   left: 46.5%;
   transform: translate(0, 700%);
 }
+
 /* Circle container for the image */
 .circle-container {
-  width: 15rem; /* Circle width */
-  height: 15rem; /* Circle height */
-  border-radius: 50%; /* Makes the container circular */
-  border: 5px solid #ccc; /* Adds a border */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
-  margin-bottom: 1.5rem; /* Adds spacing below the circle */
+  width: 15rem;
+  /* Circle width */
+  height: 15rem;
+  /* Circle height */
+  border-radius: 50%;
+  /* Makes the container circular */
+  border: 5px solid #ccc;
+  /* Adds a border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Optional shadow */
+  margin-bottom: 1.5rem;
+  /* Adds spacing below the circle */
   position: relative;
 }
 
 .img-wrapper {
   width: 100%;
   height: 100%;
-  border-radius: 50%; /* Makes the image circular */
+  border-radius: 50%;
+  /* Makes the image circular */
   overflow: hidden;
 }
 
@@ -998,9 +1096,12 @@ svg.size-6 {
 
 /* Image inside the circle */
 .circle-container img {
-  width: 100%; /* Ensures the image fills the circle */
-  height: 100%; /* Ensures the image fills the circle */
-  object-fit: cover; /* Crops the image properly to fit the circle */
+  width: 100%;
+  /* Ensures the image fills the circle */
+  height: 100%;
+  /* Ensures the image fills the circle */
+  object-fit: cover;
+  /* Crops the image properly to fit the circle */
 }
 
 /* Other styles */
@@ -1033,25 +1134,32 @@ svg.size-6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Space between dots */
-  margin-top: 2rem; /* Optional: Add spacing above/below dots */
+  gap: 1rem;
+  /* Space between dots */
+  margin-top: 2rem;
+  /* Optional: Add spacing above/below dots */
 }
 
 /* Individual dots */
 .dot {
   width: 2rem;
   height: 2rem;
-  background-color: #f1f3f5; /* Default color */
+  background-color: #f1f3f5;
+  /* Default color */
   border: none;
   border: 1px solid #37b24d;
-  border-radius: 50%; /* Makes the dot circular */
-  cursor: pointer; /* Optional: Make dots clickable */
-  transition: background-color 0.3s; /* Smooth color change */
+  border-radius: 50%;
+  /* Makes the dot circular */
+  cursor: pointer;
+  /* Optional: Make dots clickable */
+  transition: background-color 0.3s;
+  /* Smooth color change */
 }
 
 /* Active dot */
 .dot.active {
-  background-color: #37b24d; /* Highlighted color for the active dot */
+  background-color: #37b24d;
+  /* Highlighted color for the active dot */
   width: 4rem;
   height: 4rem;
 }
@@ -1074,18 +1182,21 @@ svg.size-6 {
   align-items: center;
   justify-content: center;
 }
-.blogpost--cards {
-}
+
+.blogpost--cards {}
 
 /* Individual card styles */
 .blogpost--card {
-  width: 38.4rem; /* Normal width for the card */
+  width: 38.4rem;
+  /* Normal width for the card */
   height: auto;
   background-color: #fff;
   /* border: 1px solid #ddd; */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  overflow: hidden; /* Ensure content stays within the card */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  overflow: hidden;
+  /* Ensure content stays within the card */
 
   /* padding: 16px; */
 }
@@ -1095,7 +1206,8 @@ svg.size-6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-bottom: 1px solid #ddd; /* Optional: Separation */
+  border-bottom: 1px solid #ddd;
+  /* Optional: Separation */
 }
 
 /* Title styles */
@@ -1120,11 +1232,14 @@ svg.size-6 {
 .blogpost--profile {
   width: 60px;
   height: 60px;
-  border-radius: 50%; /* Makes the container circular */
-  overflow: hidden; /* Ensures the image stays within the circle */
+  border-radius: 50%;
+  /* Makes the container circular */
+  overflow: hidden;
+  /* Ensures the image stays within the circle */
   /* margin: 0 auto;  */
   margin-left: 2rem;
-  border: 2px solid #ddd; /* Optional border */
+  border: 2px solid #ddd;
+  /* Optional border */
 }
 
 .profile-info {
@@ -1133,11 +1248,13 @@ svg.size-6 {
 
   /* justify-content: flex-start; */
 }
+
 /* Profile image styles */
 .profile-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image fills the circle */
+  object-fit: cover;
+  /* Ensures the image fills the circle */
 
   /* margin-right: 2rem; */
 }
@@ -1155,6 +1272,7 @@ svg.size-6 {
   padding-top: 1rem;
   border-top: 1px solid #ccc;
 }
+
 .post-traffic {
   display: flex;
 }
@@ -1217,6 +1335,7 @@ svg.svg-comments {
   width: 60rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .form-cta p {
   font-size: 1.6rem;
 }
@@ -1291,7 +1410,8 @@ select {
   border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   z-index: 100;
   padding: 0;
   margin: 0;
@@ -1366,24 +1486,28 @@ select {
   display: grid;
   /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 4rem; /* Adds spacing between grid items */
+  gap: 4rem;
+  /* Adds spacing between grid items */
   padding: 2rem;
   text-align: left;
 }
 
-.footer-box > div {
-  min-width: 20rem; /* Ensures responsive column sizing */
+.footer-box>div {
+  min-width: 20rem;
+  /* Ensures responsive column sizing */
   text-align: left;
 }
 
 .touch-title {
-  font-size: 2.4rem; /* Larger title size for prominence */
+  font-size: 2.4rem;
+  /* Larger title size for prominence */
   font-weight: bold;
   color: #37b24d;
   text-decoration: underline;
   text-decoration-thickness: 5px;
   text-decoration-color: #ced4da;
-  margin-bottom: 2.4rem; /* Spacing between the title and content */
+  margin-bottom: 2.4rem;
+  /* Spacing between the title and content */
 }
 
 .touch-contact__info p {
@@ -1392,7 +1516,8 @@ select {
 
 .touch-contact__info,
 .link-list {
-  text-align: left; /* Aligns text for contact and link sections */
+  text-align: left;
+  /* Aligns text for contact and link sections */
 }
 
 .touch-contact__info p,
@@ -1400,13 +1525,15 @@ select {
   margin: 1rem 0;
   /* font-size: 0.9rem; */
   display: flex;
-  align-items: center; /* Align icons and text */
+  align-items: center;
+  /* Align icons and text */
   text-align: left;
 }
 
 .touch-contact__info p span,
 .link-list li span {
-  margin-right: 1rem; /* Space between icon and text */
+  margin-right: 1rem;
+  /* Space between icon and text */
 }
 
 .touch-contact__info p.location {
@@ -1419,7 +1546,8 @@ select {
 
 .sign-up__field {
   position: relative;
-  margin-top: 4rem; /* Adds spacing above the field */
+  margin-top: 4rem;
+  /* Adds spacing above the field */
   margin-right: 8rem;
 }
 
@@ -1440,7 +1568,8 @@ select {
 }
 
 .sign-up__field input::placeholder {
-  color: #32a045; /* Change border color on focus */
+  color: #32a045;
+  /* Change border color on focus */
   font-size: 1.4rem;
 }
 
@@ -1454,8 +1583,10 @@ select {
 
   /* padding: 1.5rem 2.2rem; */
   /* margin-left: 8rem; */
-  background-color: #37b24d; /* Button background color */
-  color: #fff; /* Button text color */
+  background-color: #37b24d;
+  /* Button background color */
+  color: #fff;
+  /* Button text color */
   border: none;
   border-top-right-radius: 9px;
   border-bottom-right-radius: 9px;
@@ -1467,16 +1598,19 @@ select {
 }
 
 .sign-up__field button:hover {
-  background-color: #32a045; /* Darker shade for hover effect */
+  background-color: #32a045;
+  /* Darker shade for hover effect */
 }
 
 .media {
-  margin-top: 2rem; /* Adds spacing above the media section */
+  margin-top: 2rem;
+  /* Adds spacing above the media section */
   text-align: left;
 }
 
 .media-title-box h4 {
-  font-size: 1.2rem; /* Slightly smaller than touch-title */
+  font-size: 1.2rem;
+  /* Slightly smaller than touch-title */
   font-weight: bold;
   margin-bottom: 1rem;
 }
@@ -1484,18 +1618,21 @@ select {
 .media-icons {
   display: flex;
   /* margin-right: 4rem; */
-  gap: 1rem; /* Space between social media icons */
+  gap: 1rem;
+  /* Space between social media icons */
   justify-content: flex-start;
 }
 
 .media-icons i {
-  font-size: 2.4rem; /* Larger font size for social media icons */
+  font-size: 2.4rem;
+  /* Larger font size for social media icons */
   padding: 0;
   cursor: pointer;
 }
 
 .media-icons i:hover {
-  opacity: 0.8; /* Hover effect for icons */
+  opacity: 0.8;
+  /* Hover effect for icons */
 }
 
 .location,
@@ -1544,7 +1681,7 @@ svg.size-6 {
 
 /* FOOTER */
 
-footer {
+.site-footer {
   background-color: #37b24d;
   color: #fff;
   font-size: 1.4rem;
