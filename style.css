@@ -102,24 +102,10 @@
 .main-nav-link.nav-cta:active {
   background-color: #32a045;
 }
-
-.btn--outline .fa-arrow-right {
-  font-size: 2rem;
-  color: inherit;
-  /* Inherits the button's text color */
-  transform: rotate(0);
-  /* Default rotation */
-  transition: color 0.3s ease, transform 0.3s ease;
-  /* Smooth color and transform transition */
-}
-
-/* Hover effect for the icon */
-.btn--outline:hover .fa-arrow-right,
-.btn--outline:active .fa-arrow-right {
-  transform: rotate(90deg);
-  /* Rotate slightly on hover */
-  color: #b3b3b3;
-  /* Matches the button's hover color */
+.cta-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 /* STICKY NAVIGATION */
@@ -349,7 +335,9 @@
   left: 0;
   transform: translate(10%, -10%);
   z-index: 3;
-  transition: transform 0.8s ease, z-index 0.5s ease-in-out;
+  transition:
+    transform 0.8s ease,
+    z-index 0.5s ease-in-out;
 }
 
 .health-img--1:hover {
@@ -363,7 +351,9 @@
   left: 0;
   transform: translate(30%, -100%);
   z-index: 2;
-  transition: transform 0.8s ease, z-index 0.5s ease-in-out;
+  transition:
+    transform 0.8s ease,
+    z-index 0.5s ease-in-out;
 }
 
 .health-img--2:hover {
@@ -377,7 +367,9 @@
   left: 0;
   transform: translate(100%, -40%);
   z-index: 1;
-  transition: transform 0.8s ease, z-index 0.5s ease-in-out;
+  transition:
+    transform 0.8s ease,
+    z-index 0.5s ease-in-out;
 }
 
 .health-img--3:hover {
@@ -422,22 +414,29 @@
   border-radius: 40% 15%;
   transform: rotate(-15deg);
   margin-top: 10px;
-
 }
 
 .icons-about {
   transform: rotate(15deg);
+  align-items: center;
   text-align: center;
   display: flex;
-  /* Flexbox to center content */
+  justify-content: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
+}
+.icons-about svg {
+  color: #37b24d;
+  font-size: 3rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .icons-about figcaption {
   display: flex;
   /* Flexbox to center content */
   flex-direction: column;
+  gap: 0.35rem;
 }
 
 .titles {
@@ -456,6 +455,7 @@
 }
 
 .phase--2 {
+  font-size: 1.3rem;
   color: #37b24d;
   font-weight: bold;
   display: inline-block;
@@ -666,33 +666,25 @@
 }
 
 .price-info__img-01 {
-  background-image: linear-gradient(to bottom,
-      rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)),
+  background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
     url("img/photos-doctors-01.jpg");
   /* Add your image path */
 }
 
 .price-info__img-02 {
-  background-image: linear-gradient(to bottom,
-      rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)),
+  background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
     url("img/health-check.jpg");
   /* Add your image path */
 }
 
 .price-info__img-03 {
-  background-image: linear-gradient(to bottom,
-      rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)),
+  background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
     url("img/dental-care.jpg");
   /* Add your image path */
 }
 
 .price-info__img-04 {
-  background-image: linear-gradient(to bottom,
-      rgba(235, 247, 237, 0.8),
-      rgba(209, 235, 169, 0.5)),
+  background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
     url("img/surgery-01.jpg");
   /* Add your image path */
 }
@@ -935,7 +927,9 @@ svg.size-6 {
   /* Inherit color from the parent */
   stroke-width: 1.5;
   /* Adjust stroke width for visibility */
-  transition: transform 0.2s ease, stroke 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    stroke 0.2s ease;
   /* Smooth transitions for interactions */
 }
 
@@ -973,7 +967,9 @@ svg.size-6 {
   /* Circle shape */
   cursor: pointer;
   /* Pointer cursor for buttons */
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 /* Hover effect for buttons */
@@ -1026,7 +1022,9 @@ svg.size-6 {
   width: 100%;
   opacity: 0;
   transform: translateX(150%);
-  transition: transform 0.6s ease, opacity 0.6s ease;
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
   /* Smooth animation */
   z-index: 0;
   /* Inactive testimonials are below */
@@ -1183,7 +1181,8 @@ svg.size-6 {
   justify-content: center;
 }
 
-.blogpost--cards {}
+.blogpost--cards {
+}
 
 /* Individual card styles */
 .blogpost--card {
@@ -1422,7 +1421,9 @@ select {
   padding: 1.5rem 2rem;
   color: #333;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .dropdown-option:hover {
@@ -1492,7 +1493,7 @@ select {
   text-align: left;
 }
 
-.footer-box>div {
+.footer-box > div {
   min-width: 20rem;
   /* Ensures responsive column sizing */
   text-align: left;
