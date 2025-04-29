@@ -667,25 +667,25 @@
 
 .price-info__img-01 {
   background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
-    url("img/photos-doctors-01.jpg");
+    url("assets/img/pregnancy.webp");
   /* Add your image path */
 }
 
 .price-info__img-02 {
   background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
-    url("img/health-check.jpg");
+    url("assets/img/health.webp");
   /* Add your image path */
 }
 
 .price-info__img-03 {
   background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
-    url("img/dental-care.jpg");
+    url("assets/img/dentist.webp");
   /* Add your image path */
 }
 
 .price-info__img-04 {
   background-image: linear-gradient(to bottom, rgba(235, 247, 237, 0.8), rgba(209, 235, 169, 0.5)),
-    url("img/surgery-01.jpg");
+    url("assets/img/operation.webp");
   /* Add your image path */
 }
 
@@ -847,7 +847,7 @@
 .doctor__style {
   font-size: 2.4rem;
   margin-bottom: 1rem;
-  margin-top: 6.4rem;
+  /* margin-top: 6.4rem; */
   color: #333;
 }
 
@@ -861,21 +861,30 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap:2rem
   /* justify-content: space-around; */
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 
 .doctor__info {
-  margin: 0 2rem 0 2rem;
+  margin: 4rem 4rem 0;
 }
 
 .doctor__contact {
   border: none;
   border-top: 1px solid #dee2e6;
-  margin-left: -2rem;
+  /* margin-left: 4rem; */
   /* margin-right: 10rem; */
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  /* margin-top: 2rem; */
+  /* margin-bottom: 2rem; */
+  padding: 2rem 4rem;
+}
+.doctor__contact svg {
+  width: 5rem;
+  height: 5rem;
+  /* margin-top: 2rem; */
+  color: #32a045;
+  stroke-width: 0.8;
 }
 
 .fa-brands {
@@ -1698,7 +1707,7 @@ svg.size-6 {
   color: #d7f0db;
 }
 
-.media svg,
+/* .media svg,
 .location svg,
 .contact-email svg,
 .phone-number svg {
@@ -1706,7 +1715,7 @@ svg.size-6 {
   width: 3.2rem;
   height: 3.2rem;
   stroke-width: 1.2;
-}
+} */
 
 /* UP ARROW */
 
