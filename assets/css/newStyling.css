@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .btn {
   display: inline-flex;
   text-decoration: none;
@@ -156,6 +157,130 @@
   border-color: #37b24d;
 }
 #header nav ul:not(.dropdown-menu) > li > a.btn:hover {
+  background-color: #32a045;
+  border-color: #32a045;
+}
+
+.section-featured {
+  padding: 50px 0 30px 0;
+}
+.section-featured h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #999;
+}
+.section-featured .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  /* ✅ Fixed height for all slides */
+}
+.section-featured .swiper-slide a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.section-featured .swiper-slide a img {
+  max-height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: brightness(0);
+  opacity: 50%;
+  transition: all 0.3s ease-in-out;
+}
+.section-featured .swiper-slide a img:hover {
+  filter: brightness(1);
+  opacity: 100%;
+}
+
+.section-pricing,
+.doctor-section {
+  padding: 50px 0;
+}
+.section-pricing h4,
+.section-pricing h1,
+.doctor-section h4,
+.doctor-section h1 {
+  text-align: center;
+}
+.section-pricing .doctor__contact a,
+.doctor-section .doctor__contact a {
+  text-decoration: none;
+}
+
+.find-a-doc-section {
+  padding: 50px 0;
+  background-color: #d7f0db;
+}
+.find-a-doc-section h4,
+.find-a-doc-section h1,
+.find-a-doc-section p {
+  text-align: center;
+}
+.find-a-doc-section .findDocform .form-row {
+  width: 70%;
+  margin: 0 auto;
+}
+.find-a-doc-section .findDocform .form-row .custom-dropdown {
+  height: 50px;
+  border-radius: 0;
+  width: 25%;
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.find-a-doc-section .findDocform .form-row .custom-dropdown:focus, .find-a-doc-section .findDocform .form-row .custom-dropdown:hover {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(55, 178, 77, 0.25);
+}
+.find-a-doc-section .findDocform .form-row .custom-dropdown .dropdown-selected {
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 1.2rem 2rem;
+  width: 100%;
+  box-shadow: none;
+}
+.find-a-doc-section .findDocform .form-row .custom-dropdown .dropdown-selected:hover, .find-a-doc-section .findDocform .form-row .custom-dropdown .dropdown-selected:focus {
+  outline: none;
+  box-shadow: none;
+}
+.find-a-doc-section .findDocform .form-row input[type=text] {
+  height: 50px;
+  padding: 1.2rem 2rem;
+  border-radius: 0;
+  border: 1px solid #fff;
+  font-size: 1.6rem;
+  color: #333;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  width: 50%;
+}
+.find-a-doc-section .findDocform .form-row input[type=text]:focus, .find-a-doc-section .findDocform .form-row input[type=text]:hover {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(55, 178, 77, 0.25);
+}
+.find-a-doc-section .findDocform .form-row button[type=submit] {
+  height: 50px;
+  padding: 1.2rem 2rem;
+  border-radius: 0;
+  border: 1px solid #37b24d;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #37b24d;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  width: 25%;
+}
+.find-a-doc-section .findDocform .form-row button[type=submit]:hover {
   background-color: #32a045;
   border-color: #32a045;
 }/*# sourceMappingURL=newStyling.css.map */

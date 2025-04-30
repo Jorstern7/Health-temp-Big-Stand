@@ -52,40 +52,40 @@ img3.addEventListener("mouseleave", () => {
 */
 
 // PRICING PLANS
-document.addEventListener("DOMContentLoaded", () => {
-  const showMoreButton = document.querySelector(".show--more a");
-  const lastBox = document.querySelector(".pricing-plan__box.last-box");
-  const special = document.querySelector(".special");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const showMoreButton = document.querySelector(".show--more a");
+//   const lastBox = document.querySelector(".pricing-plan__box.last-box");
+//   const special = document.querySelector(".special");
 
-  showMoreButton.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the default anchor link behavior
+//   showMoreButton.addEventListener("click", (event) => {
+//     event.preventDefault(); // Prevent the default anchor link behavior
 
-    // Toggle the "show" class on the last box
-    lastBox.classList.toggle("show");
+//     // Toggle the "show" class on the last box
+//     lastBox.classList.toggle("show");
 
-    if (lastBox.classList.contains("show")) {
-      showMoreButton.textContent = "Show less";
+//     if (lastBox.classList.contains("show")) {
+//       showMoreButton.textContent = "Show less";
 
-      // Wait for the height transition to complete before scrolling
-      setTimeout(() => {
-        showMoreButton.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 500); // Delay matches the transition duration (0.5s)
+//       // Wait for the height transition to complete before scrolling
+//       setTimeout(() => {
+//         showMoreButton.scrollIntoView({ behavior: "smooth", block: "start" });
+//       }, 500); // Delay matches the transition duration (0.5s)
 
-      // Add and remove appropriate classes
-      special.classList.add("div-margin");
-      special.classList.remove("general-margin-top-fix");
-    } else {
-      showMoreButton.textContent = "Show more";
+//       // Add and remove appropriate classes
+//       special.classList.add("div-margin");
+//       special.classList.remove("general-margin-top-fix");
+//     } else {
+//       showMoreButton.textContent = "Show more";
 
-      // Scroll back to the start of the pricing section when collapsing
-      showMoreButton.scrollIntoView({ behavior: "smooth", block: "end" });
+//       // Scroll back to the start of the pricing section when collapsing
+//       showMoreButton.scrollIntoView({ behavior: "smooth", block: "end" });
 
-      // Add and remove appropriate classes
-      special.classList.remove("div-margin");
-      special.classList.add("general-margin-top-fix");
-    }
-  });
-});
+//       // Add and remove appropriate classes
+//       special.classList.remove("div-margin");
+//       special.classList.add("general-margin-top-fix");
+//     }
+//   });
+// });
 
 // DOCTORS
 
@@ -138,58 +138,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // DOCTORS 2
 
-const professionals = document.querySelector(".professionals");
-const boxes = document.querySelectorAll(".professional-box");
-const leftBtn = document.querySelector(".left-btn");
-const rightBtn = document.querySelector(".right-btn");
+// const professionals = document.querySelector(".professionals");
+// const boxes = document.querySelectorAll(".professional-box");
+// const leftBtn = document.querySelector(".left-btn");
+// const rightBtn = document.querySelector(".right-btn");
 
-let currentIndex = 0; // Tracks the first visible box
-let autoScrollInterval; // To store the interval ID
+// let currentIndex = 0; // Tracks the first visible box
+// let autoScrollInterval; // To store the interval ID
 
-// Function to update the scroll position
-function updateProfessionals() {
-  professionals.style.transform = `translateX(-${currentIndex * 49.4}%)`;
-}
+// // Function to update the scroll position
+// function updateProfessionals() {
+//   professionals.style.transform = `translateX(-${currentIndex * 49.4}%)`;
+// }
 
-// Function to scroll automatically to the left
-function startAutoScroll() {
-  autoScrollInterval = setInterval(() => {
-    currentIndex++;
-    if (currentIndex > boxes.length - 2) {
-      currentIndex = 0;
-    }
-    updateProfessionals();
-  }, 3000); // Change every 3 seconds (adjust as needed)
-}
+// // Function to scroll automatically to the left
+// function startAutoScroll() {
+//   autoScrollInterval = setInterval(() => {
+//     currentIndex++;
+//     if (currentIndex > boxes.length - 2) {
+//       currentIndex = 0;
+//     }
+//     updateProfessionals();
+//   }, 3000); // Change every 3 seconds (adjust as needed)
+// }
 
-// Start auto-scroll on page load
-startAutoScroll();
+// // Start auto-scroll on page load
+// startAutoScroll();
 
-// Pause auto-scroll when a button is clicked
-function stopAutoScroll() {
-  clearInterval(autoScrollInterval);
-  startAutoScroll(); // Restart auto-scroll after interaction
-}
+// // Pause auto-scroll when a button is clicked
+// function stopAutoScroll() {
+//   clearInterval(autoScrollInterval);
+//   startAutoScroll(); // Restart auto-scroll after interaction
+// }
 
-// Right button click
-rightBtn.addEventListener("click", () => {
-  stopAutoScroll(); // Restart the timer
-  currentIndex++;
-  if (currentIndex > boxes.length - 2) {
-    currentIndex = 0;
-  }
-  updateProfessionals();
-});
+// // Right button click
+// rightBtn.addEventListener("click", () => {
+//   stopAutoScroll(); // Restart the timer
+//   currentIndex++;
+//   if (currentIndex > boxes.length - 2) {
+//     currentIndex = 0;
+//   }
+//   updateProfessionals();
+// });
 
-// Left button click
-leftBtn.addEventListener("click", () => {
-  stopAutoScroll(); // Restart the timer
-  currentIndex--;
-  if (currentIndex < 0) {
-    currentIndex = boxes.length - 2;
-  }
-  updateProfessionals();
-});
+// // Left button click
+// leftBtn.addEventListener("click", () => {
+//   stopAutoScroll(); // Restart the timer
+//   currentIndex--;
+//   if (currentIndex < 0) {
+//     currentIndex = boxes.length - 2;
+//   }
+//   updateProfessionals();
+// });
 
 // DOCTORS 3
 
@@ -430,4 +430,54 @@ document.querySelectorAll(".main-nav-link").forEach((link) => {
       });
     }
   });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  new Swiper(".featured-swiper", {
+    slidesPerView: 4, // Important: 'auto' allows flexible number of slides
+    spaceBetween: 0,
+    loop: true, // Enable seamless infinite looping
+    speed: 3000, // Speed of transition
+    autoplay: {
+      delay: 0, // No pause between transitions
+      pauseOnMouseEnter: false, // Don't pause on mouse enter
+      disableOnInteraction: false, // Keep autoplay even if user touches
+    },
+    grabCursor: true,
+    allowTouchMove: true,
+    // centeredSlides: true, // (optional) center slides for better look
+  });
+  new Swiper(".pricing-swiper", {
+    slidesPerView: 3, // Important: 'auto' allows flexible number of slides
+    spaceBetween: 40,
+    loop: true, // Enable seamless infinite looping
+    speed: 3000, // Speed of transition
+    autoplay: {
+      delay: 0, // No pause between transitions
+      pauseOnMouseEnter: false, // Don't pause on mouse enter
+      disableOnInteraction: false, // Keep autoplay even if user touches
+    },
+    grabCursor: true,
+    allowTouchMove: true,
+    // centeredSlides: true, // (optional) center slides for better look
+  });
+  new Swiper(".doctors-swiper", {
+    slidesPerView: 2,
+    spaceBetween: 40,
+    loop: true,
+    speed: 3000,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    navigation: { // ✅ Fixed here
+      nextEl: ".right-btn",
+      prevEl: ".left-btn",
+    },
+    grabCursor: true,
+    allowTouchMove: true,
+  });
+
 });
