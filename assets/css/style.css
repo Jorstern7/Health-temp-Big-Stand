@@ -110,7 +110,7 @@ footer {
   border-color: #b3b3b3;
   color: #b3b3b3;
 }
-.btn.btn-outline.no-effect:hover svg, .btn.btn-outline.no-effect:active svg {
+.btn.no-effect:hover svg, .btn.no-effect:active svg {
   transform: rotate(0) !important;
   color: #b3b3b3;
 }
@@ -275,37 +275,32 @@ main .section-health .health-img-box {
 }
 main .section-health .health-img-box .health-img {
   position: absolute;
-  width: 350px;
   border-radius: 9px;
   transition: transform 0.8s ease, z-index 0.5s ease-in-out;
 }
 main .section-health .health-img-box .health-img.health-img--1 {
   z-index: 3;
-  left: 25px;
-  transform: translateY(-100%);
-  top: 100%;
+  transform: translate(10%, -10%);
 }
 main .section-health .health-img-box .health-img.health-img--1:hover {
-  transform: translateY(-100%) scale(1.1);
+  transform: translate(10%, -10%) scale(1.1);
   z-index: 4;
 }
 main .section-health .health-img-box .health-img.health-img--2 {
   z-index: 1;
-  left: 75px;
-  top: 0;
+  transform: translate(30%, -100%);
 }
 main .section-health .health-img-box .health-img.health-img--2:hover {
-  transform: scale(1.1);
+  transform: translate(30%, -100%) scale(1.1);
   z-index: 4;
 }
 main .section-health .health-img-box .health-img.health-img--3 {
   z-index: 2;
-  right: 25px;
-  transform: translateY(-120%);
+  transform: translate(100%, -40%);
   top: 100%;
 }
 main .section-health .health-img-box .health-img.health-img--3:hover {
-  transform: translateY(-120%) scale(1.1);
+  transform: translate(100%, -40%) scale(1.1);
   z-index: 4;
 }
 main .section-featured {
@@ -434,7 +429,7 @@ main .services-section .flip {
   border-radius: 9px;
 }
 main .services-section .flip .card {
-  min-height: 250px;
+  min-height: 300px;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: 0.5s;
   transform-style: preserve-3d;
@@ -445,6 +440,11 @@ main .services-section .flip .card {
 }
 main .services-section .flip .card.flipped {
   transform: rotatey(-180deg);
+}
+main .services-section .flip .card.flipped .card-body .btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 main .services-section .flip .card .card-body {
   backface-visibility: hidden;
@@ -471,9 +471,61 @@ main .services-section .flip .card .card-body.back {
 main .services-section .flip .card .card-body.back .service-box-info {
   height: auto;
   background-color: #d3f9d8;
-  border-bottom: 1px solid #37b24d;
+  border-bottom: 0;
   margin-bottom: 10px;
   border-radius: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  border-radius: 9px 9px 50px 50px;
+}
+main .services-section .flip .card .card-body.back .service-box-info h4 {
+  font-size: 18px;
+  margin: 0;
+  color: #555;
+}
+main .services-section .flip .card .card-body.back .service-box-info svg {
+  color: #37b24d;
+  padding: 0;
+  border-radius: 0%;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border: 0;
+  background-color: #d3f9d8;
+}
+main .services-section .flip .card .card-body.back .service-box-info .rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-top: 0;
+  background-color: #d3f9d8;
+  gap: 5px;
+}
+main .services-section .flip .card .card-body.back .service-box-info .rating svg {
+  padding: 0;
+  height: 20px;
+  width: 20px;
+  color: #ffd43b;
+  border: none;
+  background-color: transparent;
+  margin: 0;
+}
+main .services-section .flip .card .card-body .btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50px);
+  background-color: #37b24d;
+  color: #fff;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding: 0;
 }
 main .services-section .flip .card .card-body .service-box-info {
   height: 100%;
@@ -606,6 +658,18 @@ main .appointment-form-section .custom-form input[type=submit]:hover {
 }
 main .section-pricing {
   padding: 50px 0;
+  position: relative;
+}
+main .section-pricing:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #d7f0db;
+  height: 50%;
+  border-radius: 0 0 100% 100%;
 }
 main .section-pricing p,
 main .section-pricing h1 {
@@ -668,6 +732,7 @@ main .section-pricing .card .card-header div {
   width: max-content;
   border-radius: 9px;
   z-index: 3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
   /* Smaller "/year" text */
 }
 main .section-pricing .card .card-header div .plan-price {
@@ -1344,14 +1409,52 @@ main .blog-section .card .card-footer .post-info .stats svg {
   #footer .footer-section .heading-four {
     margin: 20px 0 15px;
   }
+  .offcanvas-body ul li {
+    margin-bottom: 10px;
+  }
 }
 @media (max-width: 768.98px) {
   main .blog-section .card .card-body {
     gap: 10px;
   }
   #footer .footer-section #newsletterform .btn-submit,
-  #footer .footer-section #newsletterform input[type=submit], #footer .footer-section #newsletterform .form-control,
+  #footer .footer-section #newsletterform input[type=submit],
+  #footer .footer-section #newsletterform .form-control,
   #footer .footer-section #newsletterform .form-select {
     border-radius: 9px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .cta-group {
+    justify-content: center;
+  }
+  .featured-swiper .swiper-wrapper {
+    gap: 25px !important;
+  }
+  main .services-section {
+    padding: 0px 0 45px;
+  }
+  main .services-section .flip .card .card-body .service-box-info .rating {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  main .appointment-form-section .custom-form {
+    margin-top: 30px;
+  }
+  .findDocform > .row {
+    gap: 15px !important;
+  }
+  .heading-four {
+    text-underline-offset: 3px;
+  }
+  #header nav .navbar-brand {
+    width: 50%;
+  }
+  main .section-testimonial .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 30px;
+    height: 30px;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a::before {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */
