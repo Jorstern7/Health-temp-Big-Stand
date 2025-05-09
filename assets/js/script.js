@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   new Swiper(".pricing-swiper", {
     slidesPerView: 3,
-    spaceBetween: 40,
+    spaceBetween: 10,
     loop: true,
     speed: 3000,
     autoplay: {
@@ -241,4 +241,33 @@ document.addEventListener("DOMContentLoaded", function () {
   //     }
   //   });
   // });
+
+  document.querySelectorAll(".custom-select").forEach((select) => {
+    const selected = select.querySelector(".selected");
+    const options = select.querySelector(".options");
+    const optionItems = select.querySelectorAll(".option");
+
+    selected.addEventListener("click", (e) => {
+      document.querySelectorAll(".options").forEach((opt) => {
+        if (opt !== options) opt.style.display = "none";
+      });
+      options.style.display =
+        options.style.display === "block" ? "none" : "block";
+      e.stopPropagation();
+    });
+
+    optionItems.forEach((option) => {
+      option.addEventListener("click", (e) => {
+        selected.textContent = option.textContent;
+        options.style.display = "none";
+        e.stopPropagation();
+      });
+    });
+  });
+
+  document.addEventListener("click", () => {
+    document
+      .querySelectorAll(".options")
+      .forEach((opt) => (opt.style.display = "none"));
+  });
 });

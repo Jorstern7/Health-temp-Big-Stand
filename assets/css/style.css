@@ -85,18 +85,18 @@ footer {
   content: "";
   position: absolute;
   height: 100%;
-  width: 30%;
+  width: 8px;
   transition: all 0.5s;
 }
 .btn.btn-default::before {
-  left: 0;
-  border-left: 0.3rem solid #fff;
+  left: -5px;
+  background-color: #fff;
   /* 3px */
   top: 40%;
 }
 .btn.btn-default::after {
-  right: 0;
-  border-right: 0.3rem solid #fff;
+  right: -5px;
+  background-color: #fff;
   /* 3px */
   bottom: 40%;
 }
@@ -151,6 +151,59 @@ footer {
   text-decoration-color: #ced4da;
   margin-bottom: 20px;
   font-weight: bold;
+}
+
+.custom-select {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  display: block;
+  width: 100%;
+  border: 2px solid #fff;
+  font-size: 16px;
+  line-height: normal;
+  border-radius: 9px;
+}
+.custom-select:hover, .custom-select:focus, .custom-select:active, .custom-select:focus-visible {
+  box-shadow: 0 0 6px #37b24d;
+  outline: none;
+  transition: 0.5s all;
+}
+
+.selected {
+  padding: 20px;
+  border-radius: 9px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  right: 0;
+  background-color: #37b24d;
+  border-radius: 4px;
+  display: none;
+  font-size: 16px;
+  z-index: 5;
+  padding: 5px 0;
+  border-radius: 4px;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+.option:hover {
+  background-color: #d7f0db;
+  color: #37b24d;
 }
 
 #header {
@@ -429,7 +482,7 @@ main .services-section .flip {
   border-radius: 9px;
 }
 main .services-section .flip .card {
-  min-height: 300px;
+  min-height: 310px;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: 0.5s;
   transform-style: preserve-3d;
@@ -524,7 +577,7 @@ main .services-section .flip .card .card-body .btn {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  margin: 0 auto;
+  margin: 10px auto 0;
   padding: 0;
 }
 main .services-section .flip .card .card-body .service-box-info {
@@ -601,6 +654,20 @@ main .appointment-form-section {
   padding: 90px 0;
   background-color: #d7f0db;
 }
+main .appointment-form-section .btn-outline {
+  width: 215px;
+  justify-content: flex-start;
+}
+main .appointment-form-section .btn-outline svg {
+  transition: 0.5s all;
+}
+main .appointment-form-section .btn-outline:hover {
+  transition: 0.5s all;
+}
+main .appointment-form-section .btn-outline:hover svg {
+  margin-left: 10px;
+  transition: 0.5s all;
+}
 main .appointment-form-section p {
   font-size: 16px;
   line-height: 1.6;
@@ -660,13 +727,18 @@ main .section-pricing {
   padding: 50px 0;
   position: relative;
 }
-main .section-pricing:before {
+main .section-pricing .container {
+  padding: 50px 0;
+  position: relative;
+}
+main .section-pricing .container:before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
+  margin: 0 auto;
   background-color: #d7f0db;
   height: 50%;
   border-radius: 0 0 100% 100%;
@@ -683,12 +755,12 @@ main .section-pricing h1 {
   font-weight: bold;
 }
 main .section-pricing .card {
-  width: 100%;
+  width: 85%;
   border-radius: 9px;
   text-align: center;
   background-color: #f1f3f5;
   border: 0;
-  margin-top: 50px;
+  margin: 50px auto 0;
 }
 main .section-pricing .card .card-header {
   position: relative;
@@ -1205,19 +1277,19 @@ main .blog-section .card .card-footer .post-info .stats svg {
 
 #up-arrow {
   position: fixed;
-  bottom: 40px;
+  bottom: 0;
   right: 40px;
   width: 50px;
-  height: 50px;
+  height: 80px;
   background-color: #37b24d;
   border: 1px solid #37b24d;
   color: #fff;
-  border: none;
-  border-radius: 50%;
+  border-radius: 25px 25px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 30px;
   opacity: 0;
   visibility: hidden;
   transition: 0.3s all;
