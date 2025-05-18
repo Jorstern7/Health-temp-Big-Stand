@@ -101,14 +101,14 @@ footer {
 
     &::before {
       left: -5px;
-      background-color:  #fff;
+      background-color: #fff;
       /* 3px */
       top: 40%;
     }
 
     &::after {
       right: -5px;
-      background-color:  #fff;
+      background-color: #fff;
       /* 3px */
       bottom: 40%;
     }
@@ -406,48 +406,66 @@ main {
 
       .health-img {
         position: absolute;
-        // width: 350px;
         border-radius: 9px;
         transition: transform 0.8s ease, z-index 0.5s ease-in-out;
+        width: 350px;
+
+        // &.health-img--1 {
+        //   z-index: 3;
+        //   transform: translate(10%, -10%);
+        //   &:hover {
+        //     transform: translate(10%, -10%) scale(1.1);
+        //     z-index: 4;
+        //   }
+        // }
+
+        // &.health-img--2 {
+        //   z-index: 1;
+        //   transform: translate(30%, -100%);
+
+        //   &:hover {
+        //     transform: translate(30%, -100%) scale(1.1);
+        //     z-index: 4;
+        //   }
+        // }
+
+        // &.health-img--3 {
+        //   z-index: 2;
+        //   transform: translate(100%, -40%);
+        //   top: 100%;
+
+        //   &:hover {
+        //     transform: translate(100%, -40%) scale(1.1);
+        //     z-index: 4;
+        //   }
+        // }
 
         &.health-img--1 {
           z-index: 3;
-          // left: 25px;
-          transform: translate(10%, -10%);
-
-          // transform: translateY(-100%);
-          // top: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
           &:hover {
-            transform: translate(10%, -10%) scale(1.1);
-            // transform: translateY(-100%) scale(1.1);
+            transform: translateY(-50%) scale(1.1);
             z-index: 4;
           }
         }
-
         &.health-img--2 {
           z-index: 1;
-          // left: 75px;
-          transform: translate(30%, -100%);
-
-          // top: 0;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
           &:hover {
-            transform: translate(30%, -100%) scale(1.1);
-            // transform: scale(1.1);
+            transform: translateX(-50%) scale(1.1);
             z-index: 4;
           }
         }
-
         &.health-img--3 {
-          // transform: translate(100%, -30%);
           z-index: 2;
-          transform: translate(100%, -40%);
-          // right: 25px;
-          // transform: translateY(-120%);
-          top: 100%;
-
+          bottom: 0;
+          right: 0;
           &:hover {
-            transform: translate(100%, -40%) scale(1.1);
-            // transform: translateY(-120%) scale(1.1);
+            transform: scale(1.1);
             z-index: 4;
           }
         }
@@ -614,10 +632,12 @@ main {
           transform: rotatey(-180deg);
 
           .card-body {
-            .btn {
-              opacity: 1;
-              visibility: visible;
-              transform: translateY(0);
+            &.back {
+              .btn {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+              }
             }
           }
         }
@@ -635,7 +655,19 @@ main {
             position: absolute;
             width: 100%;
             z-index: 1;
-
+            .learn-more-btn {
+              bottom: -27px;
+              position: absolute;
+              padding: 5px 20px;
+              left: 0;
+              right: 0;
+              width: max-content;
+              margin: 0 auto;
+              background-color: #37b24d;
+              color: #fff;
+              border: 3px solid #fff;
+              transition: 0.5s all;
+            }
             .service-box-info {
               padding-bottom: 0;
             }
@@ -648,6 +680,18 @@ main {
             width: 100%;
             z-index: 1;
 
+            .btn {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(50px);
+              background-color: #37b24d;
+              color: #fff;
+              height: 40px;
+              width: 40px;
+              border-radius: 50%;
+              margin: 10px auto 0;
+              padding: 0;
+            }
             .service-box-info {
               height: auto;
               background-color: #d3f9d8;
@@ -699,19 +743,6 @@ main {
                 }
               }
             }
-          }
-
-          .btn {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(50px);
-            background-color: #37b24d;
-            color: #fff;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            margin: 10px auto 0;
-            padding: 0;
           }
 
           .service-box-info {
@@ -1598,7 +1629,9 @@ main {
   .heading-primary {
     font-size: 45px;
   }
-
+  main .section-health .health-img-box .health-img {
+    width: 280px;
+  }
   // main .section-health .health-img-box .health-img.health-img--1{
 
   // }
@@ -1725,17 +1758,17 @@ main {
     width: 220px;
   }
 
-  main .section-health .health-img-box .health-img.health-img--1 {
-    transform: translate(0%, -10%);
-  }
+  // main .section-health .health-img-box .health-img.health-img--1 {
+  //   transform: translate(0%, -10%);
+  // }
 
-  main .section-health .health-img-box .health-img.health-img--2 {
-    transform: translate(50%, -100%);
-  }
+  // main .section-health .health-img-box .health-img.health-img--2 {
+  //   transform: translate(50%, -100%);
+  // }
 
-  main .section-health .health-img-box .health-img.health-img--3 {
-    transform: translate(100%, -40%);
-  }
+  // main .section-health .health-img-box .health-img.health-img--3 {
+  //   transform: translate(100%, -40%);
+  // }
 }
 
 @media (max-width: 991.98px) {
@@ -1761,7 +1794,7 @@ main {
   }
 
   .heading-primary {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   main .section-health p {
@@ -1813,9 +1846,155 @@ main {
   .offcanvas-body ul li {
     margin-bottom: 10px;
   }
+  main .section-health .health-img-box .health-img {
+    width: 200px;
+  }
 }
-
 @media (max-width: 768.98px) {
+  main .section-health .health-img-box .health-img {
+    width: 270px;
+  }
+  main .section-health .health-img-box {
+    //   position: relative;
+    min-height: 265px; // enough space for overlaps on small screens
+
+    //   .health-img {
+    //     position: absolute;
+    //     border-radius: 9px;
+    //     width: 80%; // responsive sizing
+    //     max-width: 300px;
+    //     height: auto;
+
+    //     &.health-img--1 {
+    //       z-index: 3;
+    //       transform: translate(0%, 50%);
+    //       margin-top: 42px;
+    //       &:hover {
+    //         z-index: 4;
+    //         transform: translate(0%, 50%);
+    //       }
+    //     }
+
+    //     &.health-img--2 {
+    //       z-index: 1;
+    //       transform: translate(30%, 0%);
+    //       &:hover {
+    //         z-index: 4;
+    //         transform: translate(30%, 0%);
+    //       }
+    //     }
+
+    //     &.health-img--3 {
+    //       z-index: 2;
+    //       top: auto;
+    //       bottom: 0;
+    //       transform: translate(100%, 0%);
+    //       margin-top: -84px;
+    //       margin-left: -84px;
+    //       &:hover {
+    //         z-index: 4;
+    //         transform: translate(100%, 0%);
+    //       }
+    //     }
+    //   }
+  }
+  main .section-health p {
+    margin-bottom: 20px;
+  }
+  .cta-group {
+    margin-top: 20px;
+  }
+  main .section-health p {
+    text-align: center;
+  }
+
+  .cta-group {
+    justify-content: center;
+  }
+
+  main .section-about p.heading-four,
+  .heading-four,
+  main .find-a-doc-section p.heading-four,
+  main .section-testimonial p.heading-four,
+  main .blog-section p.heading-four {
+    text-align: center;
+  }
+  main .blog-section .card .card-body {
+    padding-left: 0;
+  }
+
+  main .blog-section .card .card-footer {
+    padding-left: 0;
+  }
+  main .blog-section .card .card-img-top {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 9px 0 0 9px;
+  }
+  main .blog-section .card .card-body p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  main .appointment-form-section p {
+    text-align: center;
+  }
+
+  main .section-about h1,
+  .heading-primary,
+  .health-description {
+    text-align: center;
+  }
+
+  main .appointment-form-section .btn-outline {
+    width: max-content;
+  }
+
+  // #footer .footer-section .heading-four {
+  //   text-align: left;
+  // }
+  #footer .footer-section p {
+    text-align: center;
+  }
+  #footer .footer-section ul li a,
+  #footer .footer-section ul {
+    justify-content: center;
+  }
+  main .section-pricing .container:before {
+    height: 25%;
+  }
+  #footer .site-footer .row {
+    gap: 10px;
+  }
+  .cta-group .btn-outline svg {
+    transform: rotate(90deg);
+  }
+  .arrow-btn button {
+    position: absolute;
+    top: var(--swiper-navigation-top-offset, 50%);
+    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrow-btn button.left-btn {
+    left: 0;
+    right: auto;
+  }
+
+  .arrow-btn button.right-btn {
+    right: 0;
+    left: auto;
+  }
+  main .section-pricing .card {
+    width: 70%;
+  }
+  // main .section-health .health-img-box .health-img {
+  //   width: 100%;
+  // }
   main .blog-section .card .card-body {
     gap: 10px;
   }
@@ -1826,9 +2005,25 @@ main {
   #footer .footer-section #newsletterform .form-select {
     border-radius: 9px;
   }
+  main .doctor-section .card {
+    width: 70%;
+    margin: 0 auto;
+  }
+  main .doctor-section .card .card-body img {
+    border-radius: 9px 9px 0 0;
+    object-position: top;
+  }
 }
 
 @media screen and (max-width: 576px) {
+  main .section-about p.heading-four,
+  .heading-four,
+  main .find-a-doc-section p.heading-four,
+  main .section-testimonial p.heading-four,
+  main .blog-section p.heading-four,
+  main .blog-section .card .card-body h4 {
+    font-size: 13px;
+  }
   .cta-group {
     justify-content: center;
   }
@@ -1861,7 +2056,50 @@ main {
   #header nav .navbar-brand {
     width: 50%;
   }
+  .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  main .services-section .flip .card .card-body.back .service-box-info h4 {
+    font-size: 12px;
+  }
+  main .appointment-form-section .custom-form .form-title {
+    font-size: 25px;
+  }
+  .section-pricing .px-5 {
+    padding: 0 10px !important;
+  }
+  main .section-pricing .card .card-header {
+    padding: 60px 20px;
+  }
+  main .section-pricing .card .card-header .plan-name {
+    font-size: 20px;
+  }
+  main .section-pricing .card .card-body ul li {
+    font-size: 13px;
+  }
 
+  main .section-about h1,
+  main .services-section h1,
+  main .section-pricing h1,
+  main .doctor-section h1,
+  main .find-a-doc-section h1,
+  main .section-testimonial h1,
+  main .blog-section h1 {
+    font-size: 19px;
+  }
+  main .blog-section .card .card-footer {
+    padding-right: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  #footer .site-footer p {
+    font-size: 13px;
+  }
+  main .section-health .health-img-box .health-img {
+    width: 260px;
+  }
   main
     .section-testimonial
     .swiper-pagination
@@ -1872,5 +2110,34 @@ main {
 
   #header nav ul:not(.dropdown-menu) > li > a::before {
     display: none;
+  }
+}
+@media (max-width: 450.98px) {
+  main .section-health .health-img-box .health-img {
+    width: 250px;
+  }
+  main .section-health .health-img-box {
+    min-height: 205px;
+  }
+}
+
+@media (max-width: 425.98px) {
+  main .section-health .health-img-box .health-img {
+    width: 230px;
+  }
+  main .section-health .health-img-box {
+    min-height: 200px;
+  }
+}
+@media (max-width: 375.98px) {
+  main .section-health .health-img-box .health-img {
+    width: 185px;
+  }
+  main .section-health .health-img-box {
+    min-height: 170px;
+  }
+  #up-arrow {
+    right: 0px;
+    height: 45px;
   }
 }

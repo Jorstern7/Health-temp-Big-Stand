@@ -128,13 +128,41 @@ document.addEventListener("DOMContentLoaded", function () {
   const flipElements = document.querySelectorAll(".flip");
 
   flipElements.forEach(function (flip) {
-    flip.addEventListener("mouseenter", function () {
-      this.querySelector(".card").classList.add("flipped");
-    });
+    const card = flip.querySelector(".card");
+    const learnMoreBtn = flip.querySelector(".learn-more-btn");
 
-    flip.addEventListener("mouseleave", function () {
-      this.querySelector(".card").classList.remove("flipped");
-    });
+    // Desktop hover (lg and up)
+    if (window.innerWidth >= 992) {
+      flip.addEventListener("mouseenter", function () {
+        card.classList.add("flipped");
+      });
+
+      flip.addEventListener("mouseleave", function () {
+        card.classList.remove("flipped");
+      });
+    } else {
+      // Tablet & Mobile
+      if (learnMoreBtn) {
+        learnMoreBtn.addEventListener("click", function () {
+          this.style.opacity = "0"; // hide button
+          setTimeout(() => {
+            card.classList.add("flipped");
+          }, 200);
+        });
+
+        // Click outside to unflip
+        document.addEventListener("click", function (e) {
+          // Check if the clicked target is outside the current card
+          if (!flip.contains(e.target)) {
+            if (card.classList.contains("flipped")) {
+              card.classList.remove("flipped");
+              // Restore the Learn More button
+              learnMoreBtn.style.opacity = "1";
+            }
+          }
+        });
+      }
+    }
   });
 
   const goTopButton = document.getElementById("up-arrow");
