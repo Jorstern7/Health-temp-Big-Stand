@@ -707,7 +707,7 @@ main {
               h4 {
                 font-size: 18px;
                 margin: 0;
-                color: #555;
+                color: #333;
               }
 
               svg {
@@ -1854,6 +1854,40 @@ main {
   main .section-health .health-img-box .health-img {
     width: 270px;
   }
+  main .appointment-form-section .cta-group {
+    margin-bottom: 40px;
+  }
+  main .appointment-form-section p {
+    margin-bottom: 20px;
+  }
+
+  // #footer .footer-section ul {
+  //     margin: 0 auto;
+  //     width: max-content;
+  // }
+
+  // #footer .footer-section ul li a {
+  //     width: max-content;
+  // }
+  main .appointment-form-section .custom-form {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+  .arrow-btn button {
+    background-color: #37b24d;
+  }
+  .arrow-btn button svg {
+    color: #fff;
+  }
+  main .find-a-doc-section .findDocform .btn-submit,
+  main .find-a-doc-section .findDocform input[type="submit"] {
+    margin-top: 20px;
+  }
+
+  main .find-a-doc-section {
+    padding: 45px 0;
+  }
   main .section-health .health-img-box {
     //   position: relative;
     min-height: 265px; // enough space for overlaps on small screens
@@ -1954,18 +1988,18 @@ main {
   // #footer .footer-section .heading-four {
   //   text-align: left;
   // }
-  #footer .footer-section p {
-    text-align: center;
-  }
-  #footer .footer-section ul li a,
-  #footer .footer-section ul {
-    justify-content: center;
-  }
+  // #footer .footer-section p {
+  //   text-align: center;
+  // }
+  // #footer .footer-section ul li a,
+  // #footer .footer-section ul {
+  //   justify-content: center;
+  // }
   main .section-pricing .container:before {
     height: 25%;
   }
   #footer .site-footer .row {
-    gap: 10px;
+    gap: 20px;
   }
   .cta-group .btn-outline svg {
     transform: rotate(90deg);
@@ -1998,13 +2032,23 @@ main {
   main .blog-section .card .card-body {
     gap: 10px;
   }
-
-  #footer .footer-section #newsletterform .btn-submit,
-  #footer .footer-section #newsletterform input[type="submit"],
-  #footer .footer-section #newsletterform .form-control,
-  #footer .footer-section #newsletterform .form-select {
-    border-radius: 9px;
+  #footer .footer-section .heading-four {
+    text-align: left;
   }
+  #up-arrow {
+    position: fixed;
+    bottom: 100px;
+    right: 40px;
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+  }
+  // #footer .footer-section #newsletterform .btn-submit,
+  // #footer .footer-section #newsletterform input[type="submit"],
+  // #footer .footer-section #newsletterform .form-control,
+  // #footer .footer-section #newsletterform .form-select {
+  //   border-radius: 9px;
+  // }
   main .doctor-section .card {
     width: 70%;
     margin: 0 auto;
@@ -2012,6 +2056,12 @@ main {
   main .doctor-section .card .card-body img {
     border-radius: 9px 9px 0 0;
     object-position: top;
+  }
+  main .section-health {
+    padding: 50px 0 130px 0;
+  }
+  .heading-primary {
+    font-size: 38px;
   }
 }
 
