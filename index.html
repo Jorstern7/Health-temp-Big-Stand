@@ -19,7 +19,7 @@
     />
   </head>
   <body>
-    <header id="header">
+    <header id="header" class="transition">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid p-0">
@@ -30,12 +30,21 @@
                 class="logo-img"
               />
             </a>
-            <button
+            <!-- <button
               class="navbar-toggler"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasNavbar"
               aria-controls="offcanvasNavbar"
+              aria-label="Toggle navigation"
+            > -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
               aria-label="Toggle navigation"
             >
               <svg
@@ -467,7 +476,35 @@
         aria-labelledby="about-heading"
       >
         <div class="container">
-          <div class="row align-items-center justify-content-center gx-md-5 gy-md-0 gy-3">
+          <div id="tabOrMobOnly" class="card">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-5">
+                <img
+                  src="assets/img/about-us.webp"
+                  alt="Nurse checking patient's pulse."
+                  class="card-img-top"
+                />
+              </div>
+              <div class="col-lg-12 col-md-12 col-7">
+                <div class="card-body">
+                  <p class="heading-four">About us</p>
+                  <h1 id="about-heading">
+                    Look nowhere else, and take advantage of our health plan
+                  </h1>
+                  <p class="general-text-size">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Doloremque iure nobis rem provident corporis numquam cumque
+                    minus dolorem, placeat quibusdam repellat nam eius!
+                    Quibusdam in corporis natus voluptates facilis eos!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="desktopOnly"
+            class="row align-items-center justify-content-center gx-md-5 gy-md-0 gy-3"
+          >
             <div class="col-md-6 col-12">
               <figure>
                 <img
@@ -1433,7 +1470,9 @@
         aria-labelledby="form-heading"
       >
         <div class="container">
-          <div class="row align-items-center justify-content-center g-md-5 gy-md-0 gy-3">
+          <div
+            class="row align-items-center justify-content-center g-md-5 gy-md-0 gy-3"
+          >
             <div class="col-lg-6 col-md-12 col-12">
               <h4 class="heading-four">Appointment</h4>
               <h1 id="form-heading" class="heading-primary">
@@ -2342,163 +2381,171 @@
               <div class="card">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-5">
-                <img
-                  src="assets/img/blog-2.webp"
-                  alt="Blog Post Image"
-                  class="card-img-top"
-                />
+                    <img
+                      src="assets/img/blog-2.webp"
+                      alt="Blog Post Image"
+                      class="card-img-top"
+                    />
                   </div>
                   <div class="col-lg-12 col-md-12 col-7">
-                <div class="card-body">
-                  <h4 class="blogpost--title">
-                    Dolor clita vero elitr sea stet dolor justo diam
-                  </h4>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Reprehenderit quo exercitationem corrupti autem. Expedita,
-                    reprehenderit beatae? Laudantium voluptate cum molestiae
-                    velit culpa! A quasi odit deserunt delectus, voluptatibus
-                    doloribus mollitia!
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <div class="post-author">
-                    <img
-                      src="assets/img/author.webp"
-                      alt="Profile Picture"
-                      class="profile-image"
-                    />
-                    <h6>Jean Paul</h6>
-                  </div>
-                  <div class="post-info">
-                    <div class="stats">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-eye svg-views"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                        <path
-                          d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"
-                        />
-                      </svg>
-                      <span> 12679 </span>
+                    <div class="card-body">
+                      <h4 class="blogpost--title">
+                        Dolor clita vero elitr sea stet dolor justo diam
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Reprehenderit quo exercitationem corrupti autem.
+                        Expedita, reprehenderit beatae? Laudantium voluptate cum
+                        molestiae velit culpa! A quasi odit deserunt delectus,
+                        voluptatibus doloribus mollitia!
+                      </p>
                     </div>
-                    <div class="stats">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle svg-comments"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                          d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1"
+                    <div class="card-footer">
+                      <div class="post-author">
+                        <img
+                          src="assets/img/author.webp"
+                          alt="Profile Picture"
+                          class="profile-image"
                         />
-                      </svg>
+                        <h6>Jean Paul</h6>
+                      </div>
+                      <div class="post-info">
+                        <div class="stats">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-eye svg-views"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                            <path
+                              d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"
+                            />
+                          </svg>
+                          <span> 12679 </span>
+                        </div>
+                        <div class="stats">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle svg-comments"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                              d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1"
+                            />
+                          </svg>
 
-                      <span> 170 </span>
+                          <span> 170 </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-12">
+            <div class="col-12 visibleOnTablet text-center">
+              <button type="button" id="readMoreBlog" class="btn btn-default">
+                Read More
+              </button>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 hideOnTablet">
               <div class="card">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-5">
-                <img
-                  src="assets/img/blog-3.webp"
-                  alt="Blog Post Image"
-                  class="card-img-top"
-                />
+                    <img
+                      src="assets/img/blog-3.webp"
+                      alt="Blog Post Image"
+                      class="card-img-top"
+                    />
                   </div>
                   <div class="col-lg-12 col-md-12 col-7">
-                <div class="card-body">
-                  <h4 class="blogpost--title">
-                    Dolor clita vero elitr sea stet dolor justo diam
-                  </h4>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Reprehenderit quo exercitationem corrupti autem. Expedita,
-                    reprehenderit beatae? Laudantium voluptate cum molestiae
-                    velit culpa! A quasi odit deserunt delectus, voluptatibus
-                    doloribus mollitia!
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <div class="post-author">
-                    <img
-                      src="assets/img/author.webp"
-                      alt="Profile Picture"
-                      class="profile-image"
-                    />
-                    <h6>Jean Paul</h6>
-                  </div>
-                  <div class="post-info">
-                    <div class="stats">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-eye svg-views"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                        <path
-                          d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"
-                        />
-                      </svg>
-                      <span> 12679 </span>
+                    <div class="card-body">
+                      <h4 class="blogpost--title">
+                        Dolor clita vero elitr sea stet dolor justo diam
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Reprehenderit quo exercitationem corrupti autem.
+                        Expedita, reprehenderit beatae? Laudantium voluptate cum
+                        molestiae velit culpa! A quasi odit deserunt delectus,
+                        voluptatibus doloribus mollitia!
+                      </p>
                     </div>
-                    <div class="stats">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle svg-comments"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                          d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1"
+                    <div class="card-footer">
+                      <div class="post-author">
+                        <img
+                          src="assets/img/author.webp"
+                          alt="Profile Picture"
+                          class="profile-image"
                         />
-                      </svg>
+                        <h6>Jean Paul</h6>
+                      </div>
+                      <div class="post-info">
+                        <div class="stats">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-eye svg-views"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                            <path
+                              d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"
+                            />
+                          </svg>
+                          <span> 12679 </span>
+                        </div>
+                        <div class="stats">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle svg-comments"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                              d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1"
+                            />
+                          </svg>
 
-                      <span> 170 </span>
+                          <span> 170 </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="col-12 hideOnTablet text-center">
+              <a href="#" class="btn btn-default">Explore More</a>
             </div>
           </div>
           <!-- <div class="swiper posts-swiper">

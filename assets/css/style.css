@@ -125,6 +125,10 @@ footer {
   transform: rotate(90deg);
   color: #b3b3b3;
 }
+.btn:active, .btn:focus, .btn:focus-visible, .btn:active {
+  outline: 0;
+  box-shadow: none;
+}
 
 * {
   transition: all 0.5s;
@@ -206,8 +210,43 @@ footer {
   color: #37b24d;
 }
 
+#header-wrapper {
+  transition: transform 0.5s ease, top 0.5s ease;
+}
+#header-wrapper.slide-in {
+  transform: translateY(0); /* ensure it's visible */
+}
+#header-wrapper.sticky-top-custom {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transform: translateY(-100%); /* start hidden */
+}
+#header-wrapper.sticky-top-custom.slide-in {
+  transform: translateY(0); /* slide into view */
+}
+
+.transition {
+  transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.slide-in {
+  transform: translateY(0);
+}
+
+.slide-out {
+  transform: translateY(-100%);
+}
+
 #header {
+  transition: all 0.3s ease;
+  z-index: 1000;
   background-color: #d7f0db;
+}
+#header.sticky-top {
+  position: sticky; /* Bootstrap sticky */
+  top: 0;
+  z-index: 1020;
 }
 #header nav.navbar-light .navbar-toggler {
   color: #37b24d;
@@ -1500,8 +1539,87 @@ main .blog-section .card .card-footer .post-info .stats svg {
   main .section-health .health-img-box .health-img {
     width: 200px;
   }
+  #header nav ul:not(.dropdown-menu) {
+    align-items: stretch;
+    gap: 5px;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a {
+    padding: 8px 16px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+  }
+  div#navbarSupportedContent {
+    margin: 10px 0;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a::before {
+    display: none;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a.active,
+  #header nav ul:not(.dropdown-menu) > li > a:hover {
+    color: #fff;
+    background-color: #37b24d;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a.btn {
+    width: 100%;
+  }
+  #header nav ul.dropdown-menu[data-bs-popper] {
+    margin: 0;
+  }
+  #header nav ul.dropdown-menu[data-bs-popper] li a {
+    display: flex;
+    justify-content: center;
+  }
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-in {
+  opacity: 0;
+  display: block;
+  animation: fadeInAnim 0.5s ease-in forwards;
+}
+
+@keyframes fadeInAnim {
+  to {
+    opacity: 1;
+  }
+}
+@media (min-width: 767.98px) {
+  .visibleOnTablet {
+    display: none;
+  }
+  #tabOrMobOnly {
+    display: none;
+  }
 }
 @media (max-width: 768.98px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    background: #fff;
+  }
+  main .section-about .card-body {
+    padding: 10px 10px 10px 0;
+  }
+  main .section-about .card-img-top {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 9px 0 0 9px;
+  }
+  main .section-about p.general-text-size {
+    margin: 0;
+  }
+  #desktopOnly {
+    display: none;
+  }
+  .hideOnTablet {
+    display: none;
+  }
   main .section-health .health-img-box .health-img {
     width: 270px;
   }
@@ -1545,6 +1663,9 @@ main .blog-section .card .card-footer .post-info .stats svg {
     justify-content: center;
   }
   main .section-about p.heading-four,
+  main .section-about h1 {
+    text-align: left;
+  }
   .heading-four,
   main .find-a-doc-section p.heading-four,
   main .section-testimonial p.heading-four,
@@ -1572,7 +1693,6 @@ main .blog-section .card .card-footer .post-info .stats svg {
   main .appointment-form-section p {
     text-align: center;
   }
-  main .section-about h1,
   .heading-primary,
   .health-description {
     text-align: center;

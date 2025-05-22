@@ -1,12 +1,72 @@
-// Sticky Header Script
-window.addEventListener("scroll", function () {
-  const header = document.querySelector("header");
-  if (window.scrollY > 0) {
-    header.classList.add("sticky-top");
-  } else {
-    header.classList.remove("sticky-top");
+// const header = document.querySelector("header");
+// const section = document.querySelector(".section-health");
+// let isSticky = false;
+// let timeoutId;
+// const wrapper = document.getElementById("header-wrapper");
+
+// window.addEventListener("load", () => {
+//   wrapper.style.height = header.offsetHeight + "px";
+// });
+// const observer = new IntersectionObserver(
+//   ([entry]) => {
+//     clearTimeout(timeoutId);
+
+//     if (!entry.isIntersecting) {
+//       header.classList.add("sticky-top-custom"); // Add position first
+
+//       timeoutId = setTimeout(() => {
+//         header.classList.add("slide-in"); // Trigger animation after a short delay
+//       }, 500); // 50–150ms works well
+//     } else {
+//       // Start slide-out
+//       header.classList.remove("slide-in");
+
+//       // After animation, remove sticky
+//       setTimeout(() => {
+//         header.classList.remove("sticky-top-custom");
+//       }, 300); // must match the CSS transition duration
+//     }
+//   },
+//   {
+//     root: null,
+//     threshold: 0,
+//   }
+// );
+
+// observer.observe(section);
+
+const header = document.getElementById("header");
+const hero = document.querySelector(".section-health");
+
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    if (!entry.isIntersecting) {
+      // Add sticky + animate in
+      // header.style.transform = "translateY(-100%)";
+      header.classList.add("sticky-top");
+      // Force reflow to restart transition
+      void header.offsetHeight;
+      // setTimeout(() => {
+      //   header.style.transform = "";
+      // }, 300); // Match CSS transition duration
+    } else {
+      // Animate out, then remove sticky
+      header.style.transform = "translateY(-100%)";
+      setTimeout(() => {
+        header.classList.remove("sticky-top");
+        header.style.transform = ""; // reset
+      }, 300); // Match CSS transition duration
+    }
+  },
+  {
+    root: null,
+    threshold: 0,
+    rootMargin: "-1px 0px 0px 0px",
   }
-});
+);
+
+observer.observe(hero);
+
 document.addEventListener("DOMContentLoaded", function () {
   new Swiper(".featured-swiper", {
     slidesPerView: 4, // Important: 'auto' allows flexible number of slides
@@ -125,6 +185,26 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
+  const readMoreBtn = document.getElementById("readMoreBlog");
+
+  readMoreBtn.addEventListener("click", function () {
+    // Fade out the visible element
+    const mobileReadMore = document.querySelector(".visibleOnTablet");
+    if (mobileReadMore) {
+      mobileReadMore.classList.add("fade-out");
+      setTimeout(() => {
+        mobileReadMore.style.display = "none";
+      }, 500); // matches transition time
+    }
+
+    // Fade in all elements with 'hideOnMobile'
+    const hiddenItems = document.querySelectorAll(".hideOnTablet");
+    hiddenItems.forEach(function (el) {
+      el.style.display = "block"; // ensure it's visible before animating
+      el.classList.add("fade-in");
+    });
+  });
+
   const flipElements = document.querySelectorAll(".flip");
 
   flipElements.forEach(function (flip) {
@@ -195,6 +275,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const offcanvasInstance =
     bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
 
+  // Collapse navbar menu (for standard `.navbar-collapse`)
+  const collapseEl = document.getElementById("navbarSupportedContent");
+  const collapseInstance =
+    collapseEl && bootstrap.Collapse.getOrCreateInstance(collapseEl);
+
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
@@ -228,6 +313,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // 6. Close the offcanvas if open (for mobile)
       if (offcanvasElement.classList.contains("show")) {
         offcanvasInstance.hide();
+      }
+
+      // 6. Close collapsed navbar if open (for .navbar-collapse)
+      if (collapseEl && collapseEl.classList.contains("show")) {
+        collapseInstance.hide();
       }
     });
   });
