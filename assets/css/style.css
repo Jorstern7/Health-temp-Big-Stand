@@ -308,15 +308,30 @@ footer {
   outline: none;
 }
 #header nav .offcanvas {
-  background-color: #d7f0db;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(215, 240, 219, 0.8196078431);
 }
-#header nav .offcanvas .offcanvas-header .logo-link {
-  width: 70%;
-}
-#header nav .offcanvas .offcanvas-header .logo-link img {
+#header nav .offcanvas.offcanvas-end {
   width: 100%;
 }
+#header nav .offcanvas .offcanvas-header {
+  position: relative;
+  padding: 2rem 1rem;
+}
+#header nav .offcanvas .offcanvas-header .logo-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header nav .offcanvas .offcanvas-header .logo-link img {
+  width: 30%;
+}
 #header nav .offcanvas .offcanvas-header .btn-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
   color: #32a045;
 }
 #header nav .offcanvas .offcanvas-body a#navbarDropdown {
@@ -324,6 +339,16 @@ footer {
 }
 #header nav .offcanvas .offcanvas-body ul.dropdown-menu[data-bs-popper] {
   position: relative;
+  background-color: transparent;
+  border: 0;
+  min-width: auto;
+}
+#header nav .offcanvas .offcanvas-body ul.dropdown-menu[data-bs-popper] li a {
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
 }
 #header nav .offcanvas .offcanvas-body ul {
   gap: 10px;
@@ -1549,9 +1574,6 @@ main .blog-section .card .card-footer .post-info .stats svg {
     display: flex;
     justify-content: center;
   }
-  div#navbarSupportedContent {
-    margin: 10px 0;
-  }
   #header nav ul:not(.dropdown-menu) > li > a::before {
     display: none;
   }
@@ -1596,12 +1618,6 @@ main .blog-section .card .card-footer .post-info .stats svg {
   }
 }
 @media (max-width: 768.98px) {
-  .navbar-collapse {
-    position: absolute;
-    top: 45px;
-    width: 100%;
-    background: #fff;
-  }
   main .section-about .card-body {
     padding: 10px 10px 10px 0;
   }
@@ -1754,7 +1770,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
        object-position: top;
   }
   main .section-health {
-    padding: 50px 0 130px 0;
+    padding: 50px 0 50px 0;
   }
   .heading-primary {
     font-size: 38px;

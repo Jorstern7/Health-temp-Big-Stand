@@ -363,18 +363,30 @@ footer {
     }
 
     .offcanvas {
-      background-color: #d7f0db;
-
+      // background-color: #d7f0db;
+      backdrop-filter: blur(5px);
+      background-color: #d7f0dbd1;
+      &.offcanvas-end {
+        width: 100%;
+      }
       .offcanvas-header {
+        position: relative;
+        padding: 2rem 1rem;
         .logo-link {
-          width: 70%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
           img {
-            width: 100%;
+            width: 30%;
           }
         }
 
         .btn-close {
+          position: absolute;
+          top: 15px;
+          right: 15px;
           color: #32a045;
         }
       }
@@ -386,6 +398,17 @@ footer {
 
         ul.dropdown-menu[data-bs-popper] {
           position: relative;
+          background-color: transparent;
+          border: 0;
+          min-width: auto;
+          li a {
+            color: #333;
+        padding: 8px 16px;
+        border-radius: 9px;
+        display: flex
+;
+        justify-content: center;
+          }
         }
 
         ul {
@@ -1901,9 +1924,9 @@ main {
     justify-content: center;
   }
 
-  div#navbarSupportedContent {
-    margin: 10px 0;
-  }
+  // div#navbarSupportedContent {
+  //   margin: 10px 0;
+  // }
 
   #header nav ul:not(.dropdown-menu) > li > a::before {
     display: none;
@@ -1954,12 +1977,12 @@ main {
   }
 }
 @media (max-width: 768.98px) {
-  .navbar-collapse {
-    position: absolute;
-    top: 45px;
-    width: 100%;
-    background: #fff;
-}
+  //   .navbar-collapse {
+  //     position: absolute;
+  //     top: 45px;
+  //     width: 100%;
+  //     background: #fff;
+  // }
   main .section-about .card-body {
     padding: 10px 10px 10px 0;
   }
@@ -2188,7 +2211,7 @@ main {
     object-position: top;
   }
   main .section-health {
-    padding: 50px 0 130px 0;
+    padding: 50px 0 50px 0;
   }
   .heading-primary {
     font-size: 38px;

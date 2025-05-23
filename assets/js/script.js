@@ -192,6 +192,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const mobileReadMore = document.querySelector(".visibleOnTablet");
     if (mobileReadMore) {
       mobileReadMore.classList.add("fade-out");
+
+      // const target = document.querySelector("#morehelp-cta");
+      if (mobileReadMore) {
+        const offsetTop = mobileReadMore.offsetTop - header.offsetHeight;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
+
       setTimeout(() => {
         mobileReadMore.style.display = "none";
       }, 500); // matches transition time
@@ -276,9 +286,9 @@ document.addEventListener("DOMContentLoaded", function () {
     bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
 
   // Collapse navbar menu (for standard `.navbar-collapse`)
-  const collapseEl = document.getElementById("navbarSupportedContent");
-  const collapseInstance =
-    collapseEl && bootstrap.Collapse.getOrCreateInstance(collapseEl);
+  // const collapseEl = document.getElementById("navbarSupportedContent");
+  // const collapseInstance =
+  //   collapseEl && bootstrap.Collapse.getOrCreateInstance(collapseEl);
 
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -316,9 +326,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // 6. Close collapsed navbar if open (for .navbar-collapse)
-      if (collapseEl && collapseEl.classList.contains("show")) {
-        collapseInstance.hide();
-      }
+      // if (collapseEl && collapseEl.classList.contains("show")) {
+      //   collapseInstance.hide();
+      // }
     });
   });
   // const header = document.getElementById("header");
