@@ -38,34 +38,60 @@
 const header = document.getElementById("header");
 const hero = document.querySelector(".section-health");
 
-const observer = new IntersectionObserver(
-  ([entry]) => {
-    if (!entry.isIntersecting) {
-      // Add sticky + animate in
-      // header.style.transform = "translateY(-100%)";
-      header.classList.add("sticky-top");
-      // Force reflow to restart transition
-      void header.offsetHeight;
-      // setTimeout(() => {
-      //   header.style.transform = "";
-      // }, 300); // Match CSS transition duration
-    } else {
-      // Animate out, then remove sticky
-      header.style.transform = "translateY(-100%)";
-      setTimeout(() => {
-        header.classList.remove("sticky-top");
-        header.style.transform = ""; // reset
-      }, 300); // Match CSS transition duration
+window.addEventListener("load", () => {
+  hero.style.paddingTop = header.offsetHeight + "px";
+});
+const obs = new IntersectionObserver(
+  function (entries) {
+    const ent = entries[0];
+    console.log(ent);
+
+    if (ent.isIntersecting === false) {
+      header.classList.add("sticky");
+      hero.style.paddingTop = header.offsetHeight + "px";
+    }
+
+    if (ent.isIntersecting === true) {
+      header.classList.remove("sticky");
+      // hero.style.paddingTop = "50px";
     }
   },
   {
+    // In the viewport
     root: null,
     threshold: 0,
-    rootMargin: "-1px 0px 0px 0px",
+    rootMargin: "-100px",
   }
 );
+obs.observe(hero);
+// const observer = new IntersectionObserver(
+//   ([entry]) => {
+//     if (!entry.isIntersecting) {
+//       // Add sticky + animate in
+//       // header.style.transform = "translateY(-100%)";
+//       header.classList.add("sticky");
+//       // Force reflow to restart transition
+//       void header.offsetHeight;
+//       // setTimeout(() => {
+//       //   header.style.transform = "";
+//       // }, 300); // Match CSS transition duration
+//     } else {
+//       // Animate out, then remove sticky
+//       // header.style.transform = "translateY(-100%)";
+//       setTimeout(() => {
+//         header.classList.remove("sticky");
+//         // header.style.transform = ""; // reset
+//       }, 300); // Match CSS transition duration
+//     }
+//   },
+//   {
+//     root: null,
+//     threshold: 0,
+//     rootMargin: "-1px 0px 0px 0px",
+//   }
+// );
 
-observer.observe(hero);
+// observer.observe(hero);
 
 document.addEventListener("DOMContentLoaded", function () {
   new Swiper(".featured-swiper", {
@@ -215,44 +241,121 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const flipElements = document.querySelectorAll(".flip");
 
-  flipElements.forEach(function (flip) {
-    const card = flip.querySelector(".card");
-    const learnMoreBtn = flip.querySelector(".learn-more-btn");
+  const showLessBlogBtn = document.getElementById("showLessBlog");
+  const blogSection = document.getElementById("morehelp-cta");
 
-    // Desktop hover (lg and up)
-    if (window.innerWidth >= 992) {
-      flip.addEventListener("mouseenter", function () {
-        card.classList.add("flipped");
+  showLessBlogBtn.addEventListener("click", () => {
+    // 1. Fade IN the mobileReadMore
+    const mobileReadMore = document.querySelector(".visibleOnTablet");
+    if (mobileReadMore) {
+      // Make it block so fade-in can work
+      mobileReadMore.style.display = "block";
+      mobileReadMore.classList.remove("fade-out");
+      mobileReadMore.classList.add("fade-in");
+
+      // Scroll to it
+      const offsetTop = blogSection.offsetTop - header.offsetHeight;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
       });
-
-      flip.addEventListener("mouseleave", function () {
-        card.classList.remove("flipped");
-      });
-    } else {
-      // Tablet & Mobile
-      if (learnMoreBtn) {
-        learnMoreBtn.addEventListener("click", function () {
-          this.style.opacity = "0"; // hide button
-          setTimeout(() => {
-            card.classList.add("flipped");
-          }, 200);
-        });
-
-        // Click outside to unflip
-        document.addEventListener("click", function (e) {
-          // Check if the clicked target is outside the current card
-          if (!flip.contains(e.target)) {
-            if (card.classList.contains("flipped")) {
-              card.classList.remove("flipped");
-              // Restore the Learn More button
-              learnMoreBtn.style.opacity = "1";
-            }
-          }
-        });
-      }
     }
+
+    // 2. Fade-OUT then hide the hideOnTablet items
+    const hiddenItems = document.querySelectorAll(".hideOnTablet");
+    hiddenItems.forEach(el => {
+      // trigger fade-out
+      el.classList.remove("fade-in");
+      el.classList.add("fade-out");
+
+      // after transition, hide
+      setTimeout(() => {
+        el.style.display = "none";
+      }, 500); // match your CSS transition-duration
+    });
+  });
+  // const flipElements = document.querySelectorAll(".flip");
+
+  // flipElements.forEach(function (flip) {
+  //   const card = flip.querySelector(".card");
+  //   const learnMoreBtn = flip.querySelector(".learn-more-btn");
+
+  //   // Desktop hover (lg and up)
+  //   if (window.innerWidth >= 992) {
+  //     flip.addEventListener("mouseenter", function () {
+  //       card.classList.add("flipped");
+  //     });
+
+  //     flip.addEventListener("mouseleave", function () {
+  //       card.classList.remove("flipped");
+  //     });
+  //   } else {
+  //     // Tablet & Mobile
+  //     if (learnMoreBtn) {
+  //       learnMoreBtn.addEventListener("click", function () {
+  //         this.style.opacity = "0"; // hide button
+  //         setTimeout(() => {
+  //           card.classList.add("flipped");
+  //         }, 200);
+  //       });
+
+  //       // Click outside to unflip
+  //       document.addEventListener("click", function (e) {
+  //         // Check if the clicked target is outside the current card
+  //         if (!flip.contains(e.target)) {
+  //           if (card.classList.contains("flipped")) {
+  //             card.classList.remove("flipped");
+  //             // Restore the Learn More button
+  //             learnMoreBtn.style.opacity = "1";
+  //           }
+  //         }
+  //       });
+  //     }
+  //   }
+  // });
+  const flips = document.querySelectorAll('.flip');
+
+  // Set up mobile observer once
+  let io;
+  if (window.innerWidth < 576) {
+    io = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        const card = target.querySelector('.card');
+        card.classList.toggle('flipped', isIntersecting);
+      });
+    }, { threshold: 0.6 });
+
+    flips.forEach(flip => io.observe(flip));
+  }
+
+  flips.forEach(flip => {
+    const card = flip.querySelector('.card');
+    const learnMoreBtn = flip.querySelector('.learn-more-btn');
+
+    if (window.innerWidth >= 992) {
+      // Desktop: hover to flip
+      flip.addEventListener('mouseenter', () => card.classList.add('flipped'));
+      flip.addEventListener('mouseleave', () => card.classList.remove('flipped'));
+
+    } else if (window.innerWidth >= 576) {
+      // Tablet: click to flip/unflip
+      if (!learnMoreBtn) return;
+
+      learnMoreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();              // prevent immediate document click
+        learnMoreBtn.style.opacity = '0'; // hide the button
+        setTimeout(() => card.classList.add('flipped'), 200);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!flip.contains(e.target) && card.classList.contains('flipped')) {
+          card.classList.remove('flipped');
+          learnMoreBtn.style.opacity = '1'; // restore button
+        }
+      });
+    }
+    // else (<576) — already handled by IntersectionObserver; no click handlers
   });
 
   const goTopButton = document.getElementById("up-arrow");

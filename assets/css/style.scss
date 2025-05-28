@@ -127,10 +127,15 @@ footer {
     }
   }
 
+  &.colored-border {
+    border-color: #b3b3b3 !important;
+  }
+
   &.no-effect {
+
     &:hover svg,
     &:active svg {
-      transform: rotate(0) !important;
+      transform: none !important;
       color: #b3b3b3;
     }
   }
@@ -148,6 +153,7 @@ footer {
     transform: rotate(90deg);
     color: #b3b3b3;
   }
+
   &:active,
   &:focus,
   &:focus-visible,
@@ -194,6 +200,7 @@ footer {
   border: 2px solid #fff;
   font-size: 16px;
   line-height: normal;
+
   &:hover,
   &:focus,
   &:active,
@@ -202,8 +209,10 @@ footer {
     outline: none;
     transition: 0.5s all;
   }
+
   border-radius: 9px;
 }
+
 .selected {
   padding: 20px;
   border-radius: 9px;
@@ -242,42 +251,54 @@ footer {
   background-color: #d7f0db;
   color: #37b24d;
 }
+
 #header-wrapper {
   transition: transform 0.5s ease, top 0.5s ease;
+
   &.slide-in {
-    transform: translateY(0); /* ensure it's visible */
+    transform: translateY(0);
+    /* ensure it's visible */
   }
+
   &.sticky-top-custom {
     position: sticky;
     top: 0;
     z-index: 1000;
-    transform: translateY(-100%); /* start hidden */
+    transform: translateY(-100%);
+
+    /* start hidden */
     &.slide-in {
-      transform: translateY(0); /* slide into view */
+      transform: translateY(0);
+      /* slide into view */
     }
   }
 }
-.transition {
-  transition: transform 0.3s ease, top 0.3s ease;
-}
 
-.slide-in {
-  transform: translateY(0);
-}
+// .transition {
+//   transition: transform 0.3s ease, top 0.3s ease;
+// }
 
-.slide-out {
-  transform: translateY(-100%);
-}
+// .slide-in {
+//   transform: translateY(0);
+// }
+
+// .slide-out {
+//   transform: translateY(-100%);
+// }
 #header {
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 9999;
   background-color: #d7f0db;
-  &.sticky-top {
-    position: sticky; /* Bootstrap sticky */
+
+  &.sticky {
+    position: fixed;
+    /* Bootstrap sticky */
     top: 0;
-    // transform: translateY(0);
     z-index: 1020;
+    width: 100%;
+    box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
   }
+
   nav {
     &.navbar-light .navbar-toggler {
       color: #37b24d;
@@ -285,8 +306,7 @@ footer {
     }
 
     .navbar-brand {
-      img {
-      }
+      img {}
     }
 
     ul.dropdown-menu[data-bs-popper] {
@@ -312,8 +332,8 @@ footer {
       gap: 30px;
       align-items: center;
 
-      & > li {
-        & > a {
+      &>li {
+        &>a {
           padding: 0;
           position: relative;
           color: #333;
@@ -366,12 +386,15 @@ footer {
       // background-color: #d7f0db;
       backdrop-filter: blur(5px);
       background-color: #d7f0dbd1;
+
       &.offcanvas-end {
         width: 100%;
       }
+
       .offcanvas-header {
         position: relative;
-        padding: 2rem 1rem;
+        padding: 2rem 1rem .5rem;
+
         .logo-link {
           width: 100%;
           display: flex;
@@ -392,6 +415,9 @@ footer {
       }
 
       .offcanvas-body {
+
+        padding: 0 1rem;
+
         a#navbarDropdown {
           display: inline-block;
         }
@@ -401,18 +427,18 @@ footer {
           background-color: transparent;
           border: 0;
           min-width: auto;
+
           li a {
             color: #333;
-        padding: 8px 16px;
-        border-radius: 9px;
-        display: flex
-;
-        justify-content: center;
+            padding: 8px 8px;
+            border-radius: 9px;
+            display: flex;
+            justify-content: center;
           }
         }
 
         ul {
-          gap: 10px;
+          gap: 0px;
 
           li {
             a {
@@ -507,25 +533,30 @@ main {
           top: 50%;
           transform: translateY(-50%);
           left: 0;
+
           &:hover {
             transform: translateY(-50%) scale(1.1);
             z-index: 4;
           }
         }
+
         &.health-img--2 {
           z-index: 1;
           top: 0;
           left: 50%;
           transform: translateX(-50%);
+
           &:hover {
             transform: translateX(-50%) scale(1.1);
             z-index: 4;
           }
         }
+
         &.health-img--3 {
           z-index: 2;
           bottom: 0;
           right: 0;
+
           &:hover {
             transform: scale(1.1);
             z-index: 4;
@@ -695,7 +726,7 @@ main {
 
           .card-body {
             &.back {
-              .btn {
+              .btn-arrow {
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0);
@@ -717,6 +748,7 @@ main {
             position: absolute;
             width: 100%;
             z-index: 1;
+
             .learn-more-btn {
               bottom: -27px;
               position: absolute;
@@ -730,6 +762,7 @@ main {
               border: 3px solid #fff;
               transition: 0.5s all;
             }
+
             .service-box-info {
               padding-bottom: 0;
             }
@@ -742,7 +775,7 @@ main {
             width: 100%;
             z-index: 1;
 
-            .btn {
+            .btn-arrow {
               opacity: 0;
               visibility: hidden;
               transform: translateY(50px);
@@ -754,6 +787,7 @@ main {
               margin: 10px auto 0;
               padding: 0;
             }
+
             .service-box-info {
               height: auto;
               background-color: #d3f9d8;
@@ -901,20 +935,25 @@ main {
   .appointment-form-section {
     padding: 90px 0;
     background-color: #d7f0db;
+
     .btn-outline {
       width: 215px;
       justify-content: flex-start;
+
       svg {
         transition: 0.5s all;
       }
+
       &:hover {
         transition: 0.5s all;
+
         svg {
           margin-left: 10px;
           transition: 0.5s all;
         }
       }
     }
+
     p {
       font-size: 16px;
       line-height: 1.6;
@@ -979,6 +1018,7 @@ main {
   .section-pricing {
     padding: 50px 0;
     position: relative;
+
     .container {
       padding: 50px 0;
       position: relative;
@@ -996,6 +1036,7 @@ main {
         border-radius: 0 0 100% 100%;
       }
     }
+
     p,
     h1 {
       text-align: center;
@@ -1029,41 +1070,33 @@ main {
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 
         &.price-info__img-01 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/pregnancy.webp");
           /* Add your image path */
         }
 
         &.price-info__img-02 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/health.webp");
           /* Add your image path */
         }
 
         &.price-info__img-03 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/dentist.webp");
           /* Add your image path */
         }
 
         &.price-info__img-04 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/operation.webp");
           /* Add your image path */
         }
@@ -1663,7 +1696,7 @@ main {
   opacity: 0;
   visibility: hidden;
   transition: 0.3s all;
-  z-index: 9999;
+  z-index: 1049;
 
   &:hover,
   &:active,
@@ -1691,9 +1724,11 @@ main {
   .heading-primary {
     font-size: 45px;
   }
+
   main .section-health .health-img-box .health-img {
     width: 280px;
   }
+
   // main .section-health .health-img-box .health-img.health-img--1{
 
   // }
@@ -1712,7 +1747,7 @@ main {
     gap: 15px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a {
+  #header nav ul:not(.dropdown-menu)>li>a {
     font-size: 16px;
   }
 
@@ -1834,6 +1869,7 @@ main {
 }
 
 @media (max-width: 991.98px) {
+
   main .section-about h1,
   main .services-section h1,
   main .section-pricing h1,
@@ -1908,6 +1944,7 @@ main {
   .offcanvas-body ul li {
     margin-bottom: 10px;
   }
+
   main .section-health .health-img-box .health-img {
     width: 200px;
   }
@@ -1917,7 +1954,7 @@ main {
     gap: 5px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a {
+  #header nav ul:not(.dropdown-menu)>li>a {
     padding: 8px 16px;
     border-radius: 9px;
     display: flex;
@@ -1928,17 +1965,17 @@ main {
   //   margin: 10px 0;
   // }
 
-  #header nav ul:not(.dropdown-menu) > li > a::before {
+  #header nav ul:not(.dropdown-menu)>li>a::before {
     display: none;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a.active,
-  #header nav ul:not(.dropdown-menu) > li > a:hover {
+  #header nav ul:not(.dropdown-menu)>li>a.active,
+  #header nav ul:not(.dropdown-menu)>li>a:hover {
     color: #fff;
     background-color: #37b24d;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a.btn {
+  #header nav ul:not(.dropdown-menu)>li>a.btn {
     width: 100%;
   }
 
@@ -1968,15 +2005,19 @@ main {
     opacity: 1;
   }
 }
+
 @media (min-width: 767.98px) {
   .visibleOnTablet {
     display: none;
   }
+
   #tabOrMobOnly {
     display: none;
   }
 }
+
 @media (max-width: 768.98px) {
+
   //   .navbar-collapse {
   //     position: absolute;
   //     top: 45px;
@@ -1986,6 +2027,7 @@ main {
   main .section-about .card-body {
     padding: 10px 10px 10px 0;
   }
+
   main .section-about .card-img-top {
     height: 100%;
     -o-object-fit: cover;
@@ -1996,18 +2038,23 @@ main {
   main .section-about p.general-text-size {
     margin: 0;
   }
+
   #desktopOnly {
     display: none;
   }
+
   .hideOnTablet {
     display: none;
   }
+
   main .section-health .health-img-box .health-img {
     width: 270px;
   }
+
   main .appointment-form-section .cta-group {
     margin-bottom: 40px;
   }
+
   main .appointment-form-section p {
     margin-bottom: 20px;
   }
@@ -2025,12 +2072,15 @@ main {
     box-shadow: none;
     padding: 0;
   }
+
   .arrow-btn button {
     background-color: #37b24d;
   }
+
   .arrow-btn button svg {
     color: #fff;
   }
+
   main .find-a-doc-section .findDocform .btn-submit,
   main .find-a-doc-section .findDocform input[type="submit"] {
     margin-top: 20px;
@@ -2039,6 +2089,7 @@ main {
   main .find-a-doc-section {
     padding: 45px 0;
   }
+
   main .section-health .health-img-box {
     //   position: relative;
     min-height: 265px; // enough space for overlaps on small screens
@@ -2083,12 +2134,15 @@ main {
     //     }
     //   }
   }
+
   main .section-health p {
     margin-bottom: 20px;
   }
+
   .cta-group {
     margin-top: 20px;
   }
+
   main .section-health p {
     text-align: center;
   }
@@ -2101,12 +2155,14 @@ main {
   main .section-about h1 {
     text-align: left;
   }
+
   .heading-four,
   main .find-a-doc-section p.heading-four,
   main .section-testimonial p.heading-four,
   main .blog-section p.heading-four {
     text-align: center;
   }
+
   main .blog-section .card .card-body {
     padding-left: 0;
   }
@@ -2114,17 +2170,20 @@ main {
   main .blog-section .card .card-footer {
     padding-left: 0;
   }
+
   main .blog-section .card .card-img-top {
     height: 100%;
     object-fit: cover;
     border-radius: 9px 0 0 9px;
   }
+
   main .blog-section .card .card-body p {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
+
   main .appointment-form-section p {
     text-align: center;
   }
@@ -2151,12 +2210,16 @@ main {
   main .section-pricing .container:before {
     height: 25%;
   }
+
   #footer .site-footer .row {
     gap: 20px;
   }
-  .cta-group .btn-outline svg {
-    transform: rotate(90deg);
+
+  .cta-group .btn:not(.noTransition).btn-outline svg,
+  .cta-group .btn:not(.noTransition).btn-outline.no-effect svg {
+    transform: rotate(90deg) !important;
   }
+
   .arrow-btn button {
     position: absolute;
     top: var(--swiper-navigation-top-offset, 50%);
@@ -2176,18 +2239,22 @@ main {
     right: 0;
     left: auto;
   }
+
   main .section-pricing .card {
     width: 70%;
   }
+
   // main .section-health .health-img-box .health-img {
   //   width: 100%;
   // }
   main .blog-section .card .card-body {
     gap: 10px;
   }
+
   #footer .footer-section .heading-four {
     text-align: left;
   }
+
   #up-arrow {
     position: fixed;
     bottom: 100px;
@@ -2196,6 +2263,7 @@ main {
     border-radius: 50%;
     height: 50px;
   }
+
   // #footer .footer-section #newsletterform .btn-submit,
   // #footer .footer-section #newsletterform input[type="submit"],
   // #footer .footer-section #newsletterform .form-control,
@@ -2206,19 +2274,48 @@ main {
     width: 70%;
     margin: 0 auto;
   }
+
   main .doctor-section .card .card-body img {
     border-radius: 9px 9px 0 0;
     object-position: top;
   }
+
   main .section-health {
     padding: 50px 0 50px 0;
   }
+
   .heading-primary {
     font-size: 38px;
   }
 }
 
 @media screen and (max-width: 576px) {
+  main .services-section .flip .card .card-body.front .learn-more-btn {
+    display: none !important;
+  }
+
+  .heading-primary {
+    font-size: 28px;
+  }
+
+  main .section-about .card-img-top {
+    object-position: -133px;
+  }
+
+  #footer .footer-section ul {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  main .find-a-doc-section .findDocform .btn-submit,
+  main .find-a-doc-section .findDocform input[type=submit] {
+    margin-top: 10px;
+  }
+
+  main .section-health .row {
+    flex-direction: column-reverse;
+  }
+
   main .section-about p.heading-four,
   .heading-four,
   main .find-a-doc-section p.heading-four,
@@ -2227,6 +2324,7 @@ main {
   main .blog-section .card .card-body h4 {
     font-size: 13px;
   }
+
   .cta-group {
     justify-content: center;
   }
@@ -2248,8 +2346,8 @@ main {
     margin-top: 30px;
   }
 
-  .findDocform > .row {
-    gap: 15px !important;
+  .findDocform>.row {
+    gap: 5px !important;
   }
 
   .heading-four {
@@ -2259,25 +2357,32 @@ main {
   #header nav .navbar-brand {
     width: 50%;
   }
+
   .btn {
-    font-size: 14px;
-    padding: 10px 20px;
+    font-size: 13px;
+    padding: 10px 18px;
   }
+
   main .services-section .flip .card .card-body.back .service-box-info h4 {
     font-size: 12px;
   }
+
   main .appointment-form-section .custom-form .form-title {
     font-size: 25px;
   }
+
   .section-pricing .px-5 {
     padding: 0 10px !important;
   }
+
   main .section-pricing .card .card-header {
     padding: 60px 20px;
   }
+
   main .section-pricing .card .card-header .plan-name {
     font-size: 20px;
   }
+
   main .section-pricing .card .card-body ul li {
     font-size: 13px;
   }
@@ -2291,34 +2396,67 @@ main {
   main .blog-section h1 {
     font-size: 19px;
   }
+
   main .blog-section .card .card-footer {
     padding-right: 5px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
+
+  .offcanvas-body h4.heading-four.mt-5 {
+    margin-top: 20px !important;
+  }
+
   #footer .site-footer p {
     font-size: 13px;
   }
+
   main .section-health .health-img-box .health-img {
     width: 260px;
   }
-  main
-    .section-testimonial
-    .swiper-pagination
-    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+
+  main .section-testimonial .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     width: 30px;
     height: 30px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a::before {
+  #header nav ul:not(.dropdown-menu)>li>a::before {
     display: none;
   }
+
+  main .services-section .flip .card .card-body.back .btn-arrow {
+    display: none;
+  }
+
+  main .services-section .flip .card {
+    min-height: 290px;
+  }
+
+  main .services-section .flip .card .card-body.back .service-box-info {
+    padding: 10px 20px;
+  }
+  main .section-health .heading-primary{
+margin-top: 30px;
+  }
+  main .section-health .cta-group.mb-md-0.mb-5 {
+    margin-bottom: 0 !important;
+  }
 }
+
 @media (max-width: 450.98px) {
+  #header nav .offcanvas .offcanvas-header {
+    padding: 1rem;
+  }
+
+  #header nav .offcanvas .offcanvas-header .logo-link img {
+    width: 50%;
+  }
+
   main .section-health .health-img-box .health-img {
     width: 250px;
   }
+
   main .section-health .health-img-box {
     min-height: 205px;
   }
@@ -2328,19 +2466,23 @@ main {
   main .section-health .health-img-box .health-img {
     width: 230px;
   }
+
   main .section-health .health-img-box {
     min-height: 200px;
   }
 }
+
 @media (max-width: 375.98px) {
   main .section-health .health-img-box .health-img {
     width: 185px;
   }
+
   main .section-health .health-img-box {
     min-height: 170px;
   }
+
   #up-arrow {
-    right: 0px;
-    height: 45px;
+    right: 10px;
+    height: 50px;
   }
 }

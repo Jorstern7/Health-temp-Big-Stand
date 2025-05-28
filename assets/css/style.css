@@ -110,8 +110,11 @@ footer {
   border-color: #b3b3b3;
   color: #b3b3b3;
 }
+.btn.colored-border {
+  border-color: #b3b3b3 !important;
+}
 .btn.no-effect:hover svg, .btn.no-effect:active svg {
-  transform: rotate(0) !important;
+  transform: none !important;
   color: #b3b3b3;
 }
 .btn svg {
@@ -214,39 +217,33 @@ footer {
   transition: transform 0.5s ease, top 0.5s ease;
 }
 #header-wrapper.slide-in {
-  transform: translateY(0); /* ensure it's visible */
+  transform: translateY(0);
+  /* ensure it's visible */
 }
 #header-wrapper.sticky-top-custom {
   position: sticky;
   top: 0;
   z-index: 1000;
-  transform: translateY(-100%); /* start hidden */
+  transform: translateY(-100%);
+  /* start hidden */
 }
 #header-wrapper.sticky-top-custom.slide-in {
-  transform: translateY(0); /* slide into view */
-}
-
-.transition {
-  transition: transform 0.3s ease, top 0.3s ease;
-}
-
-.slide-in {
   transform: translateY(0);
-}
-
-.slide-out {
-  transform: translateY(-100%);
+  /* slide into view */
 }
 
 #header {
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 9999;
   background-color: #d7f0db;
 }
-#header.sticky-top {
-  position: sticky; /* Bootstrap sticky */
+#header.sticky {
+  position: fixed;
+  /* Bootstrap sticky */
   top: 0;
   z-index: 1020;
+  width: 100%;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
 }
 #header nav.navbar-light .navbar-toggler {
   color: #37b24d;
@@ -317,7 +314,7 @@ footer {
 }
 #header nav .offcanvas .offcanvas-header {
   position: relative;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 0.5rem;
 }
 #header nav .offcanvas .offcanvas-header .logo-link {
   width: 100%;
@@ -334,6 +331,9 @@ footer {
   right: 15px;
   color: #32a045;
 }
+#header nav .offcanvas .offcanvas-body {
+  padding: 0 1rem;
+}
 #header nav .offcanvas .offcanvas-body a#navbarDropdown {
   display: inline-block;
 }
@@ -345,13 +345,13 @@ footer {
 }
 #header nav .offcanvas .offcanvas-body ul.dropdown-menu[data-bs-popper] li a {
   color: #333;
-  padding: 8px 16px;
+  padding: 8px 8px;
   border-radius: 9px;
   display: flex;
   justify-content: center;
 }
 #header nav .offcanvas .offcanvas-body ul {
-  gap: 10px;
+  gap: 0px;
 }
 #header nav .offcanvas .offcanvas-body ul li a svg {
   stroke: #37b24d;
@@ -563,7 +563,7 @@ main .services-section .flip .card {
 main .services-section .flip .card.flipped {
   transform: rotatey(-180deg);
 }
-main .services-section .flip .card.flipped .card-body.back .btn {
+main .services-section .flip .card.flipped .card-body.back .btn-arrow {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -604,7 +604,7 @@ main .services-section .flip .card .card-body.back {
   width: 100%;
   z-index: 1;
 }
-main .services-section .flip .card .card-body.back .btn {
+main .services-section .flip .card .card-body.back .btn-arrow {
   opacity: 0;
   visibility: hidden;
   transform: translateY(50px);
@@ -1376,7 +1376,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
   opacity: 0;
   visibility: hidden;
   transition: 0.3s all;
-  z-index: 9999;
+  z-index: 1049;
 }
 #up-arrow:hover, #up-arrow:active, #up-arrow:focus, #up-arrow:focus-visible {
   background-color: #fff;
@@ -1723,8 +1723,9 @@ main .blog-section .card .card-footer .post-info .stats svg {
   #footer .site-footer .row {
     gap: 20px;
   }
-  .cta-group .btn-outline svg {
-    transform: rotate(90deg);
+  .cta-group .btn:not(.noTransition).btn-outline svg,
+  .cta-group .btn:not(.noTransition).btn-outline.no-effect svg {
+    transform: rotate(90deg) !important;
   }
   .arrow-btn button {
     position: absolute;
@@ -1777,6 +1778,27 @@ main .blog-section .card .card-footer .post-info .stats svg {
   }
 }
 @media screen and (max-width: 576px) {
+  main .services-section .flip .card .card-body.front .learn-more-btn {
+    display: none !important;
+  }
+  .heading-primary {
+    font-size: 28px;
+  }
+  main .section-about .card-img-top {
+    -o-object-position: -133px;
+       object-position: -133px;
+  }
+  #footer .footer-section ul {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  main .find-a-doc-section .findDocform .btn-submit,
+  main .find-a-doc-section .findDocform input[type=submit] {
+    margin-top: 10px;
+  }
+  main .section-health .row {
+    flex-direction: column-reverse;
+  }
   main .section-about p.heading-four,
   .heading-four,
   main .find-a-doc-section p.heading-four,
@@ -1802,7 +1824,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
     margin-top: 30px;
   }
   .findDocform > .row {
-    gap: 15px !important;
+    gap: 5px !important;
   }
   .heading-four {
     text-underline-offset: 3px;
@@ -1811,8 +1833,8 @@ main .blog-section .card .card-footer .post-info .stats svg {
     width: 50%;
   }
   .btn {
-    font-size: 14px;
-    padding: 10px 20px;
+    font-size: 13px;
+    padding: 10px 18px;
   }
   main .services-section .flip .card .card-body.back .service-box-info h4 {
     font-size: 12px;
@@ -1847,6 +1869,9 @@ main .blog-section .card .card-footer .post-info .stats svg {
     align-items: flex-start;
     gap: 10px;
   }
+  .offcanvas-body h4.heading-four.mt-5 {
+    margin-top: 20px !important;
+  }
   #footer .site-footer p {
     font-size: 13px;
   }
@@ -1860,8 +1885,29 @@ main .blog-section .card .card-footer .post-info .stats svg {
   #header nav ul:not(.dropdown-menu) > li > a::before {
     display: none;
   }
+  main .services-section .flip .card .card-body.back .btn-arrow {
+    display: none;
+  }
+  main .services-section .flip .card {
+    min-height: 290px;
+  }
+  main .services-section .flip .card .card-body.back .service-box-info {
+    padding: 10px 20px;
+  }
+  main .section-health .heading-primary {
+    margin-top: 30px;
+  }
+  main .section-health .cta-group.mb-md-0.mb-5 {
+    margin-bottom: 0 !important;
+  }
 }
 @media (max-width: 450.98px) {
+  #header nav .offcanvas .offcanvas-header {
+    padding: 1rem;
+  }
+  #header nav .offcanvas .offcanvas-header .logo-link img {
+    width: 50%;
+  }
   main .section-health .health-img-box .health-img {
     width: 250px;
   }
@@ -1885,7 +1931,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
     min-height: 170px;
   }
   #up-arrow {
-    right: 0px;
-    height: 45px;
+    right: 10px;
+    height: 50px;
   }
 }/*# sourceMappingURL=style.css.map */
