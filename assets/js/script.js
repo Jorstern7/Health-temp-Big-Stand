@@ -94,6 +94,19 @@ obs.observe(hero);
 // observer.observe(hero);
 
 document.addEventListener("DOMContentLoaded", function () {
+  new Swiper(".header-swiper", {
+    slidesPerView: 1, // Important: 'auto' allows flexible number of slides
+    spaceBetween: 0,
+    loop: true, // Enable seamless infinite looping
+    speed: 3000, // Speed of transition
+    autoplay: {
+      delay: 3000, // No pause between transitions
+      pauseOnMouseEnter: false, // Don't pause on mouse enter
+      disableOnInteraction: false, // Keep autoplay even if user touches
+    },
+    grabCursor: true,
+    allowTouchMove: true,
+  });
   new Swiper(".featured-swiper", {
     slidesPerView: 4, // Important: 'auto' allows flexible number of slides
     spaceBetween: 0,
@@ -318,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set up mobile observer once
   let io;
-  if (window.innerWidth < 576) {
+  if (window.innerWidth < 768) {
     io = new IntersectionObserver((entries) => {
       entries.forEach(({ target, isIntersecting }) => {
         const card = target.querySelector('.card');

@@ -308,13 +308,14 @@ footer {
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   background-color: rgba(215, 240, 219, 0.8196078431);
+  transition: transform 1s ease-in-out;
 }
 #header nav .offcanvas.offcanvas-end {
   width: 100%;
 }
 #header nav .offcanvas .offcanvas-header {
   position: relative;
-  padding: 2rem 1rem 0.5rem;
+  padding: 2rem 1rem 1rem;
 }
 #header nav .offcanvas .offcanvas-header .logo-link {
   width: 100%;
@@ -332,6 +333,10 @@ footer {
   color: #32a045;
 }
 #header nav .offcanvas .offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 0 1rem;
 }
 #header nav .offcanvas .offcanvas-body a#navbarDropdown {
@@ -342,6 +347,7 @@ footer {
   background-color: transparent;
   border: 0;
   min-width: auto;
+  top: 0;
 }
 #header nav .offcanvas .offcanvas-body ul.dropdown-menu[data-bs-popper] li a {
   color: #333;
@@ -1376,7 +1382,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
   opacity: 0;
   visibility: hidden;
   transition: 0.3s all;
-  z-index: 1049;
+  z-index: 1000;
 }
 #up-arrow:hover, #up-arrow:active, #up-arrow:focus, #up-arrow:focus-visible {
   background-color: #fff;
@@ -1616,8 +1622,28 @@ main .blog-section .card .card-footer .post-info .stats svg {
   #tabOrMobOnly {
     display: none;
   }
+  .card-body.back .learn-more-btn {
+    display: none;
+  }
 }
 @media (max-width: 768.98px) {
+  main .services-section .flip .card .card-body.front .learn-more-btn {
+    display: none !important;
+  }
+  main .services-section .flip .card .card-body.back .learn-more-btn {
+    bottom: -20px;
+    position: absolute;
+    padding: 5px 20px;
+    left: 0;
+    right: 0;
+    width: -moz-max-content;
+    width: max-content;
+    margin: 0 auto;
+    background-color: #37b24d;
+    color: #fff;
+    border: 3px solid #fff;
+    transition: 0.5s all;
+  }
   main .section-about .card-body {
     padding: 10px 10px 10px 0;
   }
@@ -1726,6 +1752,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
   .cta-group .btn:not(.noTransition).btn-outline svg,
   .cta-group .btn:not(.noTransition).btn-outline.no-effect svg {
     transform: rotate(90deg) !important;
+    margin: 0;
   }
   .arrow-btn button {
     position: absolute;
@@ -1776,17 +1803,25 @@ main .blog-section .card .card-footer .post-info .stats svg {
   .heading-primary {
     font-size: 38px;
   }
+  main .services-section .flip .card .card-body.back .btn-arrow {
+    display: none;
+  }
+  main .services-section .flip .card {
+    min-height: 270px;
+  }
 }
 @media screen and (max-width: 576px) {
-  main .services-section .flip .card .card-body.front .learn-more-btn {
-    display: none !important;
-  }
   .heading-primary {
     font-size: 28px;
   }
+  main .section-about .card {
+    border-radius: 9px;
+  }
   main .section-about .card-img-top {
-    -o-object-position: -133px;
-       object-position: -133px;
+    border-radius: 9px 9px 0 0;
+  }
+  main .section-about .card-body {
+    padding: 10px;
   }
   #footer .footer-section ul {
     justify-content: flex-start;
@@ -1794,10 +1829,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
   }
   main .find-a-doc-section .findDocform .btn-submit,
   main .find-a-doc-section .findDocform input[type=submit] {
-    margin-top: 10px;
-  }
-  main .section-health .row {
-    flex-direction: column-reverse;
+    margin-top: 0px;
   }
   main .section-about p.heading-four,
   .heading-four,
@@ -1885,20 +1917,14 @@ main .blog-section .card .card-footer .post-info .stats svg {
   #header nav ul:not(.dropdown-menu) > li > a::before {
     display: none;
   }
-  main .services-section .flip .card .card-body.back .btn-arrow {
-    display: none;
-  }
   main .services-section .flip .card {
-    min-height: 290px;
+    min-height: 250px;
   }
   main .services-section .flip .card .card-body.back .service-box-info {
     padding: 10px 20px;
   }
-  main .section-health .heading-primary {
-    margin-top: 30px;
-  }
-  main .section-health .cta-group.mb-md-0.mb-5 {
-    margin-bottom: 0 !important;
+  main .section-health .health-img-box {
+    display: none !important;
   }
 }
 @media (max-width: 450.98px) {
