@@ -94,19 +94,64 @@ obs.observe(hero);
 // observer.observe(hero);
 
 document.addEventListener("DOMContentLoaded", function () {
-  new Swiper(".header-swiper", {
-    slidesPerView: 1, // Important: 'auto' allows flexible number of slides
+  const toggler = document.querySelector(".navbar-toggler");
+  toggler.addEventListener("click", () => {
+    toggler.classList.toggle("opened");
+  });
+
+  const headerSwiper = new Swiper(".header-swiper", {
+    slidesPerView: 3, // Important: 'auto' allows flexible number of slides
     spaceBetween: 0,
     loop: true, // Enable seamless infinite looping
-    speed: 3000, // Speed of transition
+    speed: 5000, // Speed of transition
     autoplay: {
-      delay: 3000, // No pause between transitions
+      delay: 0, // No pause between transitions
       pauseOnMouseEnter: false, // Don't pause on mouse enter
       disableOnInteraction: false, // Keep autoplay even if user touches
     },
     grabCursor: true,
     allowTouchMove: true,
+    // runCallbacksOnInit: true, // 🔸 Important to fire slideChange/init
+    on: {
+      init: function (swiper) {
+        scaleMiddleSlide(swiper);
+      },
+      slideChangeTransitionEnd: function (swiper) {
+        scaleMiddleSlide(swiper);
+      },
+    },
   });
+
+  function scaleMiddleSlide(swiper) {
+    // Remove from all
+    swiper.slides.forEach((slide) => slide.classList.remove("is-scaled"));
+
+    // Get all visible slides
+    const visibleSlides = swiper.slides.filter((slide) =>
+      slide.classList.contains("swiper-slide-visible")
+    );
+
+    // Scale middle one only if exactly 3 are visible
+    if (visibleSlides.length === 3) {
+      visibleSlides[1].classList.add("is-scaled");
+    }
+  }
+
+  // new Swiper(".header-swiper", {
+  //   slidesPerView: 3,
+  //   // centeredSlides: true, // Make middle slide centered
+  //   loop: true,
+  //   spaceBetween: 0,
+  //   speed: 3000,
+  //   autoplay: {
+  //     delay: 0, // Continuous scroll
+  //     pauseOnMouseEnter: false, // Don't pause on mouse enter
+  //     disableOnInteraction: false,
+  //   },
+  //   grabCursor: true,
+  //   allowTouchMove: true,
+  // });
+
   new Swiper(".featured-swiper", {
     slidesPerView: 4, // Important: 'auto' allows flexible number of slides
     spaceBetween: 0,
@@ -254,7 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-
   const showLessBlogBtn = document.getElementById("showLessBlog");
   const blogSection = document.getElementById("morehelp-cta");
 
@@ -277,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 2. Fade-OUT then hide the hideOnTablet items
     const hiddenItems = document.querySelectorAll(".hideOnTablet");
-    hiddenItems.forEach(el => {
+    hiddenItems.forEach((el) => {
       // trigger fade-out
       el.classList.remove("fade-in");
       el.classList.add("fade-out");
@@ -327,44 +371,48 @@ document.addEventListener("DOMContentLoaded", function () {
   //     }
   //   }
   // });
-  const flips = document.querySelectorAll('.flip');
+  const flips = document.querySelectorAll(".flip");
 
   // Set up mobile observer once
   let io;
   if (window.innerWidth < 768) {
-    io = new IntersectionObserver((entries) => {
-      entries.forEach(({ target, isIntersecting }) => {
-        const card = target.querySelector('.card');
-        card.classList.toggle('flipped', isIntersecting);
-      });
-    }, { threshold: 0.6 });
+    io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          const card = target.querySelector(".card");
+          card.classList.toggle("flipped", isIntersecting);
+        });
+      },
+      { threshold: 0.6 }
+    );
 
-    flips.forEach(flip => io.observe(flip));
+    flips.forEach((flip) => io.observe(flip));
   }
 
-  flips.forEach(flip => {
-    const card = flip.querySelector('.card');
-    const learnMoreBtn = flip.querySelector('.learn-more-btn');
+  flips.forEach((flip) => {
+    const card = flip.querySelector(".card");
+    const learnMoreBtn = flip.querySelector(".learn-more-btn");
 
     if (window.innerWidth >= 992) {
       // Desktop: hover to flip
-      flip.addEventListener('mouseenter', () => card.classList.add('flipped'));
-      flip.addEventListener('mouseleave', () => card.classList.remove('flipped'));
-
+      flip.addEventListener("mouseenter", () => card.classList.add("flipped"));
+      flip.addEventListener("mouseleave", () =>
+        card.classList.remove("flipped")
+      );
     } else if (window.innerWidth >= 576) {
       // Tablet: click to flip/unflip
       if (!learnMoreBtn) return;
 
-      learnMoreBtn.addEventListener('click', (e) => {
-        e.stopPropagation();              // prevent immediate document click
-        learnMoreBtn.style.opacity = '0'; // hide the button
-        setTimeout(() => card.classList.add('flipped'), 200);
+      learnMoreBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // prevent immediate document click
+        learnMoreBtn.style.opacity = "0"; // hide the button
+        setTimeout(() => card.classList.add("flipped"), 200);
       });
 
-      document.addEventListener('click', (e) => {
-        if (!flip.contains(e.target) && card.classList.contains('flipped')) {
-          card.classList.remove('flipped');
-          learnMoreBtn.style.opacity = '1'; // restore button
+      document.addEventListener("click", (e) => {
+        if (!flip.contains(e.target) && card.classList.contains("flipped")) {
+          card.classList.remove("flipped");
+          learnMoreBtn.style.opacity = "1"; // restore button
         }
       });
     }

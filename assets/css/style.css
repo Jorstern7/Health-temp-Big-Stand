@@ -246,8 +246,42 @@ footer {
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
 }
 #header nav.navbar-light .navbar-toggler {
-  color: #37b24d;
+  color: #d7f0db;
+  position: absolute;
+  z-index: 2000;
+  top: 7px;
+  right: 0;
   border-color: #37b24d;
+  background-color: #37b24d;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+}
+#header nav.navbar-light .navbar-toggler span {
+  height: 2px;
+  width: 24px;
+  border-radius: 3px;
+  background-color: #d7f0db;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+#header nav.navbar-light .navbar-toggler.opened span {
+  position: absolute;
+}
+#header nav.navbar-light .navbar-toggler.opened span:first-child {
+  transform: rotate(45deg);
+}
+#header nav.navbar-light .navbar-toggler.opened span:nth-child(2) {
+  opacity: 0;
+}
+#header nav.navbar-light .navbar-toggler.opened span:last-child {
+  transform: rotate(-45deg);
 }
 #header nav ul.dropdown-menu[data-bs-popper] {
   top: 100%;
@@ -430,6 +464,22 @@ main .section-health .health-img-box .health-img.health-img--3 {
 main .section-health .health-img-box .health-img.health-img--3:hover {
   transform: scale(1.1);
   z-index: 4;
+}
+main .section-health .header-swiper .swiper-slide {
+  height: auto;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+main .section-health .header-swiper .swiper-slide-next {
+  transform: scale(1.1);
+  z-index: 2;
+}
+main .section-health .header-swiper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 main .section-featured {
   padding: 50px 0 30px 0;
@@ -1625,6 +1675,9 @@ main .blog-section .card .card-footer .post-info .stats svg {
   .card-body.back .learn-more-btn {
     display: none;
   }
+  main .section-health .header-swiper {
+    display: none;
+  }
 }
 @media (max-width: 768.98px) {
   main .services-section .flip .card .card-body.front .learn-more-btn {
@@ -1810,7 +1863,12 @@ main .blog-section .card .card-footer .post-info .stats svg {
     min-height: 270px;
   }
 }
-@media screen and (max-width: 576px) {
+@media (min-width: 575.98px) {
+  main .section-health .header-swiper {
+    display: none;
+  }
+}
+@media screen and (max-width: 576.98px) {
   .heading-primary {
     font-size: 28px;
   }
