@@ -598,44 +598,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ======================= Auto Scroll when click on Navigation =================
 
-
+// Doctors Swiper
 const doctorsSwiper = new Swiper(".doctors-swiper", {
   slidesPerView: 2,
   spaceBetween: 40,
   loop: true,
   grabCursor: true,
   allowTouchMove: true,
-  autoplay: false,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+    enabled: false,
+  },
   navigation: {
-    nextEl: ".right-btn",
-    prevEl: ".left-btn",
+    nextEl: ".doctors-next",
+    prevEl: ".doctors-prev",
   },
   breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    992: {
-      slidesPerView: 2,
-    },
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    992: { slidesPerView: 2 },
   },
 });
 
-// Enable autoplay when navigation button is clicked
-document.querySelector(".right-btn").addEventListener("click", () => {
-  doctorsSwiper.params.autoplay = {
-    delay: 2500,
-    disableOnInteraction: false,
-  };
+// Trigger autoplay on doctors nav click
+document.querySelector(".doctors-next").addEventListener("click", () => {
+  doctorsSwiper.autoplay.start();
+});
+document.querySelector(".doctors-prev").addEventListener("click", () => {
   doctorsSwiper.autoplay.start();
 });
 
-document.querySelector(".left-btn").addEventListener("click", () => {
-  doctorsSwiper.params.autoplay = {
+
+// Pricing Swiper
+const pricingSwiper = new Swiper(".pricing-swiper", {
+  slidesPerView: 3,
+  spaceBetween: 10,
+  loop: true,
+  grabCursor: true,
+  allowTouchMove: true,
+  autoplay: {
     delay: 2500,
     disableOnInteraction: false,
-  };
-  doctorsSwiper.autoplay.start();
+    enabled: false,
+  },
+  navigation: {
+    nextEl: ".pricing-next",
+    prevEl: ".pricing-prev",
+  },
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    992: { slidesPerView: 3 },
+  },
+});
+
+// Trigger autoplay on pricing nav click
+document.querySelector(".pricing-next").addEventListener("click", () => {
+  pricingSwiper.autoplay.start();
+});
+document.querySelector(".pricing-prev").addEventListener("click", () => {
+  pricingSwiper.autoplay.start();
 });

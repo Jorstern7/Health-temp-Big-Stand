@@ -1820,7 +1820,13 @@ main {
     visibility: visible;
   }
 }
-
+@media (min-width:1400px){
+  main .section-health .health-img-box .health-img.health-img--2 {
+    z-index: 1;
+    top: -96px;  
+    left: 50%;
+}
+}
 @media (max-width: 1399.98px) {
   .heading-primary {
     font-size: 45px;
