@@ -132,6 +132,7 @@ footer {
   }
 
   &.no-effect {
+
     &:hover svg,
     &:active svg {
       transform: none !important;
@@ -316,6 +317,7 @@ footer {
       align-items: center;
       padding: 10px;
       gap: 5px;
+
       span {
         height: 2px;
         width: 24px;
@@ -342,6 +344,7 @@ footer {
           }
         }
       }
+
       // span {
       //   height: 2px;
       //   width: 100%;
@@ -389,8 +392,8 @@ footer {
       gap: 30px;
       align-items: center;
 
-      & > li {
-        & > a {
+      &>li {
+        &>a {
           padding: 0;
           position: relative;
           color: #333;
@@ -402,16 +405,19 @@ footer {
             content: "";
             position: absolute;
             bottom: -30%;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             height: 5px;
             width: 0;
             background-color: #37b24d;
-            transition: width 0.3s ease;
+            // background-color: #37b24e91;
+            transition: all 0.5s ease-in-out;
           }
 
           &.active,
           &:hover {
             color: #37b24d;
+            // color: #37b24e91;
 
             &::before {
               width: 100%;
@@ -424,6 +430,8 @@ footer {
             color: #fff;
             background-color: #37b24d;
             border-color: #37b24d;
+            box-shadow: 0 4px 0 #2f9e44;
+            transition: all 0.2s ease;
 
             &:hover,
             &:focus,
@@ -433,6 +441,8 @@ footer {
               border-color: #32a045;
               box-shadow: none;
               outline: none;
+              transform: translateY(2px);
+              box-shadow: 0 2px 0 #2f9e44;
             }
           }
         }
@@ -445,6 +455,7 @@ footer {
       background-color: #d7f0dbd1;
 
       transition: transform 1s ease-in-out;
+
       &.offcanvas-end {
         width: 100%;
       }
@@ -592,7 +603,7 @@ main {
 
         &.health-img--1 {
           z-index: 3;
-          top: 50%;
+          top: 54%;
           transform: translateY(-50%);
           left: 0;
 
@@ -604,7 +615,7 @@ main {
 
         &.health-img--2 {
           z-index: 1;
-          top: 0;
+          top: -56px;
           left: 50%;
           transform: translateX(-50%);
 
@@ -626,6 +637,7 @@ main {
         }
       }
     }
+
     .header-swiper {
       .swiper-slide {
         height: auto;
@@ -637,6 +649,7 @@ main {
         transform: scale(1.1);
         z-index: 2;
       }
+
       img {
         display: block;
         width: 100%;
@@ -713,6 +726,11 @@ main {
     img {
       width: 100%;
       border-radius: 9px;
+      transition: transform 0.5s ease;
+
+      &:hover{
+        transform: scale(1.06);
+      }
     }
 
     .icon-wrapping {
@@ -1150,41 +1168,33 @@ main {
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 
         &.price-info__img-01 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/pregnancy.webp");
           /* Add your image path */
         }
 
         &.price-info__img-02 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/health.webp");
           /* Add your image path */
         }
 
         &.price-info__img-03 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/dentist.webp");
           /* Add your image path */
         }
 
         &.price-info__img-04 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/operation.webp");
           /* Add your image path */
         }
@@ -1731,7 +1741,8 @@ main {
 
           &:hover {
             color: #37b24d;
-            text-decoration: underline;
+            // text-decoration: underline;
+            font-weight: 600;
           }
 
           svg {
@@ -1768,14 +1779,16 @@ main {
 
 #up-arrow {
   position: fixed;
-  bottom: 0;
+  bottom: 10px;
   right: 40px;
   width: 50px;
-  height: 80px;
+  // height: 80px;
+  height: 50px;
   background-color: #37b24d;
   border: 1px solid #37b24d;
   color: #fff;
-  border-radius: 25px 25px 0 0;
+  // border-radius: 25px 25px 0 0;
+  border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1835,7 +1848,7 @@ main {
     gap: 15px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a {
+  #header nav ul:not(.dropdown-menu)>li>a {
     font-size: 16px;
   }
 
@@ -1957,6 +1970,7 @@ main {
 }
 
 @media (max-width: 991.98px) {
+
   main .section-about h1,
   main .services-section h1,
   main .section-pricing h1,
@@ -2041,7 +2055,7 @@ main {
     gap: 5px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a {
+  #header nav ul:not(.dropdown-menu)>li>a {
     padding: 8px 16px;
     border-radius: 9px;
     display: flex;
@@ -2052,17 +2066,17 @@ main {
   //   margin: 10px 0;
   // }
 
-  #header nav ul:not(.dropdown-menu) > li > a::before {
+  #header nav ul:not(.dropdown-menu)>li>a::before {
     display: none;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a.active,
-  #header nav ul:not(.dropdown-menu) > li > a:hover {
+  #header nav ul:not(.dropdown-menu)>li>a.active,
+  #header nav ul:not(.dropdown-menu)>li>a:hover {
     color: #fff;
     background-color: #37b24d;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a.btn {
+  #header nav ul:not(.dropdown-menu)>li>a.btn {
     width: 100%;
   }
 
@@ -2101,9 +2115,11 @@ main {
   #tabOrMobOnly {
     display: none;
   }
+
   .card-body.back .learn-more-btn {
     display: none;
   }
+
   main .section-health .header-swiper {
     display: none;
   }
@@ -2113,6 +2129,7 @@ main {
   main .services-section .flip .card .card-body.front .learn-more-btn {
     display: none !important;
   }
+
   main .services-section .flip .card .card-body.back .learn-more-btn {
     bottom: -20px;
     position: absolute;
@@ -2402,6 +2419,7 @@ main {
   main .services-section .flip .card .card-body.back .btn-arrow {
     display: none;
   }
+
   main .services-section .flip .card {
     min-height: 270px;
   }
@@ -2421,9 +2439,11 @@ main {
   main .section-about .card {
     border-radius: 9px;
   }
+
   main .section-about .card-img-top {
     border-radius: 9px 9px 0 0;
   }
+
   main .section-about .card-body {
     padding: 10px;
   }
@@ -2472,7 +2492,7 @@ main {
     margin-top: 30px;
   }
 
-  .findDocform > .row {
+  .findDocform>.row {
     gap: 5px !important;
   }
 
@@ -2542,15 +2562,12 @@ main {
     width: 260px;
   }
 
-  main
-    .section-testimonial
-    .swiper-pagination
-    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  main .section-testimonial .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     width: 30px;
     height: 30px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a::before {
+  #header nav ul:not(.dropdown-menu)>li>a::before {
     display: none;
   }
 
@@ -2561,9 +2578,11 @@ main {
   main .services-section .flip .card .card-body.back .service-box-info {
     padding: 10px 20px;
   }
+
   main .section-health .health-img-box {
     display: none !important;
   }
+
   // main .section-health .heading-primary {
   //   margin-top: 30px;
   // }

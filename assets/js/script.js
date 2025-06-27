@@ -1,39 +1,4 @@
-// const header = document.querySelector("header");
-// const section = document.querySelector(".section-health");
-// let isSticky = false;
-// let timeoutId;
-// const wrapper = document.getElementById("header-wrapper");
 
-// window.addEventListener("load", () => {
-//   wrapper.style.height = header.offsetHeight + "px";
-// });
-// const observer = new IntersectionObserver(
-//   ([entry]) => {
-//     clearTimeout(timeoutId);
-
-//     if (!entry.isIntersecting) {
-//       header.classList.add("sticky-top-custom"); // Add position first
-
-//       timeoutId = setTimeout(() => {
-//         header.classList.add("slide-in"); // Trigger animation after a short delay
-//       }, 500); // 50–150ms works well
-//     } else {
-//       // Start slide-out
-//       header.classList.remove("slide-in");
-
-//       // After animation, remove sticky
-//       setTimeout(() => {
-//         header.classList.remove("sticky-top-custom");
-//       }, 300); // must match the CSS transition duration
-//     }
-//   },
-//   {
-//     root: null,
-//     threshold: 0,
-//   }
-// );
-
-// observer.observe(section);
 
 const header = document.getElementById("header");
 const hero = document.querySelector(".section-health");
@@ -64,34 +29,7 @@ const obs = new IntersectionObserver(
   }
 );
 obs.observe(hero);
-// const observer = new IntersectionObserver(
-//   ([entry]) => {
-//     if (!entry.isIntersecting) {
-//       // Add sticky + animate in
-//       // header.style.transform = "translateY(-100%)";
-//       header.classList.add("sticky");
-//       // Force reflow to restart transition
-//       void header.offsetHeight;
-//       // setTimeout(() => {
-//       //   header.style.transform = "";
-//       // }, 300); // Match CSS transition duration
-//     } else {
-//       // Animate out, then remove sticky
-//       // header.style.transform = "translateY(-100%)";
-//       setTimeout(() => {
-//         header.classList.remove("sticky");
-//         // header.style.transform = ""; // reset
-//       }, 300); // Match CSS transition duration
-//     }
-//   },
-//   {
-//     root: null,
-//     threshold: 0,
-//     rootMargin: "-1px 0px 0px 0px",
-//   }
-// );
-
-// observer.observe(hero);
+ 
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggler = document.querySelector(".navbar-toggler");
@@ -137,20 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // new Swiper(".header-swiper", {
-  //   slidesPerView: 3,
-  //   // centeredSlides: true, // Make middle slide centered
-  //   loop: true,
-  //   spaceBetween: 0,
-  //   speed: 3000,
-  //   autoplay: {
-  //     delay: 0, // Continuous scroll
-  //     pauseOnMouseEnter: false, // Don't pause on mouse enter
-  //     disableOnInteraction: false,
-  //   },
-  //   grabCursor: true,
-  //   allowTouchMove: true,
-  // });
 
   new Swiper(".featured-swiper", {
     slidesPerView: 4, // Important: 'auto' allows flexible number of slides
@@ -165,21 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
     grabCursor: true,
     allowTouchMove: true,
     breakpoints: {
-      // when window width is >= 320px
-      // 320: {
-      //   slidesPerView: 2,
-      //   spaceBetween: 20
-      // },
-      // // when window width is >= 480px
-      // 480: {
-      //   slidesPerView: 3,
-      //   spaceBetween: 30
-      // },
-      // // when window width is >= 640px
-      // 640: {
-      //   slidesPerView: 4,
-      //   spaceBetween: 40
-      // }
       500: {
         slidesPerView: 2,
       },
@@ -191,15 +100,17 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
-  new Swiper(".pricing-swiper", {
+
+
+    const pricingSwiper =  new Swiper(".pricing-swiper", {
     slidesPerView: 3,
     spaceBetween: 10,
     loop: true,
-    speed: 3000,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
+    // speed: 3000,
+    // autoplay: {
+    //   delay: 2500,
+    //   disableOnInteraction: false,
+    // },
     navigation: {
       nextEl: ".right-btn",
       prevEl: ".left-btn",
@@ -221,37 +132,43 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
-  new Swiper(".doctors-swiper", {
-    slidesPerView: 2,
-    spaceBetween: 40,
-    loop: true,
-    speed: 3000,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: ".right-btn",
-      prevEl: ".left-btn",
-    },
-    grabCursor: true,
-    allowTouchMove: true,
 
-    breakpoints: {
-      0: {
-        // Mobile
-        slidesPerView: 1,
-      },
-      768: {
-        // Tablet
-        slidesPerView: 2,
-      },
-      992: {
-        // Laptop/Desktop
-        slidesPerView: 2,
-      },
-    },
-  });
+
+
+
+
+  // new Swiper(".doctors-swiper", {
+  //   slidesPerView: 2,
+  //   spaceBetween: 40,
+  //   loop: true,
+  //   // speed: 3000,
+  //   // autoplay: {
+  //   //   delay: 2500,
+  //   //   disableOnInteraction: false,
+  //   // },
+  //   navigation: {
+  //     nextEl: ".right-btn",
+  //     prevEl: ".left-btn",
+  //   },
+  //   grabCursor: true,
+  //   allowTouchMove: true,
+
+  //   breakpoints: {
+  //     0: {
+  //       // Mobile
+  //       slidesPerView: 1,
+  //     },
+  //     768: {
+  //       // Tablet
+  //       slidesPerView: 2,
+  //     },
+  //     992: {
+  //       // Laptop/Desktop
+  //       slidesPerView: 2,
+  //     },
+  //   },
+  // });
+
   new Swiper(".testimonial-swiper", {
     slidesPerView: 1,
     spaceBetween: 0,
@@ -268,6 +185,11 @@ document.addEventListener("DOMContentLoaded", function () {
       clickable: true,
     },
   });
+
+
+// ======================== Comment Start ===========
+/*
+
 
   const readMoreBtn = document.getElementById("readMoreBlog");
 
@@ -332,45 +254,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 500); // match your CSS transition-duration
     });
   });
-  // const flipElements = document.querySelectorAll(".flip");
 
-  // flipElements.forEach(function (flip) {
-  //   const card = flip.querySelector(".card");
-  //   const learnMoreBtn = flip.querySelector(".learn-more-btn");
+*/ 
 
-  //   // Desktop hover (lg and up)
-  //   if (window.innerWidth >= 992) {
-  //     flip.addEventListener("mouseenter", function () {
-  //       card.classList.add("flipped");
-  //     });
+// ============== Comment End ===============
+  
 
-  //     flip.addEventListener("mouseleave", function () {
-  //       card.classList.remove("flipped");
-  //     });
-  //   } else {
-  //     // Tablet & Mobile
-  //     if (learnMoreBtn) {
-  //       learnMoreBtn.addEventListener("click", function () {
-  //         this.style.opacity = "0"; // hide button
-  //         setTimeout(() => {
-  //           card.classList.add("flipped");
-  //         }, 200);
-  //       });
 
-  //       // Click outside to unflip
-  //       document.addEventListener("click", function (e) {
-  //         // Check if the clicked target is outside the current card
-  //         if (!flip.contains(e.target)) {
-  //           if (card.classList.contains("flipped")) {
-  //             card.classList.remove("flipped");
-  //             // Restore the Learn More button
-  //             learnMoreBtn.style.opacity = "1";
-  //           }
-  //         }
-  //       });
-  //     }
-  //   }
-  // });
   const flips = document.querySelectorAll(".flip");
 
   // Set up mobile observer once
@@ -418,6 +308,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // else (<576) — already handled by IntersectionObserver; no click handlers
   });
+
+
+
+
+
+
+
+
+
+
+
 
   const goTopButton = document.getElementById("up-arrow");
 
@@ -562,4 +463,179 @@ document.addEventListener("DOMContentLoaded", function () {
       .querySelectorAll(".options")
       .forEach((opt) => (opt.style.display = "none"));
   });
+});
+
+
+
+
+// ================= Blog Post Section  ===============================
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".blog-section .row");
+    const cards = container.querySelectorAll(":scope > .blog-card");
+    const toggleBtn = document.getElementById("toggleBlogBtn");
+    const cardsToShow = 3;
+    let visibleCount = cardsToShow;
+
+    function updateCardsVisibility() {
+      cards.forEach((card, index) => {
+        card.style.display = index < visibleCount ? "block" : "none";
+      });
+
+      if (cards.length <= cardsToShow) {
+        toggleBtn.style.display = "none";
+      } else {
+        toggleBtn.style.display = "inline-block";
+        toggleBtn.textContent = (visibleCount >= cards.length) ? "Show Less" : "Show More";
+      }
+    }
+
+    toggleBtn.addEventListener("click", function () {
+      if (visibleCount >= cards.length) {
+        visibleCount = cardsToShow;
+      } else {
+        visibleCount = Math.min(visibleCount + cardsToShow, cards.length);
+      }
+      updateCardsVisibility();
+    });
+
+    // Initial setup
+    updateCardsVisibility();
+  });
+
+
+// ==================== Auto Hide Dropdown Menu On Header ================================
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
+
+    let hideTimeout;
+
+    dropdownToggle.addEventListener('click', function (e) {
+      // Only trigger this logic on desktop (e.g., width >= 992px)
+      if (window.innerWidth >= 992) {
+        e.preventDefault(); // prevent default bootstrap toggle behavior
+
+        // Toggle the dropdown menu manually
+        dropdownMenu.classList.toggle('show');
+
+        // Clear previous timeout if any
+        clearTimeout(hideTimeout);
+
+        // Set timeout to hide dropdown after 3 seconds
+        if (dropdownMenu.classList.contains('show')) {
+          hideTimeout = setTimeout(() => {
+            dropdownMenu.classList.remove('show');
+          }, 1200);
+        }
+      }
+    });
+  });
+
+
+
+// ==================== Auto Hide Dropdown Menu On Find A Doc Section ================================
+
+ 
+document.querySelectorAll(".custom-select").forEach((select) => {
+  const selected = select.querySelector(".selected");
+  const options = select.querySelector(".options");
+  let autoHideTimeout;
+
+  selected.addEventListener("click", () => {
+    // Clear any previous timeout
+    clearTimeout(autoHideTimeout);
+
+    // Only set timeout if dropdown was just opened
+    if (options.style.display === "block") {
+      autoHideTimeout = setTimeout(() => {
+        options.style.display = "none";
+      }, 3000);
+    }
+  });
+
+  // Also clear the timeout if an option is clicked manually
+  select.querySelectorAll(".option").forEach((option) => {
+    option.addEventListener("click", () => {
+      clearTimeout(autoHideTimeout);
+    });
+  });
+
+  // Optional: clear timeout if clicked outside (already handled in your code)
+  document.addEventListener("click", () => {
+    clearTimeout(autoHideTimeout);
+  });
+});
+
+
+
+// ==============================  Reduce Nav Link OPacity ==================
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+  if (window.innerWidth >= 992) {
+    navLinks.forEach((link) => {
+      link.addEventListener("mouseenter", () => {
+        navLinks.forEach((otherLink) => {
+          otherLink.style.opacity = otherLink === link ? "1" : "0.4";
+        });
+      });
+
+      link.addEventListener("mouseleave", () => {
+        navLinks.forEach((otherLink) => {
+          otherLink.style.opacity = "1";
+        });
+      });
+    });
+  }
+});
+
+
+// ======================= Auto Scroll when click on Navigation =================
+
+
+const doctorsSwiper = new Swiper(".doctors-swiper", {
+  slidesPerView: 2,
+  spaceBetween: 40,
+  loop: true,
+  grabCursor: true,
+  allowTouchMove: true,
+  autoplay: false,
+  navigation: {
+    nextEl: ".right-btn",
+    prevEl: ".left-btn",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    992: {
+      slidesPerView: 2,
+    },
+  },
+});
+
+// Enable autoplay when navigation button is clicked
+document.querySelector(".right-btn").addEventListener("click", () => {
+  doctorsSwiper.params.autoplay = {
+    delay: 2500,
+    disableOnInteraction: false,
+  };
+  doctorsSwiper.autoplay.start();
+});
+
+document.querySelector(".left-btn").addEventListener("click", () => {
+  doctorsSwiper.params.autoplay = {
+    delay: 2500,
+    disableOnInteraction: false,
+  };
+  doctorsSwiper.autoplay.start();
 });

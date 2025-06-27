@@ -313,11 +313,12 @@ footer {
   content: "";
   position: absolute;
   bottom: -30%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   height: 5px;
   width: 0;
   background-color: #37b24d;
-  transition: width 0.3s ease;
+  transition: all 0.5s ease-in-out;
 }
 #header nav ul:not(.dropdown-menu) > li > a.active, #header nav ul:not(.dropdown-menu) > li > a:hover {
   color: #37b24d;
@@ -331,12 +332,16 @@ footer {
   color: #fff;
   background-color: #37b24d;
   border-color: #37b24d;
+  box-shadow: 0 4px 0 #2f9e44;
+  transition: all 0.2s ease;
 }
 #header nav ul:not(.dropdown-menu) > li > a.btn:hover, #header nav ul:not(.dropdown-menu) > li > a.btn:focus, #header nav ul:not(.dropdown-menu) > li > a.btn:active, #header nav ul:not(.dropdown-menu) > li > a.btn:focus-visible {
   background-color: #32a045;
   border-color: #32a045;
   box-shadow: none;
   outline: none;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #2f9e44;
 }
 #header nav .offcanvas {
   -webkit-backdrop-filter: blur(5px);
@@ -438,7 +443,7 @@ main .section-health .health-img-box .health-img {
 }
 main .section-health .health-img-box .health-img.health-img--1 {
   z-index: 3;
-  top: 50%;
+  top: 54%;
   transform: translateY(-50%);
   left: 0;
 }
@@ -448,7 +453,7 @@ main .section-health .health-img-box .health-img.health-img--1:hover {
 }
 main .section-health .health-img-box .health-img.health-img--2 {
   z-index: 1;
-  top: 0;
+  top: -56px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -540,6 +545,10 @@ main .section-about p.heading-four {
 main .section-about img {
   width: 100%;
   border-radius: 9px;
+  transition: transform 0.5s ease;
+}
+main .section-about img:hover {
+  transform: scale(1.06);
 }
 main .section-about .icon-wrapping {
   background-color: #d7f0db;
@@ -1389,7 +1398,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
 }
 #footer .footer-section ul li a:hover {
   color: #37b24d;
-  text-decoration: underline;
+  font-weight: 600;
 }
 #footer .footer-section ul li a svg {
   stroke: #37b24d;
@@ -1416,14 +1425,14 @@ main .blog-section .card .card-footer .post-info .stats svg {
 
 #up-arrow {
   position: fixed;
-  bottom: 0;
+  bottom: 10px;
   right: 40px;
   width: 50px;
-  height: 80px;
+  height: 50px;
   background-color: #37b24d;
   border: 1px solid #37b24d;
   color: #fff;
-  border-radius: 25px 25px 0 0;
+  border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
