@@ -314,12 +314,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-
-
-
   const goTopButton = document.getElementById("up-arrow");
 
   // Show button when user scrolls down 300px
@@ -539,36 +533,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ==================== Auto Hide Dropdown Menu On Find A Doc Section ================================
 
- 
-document.querySelectorAll(".custom-select").forEach((select) => {
-  const selected = select.querySelector(".selected");
-  const options = select.querySelector(".options");
-  let autoHideTimeout;
+  document.addEventListener("DOMContentLoaded", function () {
+    const section = document.querySelector("#find-doctor-cta");
+    if (!section) return;
 
-  selected.addEventListener("click", () => {
-    // Clear any previous timeout
-    clearTimeout(autoHideTimeout);
+    const customSelect = section.querySelector(".custom-select");
+    const selected = customSelect.querySelector(".selected");
+    const options = customSelect.querySelector(".options");
+    let hideTimeout;
 
-    // Only set timeout if dropdown was just opened
-    if (options.style.display === "block") {
-      autoHideTimeout = setTimeout(() => {
+    selected.addEventListener("click", function () {
+      options.style.display = "block";
+
+      // Clear any existing timeout
+      clearTimeout(hideTimeout);
+
+      // Hide after 2 seconds
+      hideTimeout = setTimeout(function () {
         options.style.display = "none";
-      }, 3000);
-    }
-  });
+      }, 1200);
+    });
 
-  // Also clear the timeout if an option is clicked manually
-  select.querySelectorAll(".option").forEach((option) => {
-    option.addEventListener("click", () => {
-      clearTimeout(autoHideTimeout);
+    // Optional: update selected and hide immediately on option click
+    customSelect.querySelectorAll(".option").forEach(option => {
+      option.addEventListener("click", function () {
+        selected.textContent = this.textContent;
+        options.style.display = "none";
+        clearTimeout(hideTimeout);
+      });
     });
   });
-
-  // Optional: clear timeout if clicked outside (already handled in your code)
-  document.addEventListener("click", () => {
-    clearTimeout(autoHideTimeout);
-  });
-});
 
 
 
@@ -600,13 +594,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Doctors Swiper
 const doctorsSwiper = new Swiper(".doctors-swiper", {
+
+
+  // speed: 800,
+  // slidesPerGroup: 2, 
+
+
   slidesPerView: 2,
   spaceBetween: 40,
   loop: true,
   grabCursor: true,
   allowTouchMove: true,
   autoplay: {
-    delay: 2500,
+    delay: 1500,
     disableOnInteraction: false,
     enabled: false,
   },
@@ -638,7 +638,7 @@ const pricingSwiper = new Swiper(".pricing-swiper", {
   grabCursor: true,
   allowTouchMove: true,
   autoplay: {
-    delay: 2500,
+    delay: 1500,
     disableOnInteraction: false,
     enabled: false,
   },
