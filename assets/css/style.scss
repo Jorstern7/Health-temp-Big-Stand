@@ -132,6 +132,7 @@ footer {
   }
 
   &.no-effect {
+
     &:hover svg,
     &:active svg {
       transform: none !important;
@@ -316,6 +317,7 @@ footer {
       align-items: center;
       padding: 10px;
       gap: 5px;
+
       span {
         height: 2px;
         width: 24px;
@@ -342,76 +344,92 @@ footer {
           }
         }
       }
-      // span {
-      //   height: 2px;
-      //   width: 100%;
-      //   border-radius: 3px;
-      //   background-color: #d7f0db;
-      //   display: block;
-      // }
-      // &.opened {
-      //   gap: 0px;
 
-      //   span {
-      //     &:first-child {
-      //       transform: rotate(45deg);
-      //     }
-      //     &:nth-child(2) {
-      //       display: none;
-      //     }
-      //     &:last-child {
-      //       transform: rotate(-45deg);
-      //     }
-      //   }
-      // }
     }
 
-    ul.dropdown-menu[data-bs-popper] {
+    ul.dropdown-menu {
       top: 100%;
       left: 0;
       margin-top: 10px;
-      background-color: #37b24d;
+      // background-color: #37b24d;
+      background-color: white;
       border-radius: 4px;
+      padding: 10px 10px 10px 0px;
+      // height: 0;
+      transition: all 2s ease ;
+      min-width: auto;
+      padding-right: 0;
 
       li {
         a {
-          color: white;
-
+          // color: white;
+          color: #333;;
+          // width: auto;
+          
+          
+          
           &:hover {
-            background-color: #d7f0db;
             color: #37b24d;
+            // background-color: #d7f0db;
+            background-color: white;
+            font-weight: 500;
           }
         }
       }
     }
 
+    
+    /* Smooth dropdown override */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: block !important; /* Keep it always in flow for transition */
+  visibility: hidden;
+  pointer-events: none;
+  height: auto !important;
+}
+
+/* When dropdown is open (Bootstrap adds .show) */
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
     ul:not(.dropdown-menu) {
       gap: 30px;
       align-items: center;
 
-      & > li {
-        & > a {
+      &>li {
+        &>a {
           padding: 0;
           position: relative;
           color: #333;
           font-weight: 500;
           font-size: 18px;
           color: #333;
+          transition: all 0.5s ease-in;
 
           &::before {
             content: "";
             position: absolute;
             bottom: -30%;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             height: 5px;
             width: 0;
             background-color: #37b24d;
-            transition: width 0.3s ease;
+            // background-color: #37b24e91;
+            transition: all 0.5s ease-in-out;
           }
 
           &.active,
           &:hover {
             color: #37b24d;
+            // color: #37b24e91;
 
             &::before {
               width: 100%;
@@ -424,6 +442,8 @@ footer {
             color: #fff;
             background-color: #37b24d;
             border-color: #37b24d;
+            box-shadow: 0 4px 0 #2f9e44;
+            transition: all 0.2s ease;
 
             &:hover,
             &:focus,
@@ -433,6 +453,8 @@ footer {
               border-color: #32a045;
               box-shadow: none;
               outline: none;
+              transform: translateY(2px);
+              box-shadow: 0 2px 0 #2f9e44;
             }
           }
         }
@@ -445,6 +467,7 @@ footer {
       background-color: #d7f0dbd1;
 
       transition: transform 1s ease-in-out;
+
       &.offcanvas-end {
         width: 100%;
       }
@@ -592,7 +615,7 @@ main {
 
         &.health-img--1 {
           z-index: 3;
-          top: 50%;
+          top: 54%;
           transform: translateY(-50%);
           left: 0;
 
@@ -604,7 +627,7 @@ main {
 
         &.health-img--2 {
           z-index: 1;
-          top: 0;
+          top: -56px;
           left: 50%;
           transform: translateX(-50%);
 
@@ -616,7 +639,7 @@ main {
 
         &.health-img--3 {
           z-index: 2;
-          bottom: 0;
+          bottom: 40px;
           right: 0;
 
           &:hover {
@@ -626,6 +649,7 @@ main {
         }
       }
     }
+
     .header-swiper {
       .swiper-slide {
         height: auto;
@@ -637,6 +661,7 @@ main {
         transform: scale(1.1);
         z-index: 2;
       }
+
       img {
         display: block;
         width: 100%;
@@ -713,6 +738,11 @@ main {
     img {
       width: 100%;
       border-radius: 9px;
+      transition: transform 0.5s ease;
+
+      &:hover{
+        transform: scale(1.06);
+      }
     }
 
     .icon-wrapping {
@@ -1016,6 +1046,49 @@ main {
     padding: 90px 0;
     background-color: #d7f0db;
 
+
+
+    .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  right: 0;
+  background-color: #37b24d;
+  border-radius: 4px;
+  display: none;
+
+  font-size: 16px;
+  z-index: 5;
+  padding: 5px 0;
+
+  border-radius: 4px;
+  display: block;
+   opacity: 0;
+   max-height: 0px;
+  visibility: hidden;
+  transition: all 1s ease-in-out;
+
+}
+.options.show-drop{
+  opacity: 1;
+  visibility: visible;
+  max-height: 140px;
+
+}
+.options.hide-drop{
+  opacity: 0;
+  visibility: hidden;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+
+  font-size: 16px;
+}
+
     .btn-outline {
       width: 215px;
       justify-content: flex-start;
@@ -1150,41 +1223,33 @@ main {
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 
         &.price-info__img-01 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/pregnancy.webp");
           /* Add your image path */
         }
 
         &.price-info__img-02 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/health.webp");
           /* Add your image path */
         }
 
         &.price-info__img-03 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/dentist.webp");
           /* Add your image path */
         }
 
         &.price-info__img-04 {
-          background-image: linear-gradient(
-              to bottom,
+          background-image: linear-gradient(to bottom,
               rgba(235, 247, 237, 0.8),
-              rgba(209, 235, 169, 0.5)
-            ),
+              rgba(209, 235, 169, 0.5)),
             url("../img/operation.webp");
           /* Add your image path */
         }
@@ -1350,6 +1415,9 @@ main {
     padding: 50px 0;
     background-color: #d7f0db;
 
+
+    
+
     h1,
     p {
       text-align: center;
@@ -1378,6 +1446,43 @@ main {
       // margin: 0 auto;
       margin-top: 30px;
       border-radius: 9px;
+
+      .options {
+        top: 0px !important;
+        margin-top: 0px !important;
+      } 
+        .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  right: 0;
+  background-color: #37b24d;
+  border-radius: 4px;
+  display: none;
+
+  font-size: 16px;
+  z-index: 5;
+  padding: 5px 0;
+
+  border-radius: 4px;
+  display: block;
+   opacity: 0;
+   max-height: 0px;
+  visibility: hidden;
+  transition: all 1s ease-in-out;
+
+}
+.options.show-drop{
+  opacity: 1;
+  visibility: visible;
+  max-height: 140px;
+
+}
+.options.hide-drop{
+  opacity: 0;
+  visibility: hidden;
+}
 
       .form-control,
       .form-select {
@@ -1556,105 +1661,233 @@ main {
     }
   }
 
-  .blog-section {
-    padding: 50px 0;
+  // .blog-section {
+  //   padding: 50px 0;
 
-    h1,
-    p {
-      text-align: center;
+  //   h1,
+  //   p {
+  //     text-align: center;
+  //   }
+
+  //   p {
+  //     font-size: 20px;
+  //     line-height: 1.6;
+  //     margin-bottom: 14px;
+
+  //     &.heading-four {
+  //       font-size: 24px;
+  //     }
+  //   }
+
+  //   h1 {
+  //     font-size: 35px;
+  //     line-height: 1.05;
+  //     margin-bottom: 32px;
+  //     color: #333;
+  //     font-weight: bold;
+  //   }
+
+  //   .card {
+  //     background-color: #fff;
+  //     border-radius: 9px;
+
+  //     .card-body {
+  //       padding: 20px;
+  //       display: flex;
+  //       flex-direction: column;
+  //       gap: 20px;
+
+  //       h4 {
+  //         font-size: 24px;
+  //         text-align: left;
+  //         color: #333;
+  //         font-weight: bold;
+  //       }
+
+  //       p {
+  //         font-size: 16px;
+  //         line-height: 1.6;
+  //         margin-bottom: 0;
+  //         color: #666;
+  //         text-align: left;
+  //       }
+  //     }
+
+  //     .card-footer {
+  //       align-items: center;
+  //       display: flex;
+  //       justify-content: space-between;
+  //       padding: 10px 20px;
+  //       border-top: 1px solid #ccc;
+  //       background-color: #fff;
+  //       border-radius: 0 0 9px 9px;
+
+  //       .post-author {
+  //         gap: 10px;
+  //         display: flex;
+  //         align-items: center;
+
+  //         img {
+  //           width: 60px;
+  //           height: 60px;
+  //           border-radius: 50%;
+  //           overflow: hidden;
+  //           border: 2px solid #ddd;
+  //           object-fit: cover;
+  //         }
+
+  //         h6 {
+  //           font-size: 14px;
+  //           margin-bottom: 0;
+  //           color: #555;
+  //         }
+  //       }
+
+  //       .post-info {
+  //         display: flex;
+  //         gap: 20px;
+
+  //         .stats {
+  //           font-size: 12px;
+
+  //           svg {
+  //             color: #37b24d;
+  //             // margin-right: 0.5rem;
+  //             stroke-width: 1.2;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+
+.blog-section {
+  padding: 50px 0;
+
+  h1,
+  p {
+    text-align: center;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+
+    &.heading-four {
+      font-size: 24px;
     }
+  }
 
-    p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 14px;
+  h1 {
+    font-size: 35px;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    color: #333;
+    font-weight: bold;
+  }
 
-      &.heading-four {
+  .card {
+    background-color: #fff;
+    border-radius: 9px;
+
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      h4 {
         font-size: 24px;
+        text-align: left;
+        color: #333;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 0;
+        color: #666;
+        text-align: left;
       }
     }
 
-    h1 {
-      font-size: 35px;
-      line-height: 1.05;
-      margin-bottom: 32px;
-      color: #333;
-      font-weight: bold;
-    }
-
-    .card {
+    .card-footer {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      border-top: 1px solid #ccc;
       background-color: #fff;
-      border-radius: 9px;
+      border-radius: 0 0 9px 9px;
 
-      .card-body {
-        padding: 20px;
+      .post-author {
+        gap: 10px;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 2px solid #ddd;
+          object-fit: cover;
+        }
+
+        h6 {
+          font-size: 14px;
+          margin-bottom: 0;
+          color: #555;
+        }
+      }
+
+      .post-info {
+        display: flex;
         gap: 20px;
 
-        h4 {
-          font-size: 24px;
-          text-align: left;
-          color: #333;
-          font-weight: bold;
-        }
+        .stats {
+          font-size: 12px;
 
-        p {
-          font-size: 16px;
-          line-height: 1.6;
-          margin-bottom: 0;
-          color: #666;
-          text-align: left;
-        }
-      }
-
-      .card-footer {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 20px;
-        border-top: 1px solid #ccc;
-        background-color: #fff;
-        border-radius: 0 0 9px 9px;
-
-        .post-author {
-          gap: 10px;
-          display: flex;
-          align-items: center;
-
-          img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid #ddd;
-            object-fit: cover;
-          }
-
-          h6 {
-            font-size: 14px;
-            margin-bottom: 0;
-            color: #555;
-          }
-        }
-
-        .post-info {
-          display: flex;
-          gap: 20px;
-
-          .stats {
-            font-size: 12px;
-
-            svg {
-              color: #37b24d;
-              // margin-right: 0.5rem;
-              stroke-width: 1.2;
-            }
+          svg {
+            color: #37b24d;
+            stroke-width: 1.2;
           }
         }
       }
     }
   }
+
+  // --- UPDATED TRANSITION STYLES FOR BLOG CARDS ---
+  .blog-card {
+    /* Default state (visible) */
+    max-height: 1000px; /* IMPORTANT: Set a value larger than the max possible height of any card */
+    opacity: 1;
+    transform: translateY(0);
+    overflow: hidden; /* Crucial for max-height animation */
+    /* Transition properties applied to all changes */
+    transition: max-height 2s ease-out, opacity 2s ease-out, transform 2s ease-out;
+
+    /* Hidden state defined by a class, to be toggled by JS */
+    &.blog-card--hidden {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-20px); /* Makes it slide up slightly as it hides */
+    }
+
+    /* Ensure the inner card adjusts its height naturally */
+    .card {
+      height: auto;
+    }
+  }
+}
+
+
+
+
+
 }
 
 #footer {
@@ -1731,7 +1964,8 @@ main {
 
           &:hover {
             color: #37b24d;
-            text-decoration: underline;
+            // text-decoration: underline;
+            font-weight: 600;
           }
 
           svg {
@@ -1768,14 +2002,16 @@ main {
 
 #up-arrow {
   position: fixed;
-  bottom: 0;
+  bottom: 52px;
   right: 40px;
   width: 50px;
-  height: 80px;
+  // height: 80px;
+  height: 50px;
   background-color: #37b24d;
   border: 1px solid #37b24d;
   color: #fff;
-  border-radius: 25px 25px 0 0;
+  // border-radius: 25px 25px 0 0;
+  border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1807,7 +2043,13 @@ main {
     visibility: visible;
   }
 }
-
+@media (min-width:1400px){
+  main .section-health .health-img-box .health-img.health-img--2 {
+    z-index: 1;
+    top: -96px;  
+    left: 50%;
+}
+}
 @media (max-width: 1399.98px) {
   .heading-primary {
     font-size: 45px;
@@ -1835,7 +2077,7 @@ main {
     gap: 15px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a {
+  #header nav ul:not(.dropdown-menu)>li>a {
     font-size: 16px;
   }
 
@@ -1846,7 +2088,11 @@ main {
   main .section-health p {
     font-size: 18px;
   }
-
+main .section-health .health-img-box .health-img.health-img--3 {
+    z-index: 2;
+    bottom: 54px;
+    right: 0;
+}
   .btn {
     font-size: 16px;
     padding: 10px 25px;
@@ -1957,6 +2203,7 @@ main {
 }
 
 @media (max-width: 991.98px) {
+
   main .section-about h1,
   main .services-section h1,
   main .section-pricing h1,
@@ -2041,7 +2288,7 @@ main {
     gap: 5px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a {
+  #header nav ul:not(.dropdown-menu)>li>a {
     padding: 8px 16px;
     border-radius: 9px;
     display: flex;
@@ -2052,17 +2299,17 @@ main {
   //   margin: 10px 0;
   // }
 
-  #header nav ul:not(.dropdown-menu) > li > a::before {
+  #header nav ul:not(.dropdown-menu)>li>a::before {
     display: none;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a.active,
-  #header nav ul:not(.dropdown-menu) > li > a:hover {
+  #header nav ul:not(.dropdown-menu)>li>a.active,
+  #header nav ul:not(.dropdown-menu)>li>a:hover {
     color: #fff;
     background-color: #37b24d;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a.btn {
+  #header nav ul:not(.dropdown-menu)>li>a.btn {
     width: 100%;
   }
 
@@ -2073,6 +2320,9 @@ main {
   #header nav ul.dropdown-menu[data-bs-popper] li a {
     display: flex;
     justify-content: center;
+  }
+  #up-arrow {
+  bottom: 28px !important; 
   }
 }
 
@@ -2101,18 +2351,26 @@ main {
   #tabOrMobOnly {
     display: none;
   }
+
   .card-body.back .learn-more-btn {
-    display: none;
+    display: none; 
   }
+
   main .section-health .header-swiper {
     display: none;
   }
 }
 
 @media (max-width: 768.98px) {
+   main .section-health .health-img-box {
+    // display: none !important;
+    // padding: 40px;
+    margin-top: 40px;
+  }
   main .services-section .flip .card .card-body.front .learn-more-btn {
     display: none !important;
   }
+
   main .services-section .flip .card .card-body.back .learn-more-btn {
     bottom: -20px;
     position: absolute;
@@ -2402,6 +2660,7 @@ main {
   main .services-section .flip .card .card-body.back .btn-arrow {
     display: none;
   }
+
   main .services-section .flip .card {
     min-height: 270px;
   }
@@ -2421,9 +2680,11 @@ main {
   main .section-about .card {
     border-radius: 9px;
   }
+
   main .section-about .card-img-top {
     border-radius: 9px 9px 0 0;
   }
+
   main .section-about .card-body {
     padding: 10px;
   }
@@ -2472,7 +2733,7 @@ main {
     margin-top: 30px;
   }
 
-  .findDocform > .row {
+  .findDocform>.row {
     gap: 5px !important;
   }
 
@@ -2542,15 +2803,12 @@ main {
     width: 260px;
   }
 
-  main
-    .section-testimonial
-    .swiper-pagination
-    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  main .section-testimonial .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     width: 30px;
     height: 30px;
   }
 
-  #header nav ul:not(.dropdown-menu) > li > a::before {
+  #header nav ul:not(.dropdown-menu)>li>a::before {
     display: none;
   }
 
@@ -2561,9 +2819,13 @@ main {
   main .services-section .flip .card .card-body.back .service-box-info {
     padding: 10px 20px;
   }
+
   main .section-health .health-img-box {
-    display: none !important;
+    // display: none !important;
+    // padding: 40px;
+    margin-top: 40px;
   }
+
   // main .section-health .heading-primary {
   //   margin-top: 30px;
   // }
@@ -2614,3 +2876,31 @@ main {
     height: 50px;
   }
 }
+
+@media screen and (min-width:1400px){
+  main .section-health {
+    padding-top: 140px !important;
+  }
+}
+
+  // .custom-select .options {
+  //     /* Initial hidden state properties for animation */
+  //     max-height: 0;           /* Collapsed height */
+  //     opacity: 0;              /* Fully transparent */
+  //     overflow: hidden;        /* Hides content that exceeds max-height */
+  //     transform: translateY(10px); /* Starts 10px below its final position */
+      
+  //     /* Define the transition for these properties */
+  //     transition: max-height 0.3s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out;
+
+  //     /* Added to visually hide content when not 'show' */
+  //     visibility: hidden; 
+  //   }
+
+  //   .custom-select .options.show {
+  //     /* Target visible state properties */
+  //     max-height: 200px; /* Needs to be a value large enough to show all options */
+  //     opacity: 1;              /* Fully opaque */
+  //     transform: translateY(0); /* Moves to its original position */
+  //     visibility: visible; /* Make visible when 'show' class is present */
+  //   }
