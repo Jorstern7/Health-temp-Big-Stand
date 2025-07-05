@@ -1,4 +1,6 @@
-
+ // ====================================================================================
+  // ======================      Sticky Header     =====================================
+  // ====================================================================================
 
 const header = document.getElementById("header");
 const hero = document.querySelector(".section-health");
@@ -29,7 +31,7 @@ const obs = new IntersectionObserver(
   }
 );
 obs.observe(hero);
- 
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggler = document.querySelector(".navbar-toggler");
@@ -37,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     toggler.classList.toggle("opened");
   });
 
+
+  // ======== MObile imags on Hero Section ==========
   const headerSwiper = new Swiper(".header-swiper", {
     slidesPerView: 3, // Important: 'auto' allows flexible number of slides
     spaceBetween: 0,
@@ -59,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
+// =========================== End ============
+
 
   function scaleMiddleSlide(swiper) {
     // Remove from all
@@ -75,6 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+  // ====================================================================================
+  // ======================     Featured Swiper     =====================================
+  // ====================================================================================
 
   new Swiper(".featured-swiper", {
     slidesPerView: 4, // Important: 'auto' allows flexible number of slides
@@ -102,164 +112,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-    const pricingSwiper =  new Swiper(".pricing-swiper", {
-    slidesPerView: 3,
-    spaceBetween: 10,
-    loop: true,
-    // speed: 3000,
-    // autoplay: {
-    //   delay: 2500,
-    //   disableOnInteraction: false,
-    // },
-    navigation: {
-      nextEl: ".right-btn",
-      prevEl: ".left-btn",
-    },
-    grabCursor: true,
-    allowTouchMove: true,
-    breakpoints: {
-      0: {
-        // Mobile
-        slidesPerView: 1,
-      },
-      768: {
-        // Tablet
-        slidesPerView: 2,
-      },
-      992: {
-        // Laptop/Desktop
-        slidesPerView: 3,
-      },
-    },
-  });
-
-
-
-
-
-  // new Swiper(".doctors-swiper", {
-  //   slidesPerView: 2,
-  //   spaceBetween: 40,
-  //   loop: true,
-  //   // speed: 3000,
-  //   // autoplay: {
-  //   //   delay: 2500,
-  //   //   disableOnInteraction: false,
-  //   // },
-  //   navigation: {
-  //     nextEl: ".right-btn",
-  //     prevEl: ".left-btn",
-  //   },
-  //   grabCursor: true,
-  //   allowTouchMove: true,
-
-  //   breakpoints: {
-  //     0: {
-  //       // Mobile
-  //       slidesPerView: 1,
-  //     },
-  //     768: {
-  //       // Tablet
-  //       slidesPerView: 2,
-  //     },
-  //     992: {
-  //       // Laptop/Desktop
-  //       slidesPerView: 2,
-  //     },
-  //   },
-  // });
-
-  new Swiper(".testimonial-swiper", {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: true,
-    speed: 3000,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    grabCursor: true,
-    allowTouchMove: true,
-    pagination: {
-      el: ".swiper-pagination", // important: you need this element in HTML
-      clickable: true,
-    },
-  });
-
-
-// ======================== Comment Start ===========
-/*
-
-
-  const readMoreBtn = document.getElementById("readMoreBlog");
-
-  readMoreBtn.addEventListener("click", function () {
-    // Fade out the visible element
-    const mobileReadMore = document.querySelector(".visibleOnTablet");
-    if (mobileReadMore) {
-      mobileReadMore.classList.add("fade-out");
-
-      // const target = document.querySelector("#morehelp-cta");
-      if (mobileReadMore) {
-        const offsetTop = mobileReadMore.offsetTop - header.offsetHeight;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: "smooth",
-        });
-      }
-
-      setTimeout(() => {
-        mobileReadMore.style.display = "none";
-      }, 500); // matches transition time
-    }
-
-    // Fade in all elements with 'hideOnMobile'
-    const hiddenItems = document.querySelectorAll(".hideOnTablet");
-    hiddenItems.forEach(function (el) {
-      el.style.display = "block"; // ensure it's visible before animating
-      el.classList.add("fade-in");
-    });
-  });
-
-  const showLessBlogBtn = document.getElementById("showLessBlog");
-  const blogSection = document.getElementById("morehelp-cta");
-
-  showLessBlogBtn.addEventListener("click", () => {
-    // 1. Fade IN the mobileReadMore
-    const mobileReadMore = document.querySelector(".visibleOnTablet");
-    if (mobileReadMore) {
-      // Make it block so fade-in can work
-      mobileReadMore.style.display = "block";
-      mobileReadMore.classList.remove("fade-out");
-      mobileReadMore.classList.add("fade-in");
-
-      // Scroll to it
-      const offsetTop = blogSection.offsetTop - header.offsetHeight;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
-    }
-
-    // 2. Fade-OUT then hide the hideOnTablet items
-    const hiddenItems = document.querySelectorAll(".hideOnTablet");
-    hiddenItems.forEach((el) => {
-      // trigger fade-out
-      el.classList.remove("fade-in");
-      el.classList.add("fade-out");
-
-      // after transition, hide
-      setTimeout(() => {
-        el.style.display = "none";
-      }, 500); // match your CSS transition-duration
-    });
-  });
-
-*/ 
-
-// ============== Comment End ===============
-  
-
+ // ====================================================================================
+  // ======================    Flip Cards     =====================================
+  // ====================================================================================
 
   const flips = document.querySelectorAll(".flip");
 
@@ -283,21 +138,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const card = flip.querySelector(".card");
     const learnMoreBtn = flip.querySelector(".learn-more-btn");
 
-    if (window.innerWidth >= 992) {
-      // Desktop: hover to flip
-      flip.addEventListener("mouseenter", () => card.classList.add("flipped"));
-      flip.addEventListener("mouseleave", () =>
-        card.classList.remove("flipped")
-      );
-    } else if (window.innerWidth >= 576) {
+    // if (window.innerWidth >= 992) {
+    //   // Desktop: hover to flip
+    //   flip.addEventListener("mouseenter", () => card.classList.add("flipped"));
+    //   flip.addEventListener("mouseleave", () =>
+    //     card.classList.remove("flipped")
+    //   );
+    // } 
+     if (window.innerWidth >= 576) {
       // Tablet: click to flip/unflip
       if (!learnMoreBtn) return;
 
+
+      // ============== Old Logic ============== 
+      // learnMoreBtn.addEventListener("click", (e) => {
+      //   e.stopPropagation(); // prevent immediate document click
+      //   learnMoreBtn.style.opacity = "0"; // hide the button
+      //   setTimeout(() => card.classList.add("flipped"), 200);
+      // });
+// ==================== End ============
+
+
+
       learnMoreBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // prevent immediate document click
-        learnMoreBtn.style.opacity = "0"; // hide the button
-        setTimeout(() => card.classList.add("flipped"), 200);
-      });
+  e.stopPropagation();
+
+  // Flip back all other flipped cards first
+  flips.forEach((otherFlip) => {
+    const otherCard = otherFlip.querySelector(".card");
+    const otherBtn = otherFlip.querySelector(".learn-more-btn");
+    if (otherCard !== card && otherCard.classList.contains("flipped")) {
+      otherCard.classList.remove("flipped");
+      if (otherBtn) otherBtn.style.opacity = "1";
+    }
+  });
+
+  // Then flip the current card
+  learnMoreBtn.style.opacity = "0";
+  setTimeout(() => card.classList.add("flipped"), 200);
+});
+
+
+
 
       document.addEventListener("click", (e) => {
         if (!flip.contains(e.target) && card.classList.contains("flipped")) {
@@ -313,7 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+ // ====================================================================================
+  // ======================      Back To Top Button    =================================
+  // ====================================================================================
   const goTopButton = document.getElementById("up-arrow");
 
   // Show button when user scrolls down 300px
@@ -390,223 +274,335 @@ document.addEventListener("DOMContentLoaded", function () {
       // }
     });
   });
-  // const header = document.getElementById("header");
+ 
 
-  // // Select ALL relevant menu links inside navbar (including dropdown items and btn)
-  // const navLinks = document.querySelectorAll('.navbar-nav a[href^="#"]');
-  // const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+document.querySelectorAll(".custom-select").forEach((select) => {
+  const selected = select.querySelector(".selected");
+  const options = select.querySelector(".options");
+  const optionItems = select.querySelectorAll(".option");
 
-  // // Click behavior: Manual active class toggle only
-  // navLinks.forEach((link) => {
-  //   link.addEventListener("click", function (e) {
-  //     e.preventDefault();
-
-  //     // Remove active class from all nav-links, dropdown-toggles, and buttons
-  //     navLinks.forEach((l) => l.classList.remove("active"));
-  //     dropdownToggles.forEach((t) => t.classList.remove("active"));
-
-  //     // Add active class to clicked link
-  //     this.classList.add("active");
-
-  //     // Special case: If clicked link is inside a dropdown, mark its toggle as active too
-  //     const dropdown = this.closest(".dropdown-menu");
-  //     if (dropdown) {
-  //       const toggle = dropdown.previousElementSibling;
-  //       if (toggle && toggle.classList.contains("dropdown-toggle")) {
-  //         toggle.classList.add("active");
-  //       }
-  //     }
-
-  //     // Scroll to the section smoothly with header offset
-  //     const target = document.querySelector(this.getAttribute("href"));
-  //     if (target) {
-  //       const offsetTop = target.offsetTop - header.offsetHeight;
-  //       window.scrollTo({
-  //         top: offsetTop,
-  //         behavior: "smooth",
-  //       });
-  //     }
-  //   });
-  // });
-
-  document.querySelectorAll(".custom-select").forEach((select) => {
-    const selected = select.querySelector(".selected");
-    const options = select.querySelector(".options");
-    const optionItems = select.querySelectorAll(".option");
-
-    selected.addEventListener("click", (e) => {
-      document.querySelectorAll(".options").forEach((opt) => {
-        if (opt !== options) opt.style.display = "none";
-      });
-      options.style.display =
-        options.style.display === "block" ? "none" : "block";
-      e.stopPropagation();
+  selected.addEventListener("click", (e) => {
+    document.querySelectorAll(".options").forEach((opt) => {
+      if (opt !== options) {
+        opt.classList.remove("show-drop");
+      }
     });
 
-    optionItems.forEach((option) => {
-      option.addEventListener("click", (e) => {
-        selected.textContent = option.textContent;
-        options.style.display = "none";
-        e.stopPropagation();
-      });
-    });
+    // Toggle the "show-drop" class on the current dropdown's options
+    options.classList.toggle("show-drop");
+    e.stopPropagation();
   });
 
-  document.addEventListener("click", () => {
-    document
-      .querySelectorAll(".options")
-      .forEach((opt) => (opt.style.display = "none"));
+  optionItems.forEach((option) => {
+    option.addEventListener("click", (e) => {
+      selected.textContent = option.textContent;
+      // Remove the "show-drop" class when an option is selected
+      options.classList.remove("show-drop");
+      e.stopPropagation();
+    });
   });
 });
 
 
 
+});
 
-// ================= Blog Post Section  ===============================
-
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const container = document.querySelector(".blog-section .row");
-    const cards = container.querySelectorAll(":scope > .blog-card");
-    const toggleBtn = document.getElementById("toggleBlogBtn");
-    const cardsToShow = 3;
-    let visibleCount = cardsToShow;
-
-    function updateCardsVisibility() {
-      cards.forEach((card, index) => {
-        card.style.display = index < visibleCount ? "block" : "none";
-      });
-
-      if (cards.length <= cardsToShow) {
-        toggleBtn.style.display = "none";
-      } else {
-        toggleBtn.style.display = "inline-block";
-        toggleBtn.textContent = (visibleCount >= cards.length) ? "Show Less" : "Show More";
-      }
-    }
-
-    toggleBtn.addEventListener("click", function () {
-      if (visibleCount >= cards.length) {
-        visibleCount = cardsToShow;
-      } else {
-        visibleCount = Math.min(visibleCount + cardsToShow, cards.length);
-      }
-      updateCardsVisibility();
-    });
-
-    // Initial setup
-    updateCardsVisibility();
-  });
+// =====================================================================================================================================
+// =============================                  Updated Script                   =====================================================
+// =====================================================================================================================================
 
 
-// ==================== Auto Hide Dropdown Menu On Header ================================
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
-
-    let hideTimeout;
-
-    dropdownToggle.addEventListener('click', function (e) {
-      // Only trigger this logic on desktop (e.g., width >= 992px)
-      if (window.innerWidth >= 992) {
-        e.preventDefault(); // prevent default bootstrap toggle behavior
-
-        // Toggle the dropdown menu manually
-        dropdownMenu.classList.toggle('show');
-
-        // Clear previous timeout if any
-        clearTimeout(hideTimeout);
-
-        // Set timeout to hide dropdown after 3 seconds
-        if (dropdownMenu.classList.contains('show')) {
-          hideTimeout = setTimeout(() => {
-            dropdownMenu.classList.remove('show');
-          }, 1200);
-        }
-      }
-    });
-  });
-
-
-
-// ==================== Auto Hide Dropdown Menu On Find A Doc Section ================================
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const section = document.querySelector("#find-doctor-cta");
-    if (!section) return;
-
-    const customSelect = section.querySelector(".custom-select");
-    const selected = customSelect.querySelector(".selected");
-    const options = customSelect.querySelector(".options");
-    let hideTimeout;
-
-    selected.addEventListener("click", function () {
-      options.style.display = "block";
-
-      // Clear any existing timeout
-      clearTimeout(hideTimeout);
-
-      // Hide after 2 seconds
-      hideTimeout = setTimeout(function () {
-        options.style.display = "none";
-      }, 1200);
-    });
-
-    // Optional: update selected and hide immediately on option click
-    customSelect.querySelectorAll(".option").forEach(option => {
-      option.addEventListener("click", function () {
-        selected.textContent = this.textContent;
-        options.style.display = "none";
-        clearTimeout(hideTimeout);
-      });
-    });
-  });
 
 
 
 // ==============================  Reduce Nav Link OPacity ==================
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+  const allLinks = document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item");
+  const dropdown = document.querySelector(".nav-item.dropdown");
+  const dropdownToggle = dropdown.querySelector(".nav-link");
+  const dropdownItems = dropdown.querySelectorAll(".dropdown-item");
+
+  // Smooth transitions
+  allLinks.forEach(link => {
+    link.style.transition = "opacity 0.3s ease";
+  });
 
   if (window.innerWidth >= 992) {
-    navLinks.forEach((link) => {
+    allLinks.forEach(link => {
       link.addEventListener("mouseenter", () => {
-        navLinks.forEach((otherLink) => {
-          otherLink.style.opacity = otherLink === link ? "1" : "0.4";
-        });
+        // CASE 1: Hovering a dropdown item
+        if (link.classList.contains('dropdown-item')) {
+          allLinks.forEach(other => {
+            if (
+              other === link ||                              // hovered item
+              other === dropdownToggle                       // keep More Help toggle visible
+            ) {
+              other.style.opacity = "1";
+            } else if (other.classList.contains('dropdown-item')) {
+              other.style.opacity = "0.3"; // dim other dropdown items
+            } else {
+              other.style.opacity = "0.3"; // dim top-level nav items
+            }
+          });
+        }
+
+        // CASE 2: Hovering the dropdown toggle (More Help)
+        else if (link === dropdownToggle) {
+          allLinks.forEach(other => {
+            if (
+              other === dropdownToggle ||
+              other.classList.contains('dropdown-item')
+            ) {
+              other.style.opacity = "1";
+            } else {
+              other.style.opacity = "0.3";
+            }
+          });
+        }
+
+        // CASE 3: Hovering a normal top-level nav item (not dropdown)
+        else {
+          allLinks.forEach(other => {
+            other.style.opacity = other === link ? "1" : "0.3";
+          });
+        }
       });
 
       link.addEventListener("mouseleave", () => {
-        navLinks.forEach((otherLink) => {
-          otherLink.style.opacity = "1";
-        });
+        allLinks.forEach(l => (l.style.opacity = "1"));
+      });
+    });
+
+    // Handle mouse leaving the whole dropdown menu area
+    dropdown.addEventListener("mouseleave", () => {
+      allLinks.forEach(link => {
+        link.style.opacity = "1";
       });
     });
   }
 });
 
 
-// ======================= Auto Scroll when click on Navigation =================
+
+// ==================== Auto Hide Dropdown Menu On Header ================================
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
+  const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
+
+  let hideTimeout;
+
+  dropdownToggle.addEventListener('click', function (e) {
+    if (window.innerWidth >= 992) {
+      e.preventDefault();
+
+      dropdownMenu.classList.toggle('show');
+
+      clearTimeout(hideTimeout);
+
+      if (dropdownMenu.classList.contains('show')) {
+        hideTimeout = setTimeout(() => {
+          dropdownMenu.classList.remove('show');
+        }, 2600);
+      }
+    }
+  });
+
+  // ✅ Close when clicking outside
+  document.addEventListener('click', function (e) {
+    const isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
+
+    if (!isClickInside) {
+      dropdownMenu.classList.remove('show');
+      clearTimeout(hideTimeout);
+    }
+  });
+
+  // ✅ Close when selecting any dropdown link
+  const dropdownLinks = dropdownMenu.querySelectorAll('a');
+
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      dropdownMenu.classList.remove('show');
+      clearTimeout(hideTimeout);
+    });
+  });
+});
+
+
+
+ // ====================================================================================
+  // ======================       Blog Sectoin     =====================================
+  // ====================================================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector(".blog-section .row");
+  const cards = container.querySelectorAll(":scope > .blog-card");
+  const toggleBtn = document.getElementById("toggleBlogBtn");
+  const cardsToShow = 3; // Initial number of cards to show
+  const transitionDuration = 800; // Must match the CSS transition duration in milliseconds (0.8s = 800ms)
+
+  let visibleCount = cardsToShow;
+let firstLoad = true;
+function updateCardsVisibility() {
+  cards.forEach((card, index) => {
+    if (index < visibleCount) {
+      // SHOW CARD
+      card.style.display = "block"; // Ensure it's visible (only needed for first load)
+      setTimeout(() => {
+        card.classList.remove("blog-card--hidden");
+      }, 10); // Allow browser to register display
+    } else {
+      if (firstLoad) {
+        // On first load, immediately hide with no animation
+        card.style.display = "none";
+      } else {
+        // HIDE with animation
+        card.classList.add("blog-card--hidden");
+      }
+    }
+  });
+
+  firstLoad = false; // Now we only animate
+
+  // Update button text and visibility
+  if (cards.length <= cardsToShow) {
+    toggleBtn.style.display = "none";
+  } else {
+    toggleBtn.style.display = "inline-block";
+    toggleBtn.textContent = visibleCount >= cards.length ? "Show Less" : "Show More";
+  }
+}
+
+  toggleBtn.addEventListener("click", function () {
+    // Disable button temporarily to prevent rapid clicks during transition
+    toggleBtn.disabled = true;
+
+    if (visibleCount >= cards.length) {
+      // If currently showing all, revert to initial count
+      visibleCount = cardsToShow;
+    } else {
+      // Show more cards, up to the total count
+      visibleCount = Math.min(visibleCount + cardsToShow, cards.length);
+    }
+
+    updateCardsVisibility();
+
+    // Re-enable button after the longest possible transition duration
+    setTimeout(() => {
+      toggleBtn.disabled = false;
+    }, transitionDuration);
+  });
+
+  // Initial setup: Hide cards beyond the initial count on page load
+  // We need to apply the 'hidden' class immediately for initial state
+
+  cards.forEach((card, index) => {
+    if (index >= cardsToShow) {
+      card.classList.add("blog-card--hidden");
+      // card.style.display = "none"; 
+    }
+  });
+  updateCardsVisibility(); // Call to set initial button state
+});
+
+
+
+// ====================================================================================
+// ==================== Auto Hide Dropdown Menu On Book An Appointment Section ================================
+// ====================================================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const appointmentSection = document.querySelector("#appointment-cta");
+  if (!appointmentSection) return;
+
+  const customSelects = appointmentSection.querySelectorAll(".custom-select");
+
+  customSelects.forEach(customSelect => {
+    const selected = customSelect.querySelector(".selected");
+    const options = customSelect.querySelector(".options");
+    let hideTimeout;
+
+    selected.addEventListener("click", function () {
+      // options.style.display = "block";
+      options.classList.add("show-drop");
+      
+
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(function () {
+        // options.style.display = "none";
+        options.classList.remove("show-drop");
+      }, 2600);
+    });
+
+    customSelect.querySelectorAll(".option").forEach(option => {
+      option.addEventListener("click", function () {
+        selected.textContent = this.textContent;
+        // options.style.display = "none";
+         options.classList.remove("show-drop");
+        clearTimeout(hideTimeout);
+      });
+    });
+  });
+});
+
+
+
+
+// ====================================================================================
+// ================ Auto Hide Dropdown Menu On Find A Doc Section =====================
+// ====================================================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const section = document.querySelector("#find-doctor-cta");
+  if (!section) return;
+
+  const customSelect = section.querySelector(".custom-select");
+  const selected = customSelect.querySelector(".selected");
+  const options = customSelect.querySelector(".options");
+  let hideTimeout;
+
+  selected.addEventListener("click", function () {
+    // options.style.display = "block";
+    options.classList.add("show-drop");
+
+    // Clear any existing timeout
+    clearTimeout(hideTimeout);
+
+    // Hide after 2 seconds
+    hideTimeout = setTimeout(function () {
+      // options.style.display = "none";
+         options.classList.remove("show-drop");
+    }, 2600);
+  });
+
+  // Optional: update selected and hide immediately on option click
+  customSelect.querySelectorAll(".option").forEach(option => {
+    option.addEventListener("click", function () {
+      selected.textContent = this.textContent;
+      // options.style.display = "none";
+         options.classList.remove("show-drop");
+      clearTimeout(hideTimeout);
+    });
+  });
+});
+
+
+
+// ====================================================================================
+// ======================= Auto Scroll when click on Navigation Arrow =================
+// ====================================================================================
 
 // Doctors Swiper
 const doctorsSwiper = new Swiper(".doctors-swiper", {
-
-
-  // speed: 800,
-  // slidesPerGroup: 2, 
-
-
   slidesPerView: 2,
   spaceBetween: 40,
   loop: true,
   grabCursor: true,
   allowTouchMove: true,
+  speed: 2200,
   autoplay: {
-    delay: 1500,
+    delay: 2600,
     disableOnInteraction: false,
     enabled: false,
   },
@@ -621,14 +617,12 @@ const doctorsSwiper = new Swiper(".doctors-swiper", {
   },
 });
 
-// Trigger autoplay on doctors nav click
 document.querySelector(".doctors-next").addEventListener("click", () => {
   doctorsSwiper.autoplay.start();
 });
 document.querySelector(".doctors-prev").addEventListener("click", () => {
   doctorsSwiper.autoplay.start();
 });
-
 
 // Pricing Swiper
 const pricingSwiper = new Swiper(".pricing-swiper", {
@@ -637,8 +631,9 @@ const pricingSwiper = new Swiper(".pricing-swiper", {
   loop: true,
   grabCursor: true,
   allowTouchMove: true,
+ speed: 2200,
   autoplay: {
-    delay: 1500,
+    delay: 2600,
     disableOnInteraction: false,
     enabled: false,
   },
@@ -651,12 +646,41 @@ const pricingSwiper = new Swiper(".pricing-swiper", {
     768: { slidesPerView: 2 },
     992: { slidesPerView: 3 },
   },
+ 
 });
 
-// Trigger autoplay on pricing nav click
 document.querySelector(".pricing-next").addEventListener("click", () => {
   pricingSwiper.autoplay.start();
 });
 document.querySelector(".pricing-prev").addEventListener("click", () => {
   pricingSwiper.autoplay.start();
+});
+
+// Testimonials Swiper
+const TestimonialsSwiper=  new Swiper(".testimonial-swiper", {
+   slidesPerView: 1,
+  // spaceBetween: 10,
+  loop: true,
+  grabCursor: true,
+  allowTouchMove: true,
+ speed: 3000,
+  autoplay: {
+    delay: 3200,
+    disableOnInteraction: false,
+    enabled: false,
+  },
+  pagination: {
+  el: ".testimonial-swiper .swiper-pagination",
+  clickable: true,
+},
+  navigation: {
+    nextEl: ".testimonials-next",
+    prevEl: ".testmonials-prev",
+  },
+  });
+
+document.querySelectorAll(".testimonial-swiper .swiper-pagination .swiper-pagination-bullet").forEach(bullet => {
+  bullet.addEventListener("click", () => {
+    TestimonialsSwiper.autoplay.start();
+  });
 });

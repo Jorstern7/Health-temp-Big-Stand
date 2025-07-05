@@ -245,6 +245,10 @@ footer {
   width: 100%;
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
 }
+#header nav {
+  /* Smooth dropdown override */
+  /* When dropdown is open (Bootstrap adds .show) */
+}
 #header nav.navbar-light .navbar-toggler {
   color: #d7f0db;
   position: absolute;
@@ -283,19 +287,39 @@ footer {
 #header nav.navbar-light .navbar-toggler.opened span:last-child {
   transform: rotate(-45deg);
 }
-#header nav ul.dropdown-menu[data-bs-popper] {
+#header nav ul.dropdown-menu {
   top: 100%;
   left: 0;
   margin-top: 10px;
-  background-color: #37b24d;
+  background-color: white;
   border-radius: 4px;
+  padding: 10px 10px 10px 0px;
+  transition: all 2s ease;
+  min-width: auto;
+  padding-right: 0;
 }
-#header nav ul.dropdown-menu[data-bs-popper] li a {
-  color: white;
+#header nav ul.dropdown-menu li a {
+  color: #333;
 }
-#header nav ul.dropdown-menu[data-bs-popper] li a:hover {
-  background-color: #d7f0db;
+#header nav ul.dropdown-menu li a:hover {
   color: #37b24d;
+  background-color: white;
+  font-weight: 500;
+}
+#header nav .dropdown-menu {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: block !important; /* Keep it always in flow for transition */
+  visibility: hidden;
+  pointer-events: none;
+  height: auto !important;
+}
+#header nav .dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 #header nav ul:not(.dropdown-menu) {
   gap: 30px;
@@ -308,6 +332,7 @@ footer {
   font-weight: 500;
   font-size: 18px;
   color: #333;
+  transition: all 0.5s ease-in;
 }
 #header nav ul:not(.dropdown-menu) > li > a::before {
   content: "";
@@ -463,7 +488,7 @@ main .section-health .health-img-box .health-img.health-img--2:hover {
 }
 main .section-health .health-img-box .health-img.health-img--3 {
   z-index: 2;
-  bottom: 0;
+  bottom: 40px;
   right: 0;
 }
 main .section-health .health-img-box .health-img.health-img--3:hover {
@@ -802,6 +827,40 @@ main .appointment-form-section {
   padding: 90px 0;
   background-color: #d7f0db;
 }
+main .appointment-form-section .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  right: 0;
+  background-color: #37b24d;
+  border-radius: 4px;
+  display: none;
+  font-size: 16px;
+  z-index: 5;
+  padding: 5px 0;
+  border-radius: 4px;
+  display: block;
+  opacity: 0;
+  max-height: 0px;
+  visibility: hidden;
+  transition: all 1s ease-in-out;
+}
+main .appointment-form-section .options.show-drop {
+  opacity: 1;
+  visibility: visible;
+  max-height: 140px;
+}
+main .appointment-form-section .options.hide-drop {
+  opacity: 0;
+  visibility: hidden;
+}
+main .appointment-form-section .option {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
 main .appointment-form-section .btn-outline {
   width: 215px;
   justify-content: flex-start;
@@ -1092,6 +1151,38 @@ main .find-a-doc-section .findDocform {
   margin-top: 30px;
   border-radius: 9px;
 }
+main .find-a-doc-section .findDocform .options {
+  top: 0px !important;
+  margin-top: 0px !important;
+}
+main .find-a-doc-section .findDocform .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  right: 0;
+  background-color: #37b24d;
+  border-radius: 4px;
+  display: none;
+  font-size: 16px;
+  z-index: 5;
+  padding: 5px 0;
+  border-radius: 4px;
+  display: block;
+  opacity: 0;
+  max-height: 0px;
+  visibility: hidden;
+  transition: all 1s ease-in-out;
+}
+main .find-a-doc-section .findDocform .options.show-drop {
+  opacity: 1;
+  visibility: visible;
+  max-height: 140px;
+}
+main .find-a-doc-section .findDocform .options.hide-drop {
+  opacity: 0;
+  visibility: hidden;
+}
 main .find-a-doc-section .findDocform .form-control,
 main .find-a-doc-section .findDocform .form-select {
   border-radius: 9px;
@@ -1329,6 +1420,25 @@ main .blog-section .card .card-footer .post-info .stats svg {
   color: #37b24d;
   stroke-width: 1.2;
 }
+main .blog-section .blog-card {
+  /* Default state (visible) */
+  max-height: 1000px; /* IMPORTANT: Set a value larger than the max possible height of any card */
+  opacity: 1;
+  transform: translateY(0);
+  overflow: hidden; /* Crucial for max-height animation */
+  /* Transition properties applied to all changes */
+  transition: max-height 2s ease-out, opacity 2s ease-out, transform 2s ease-out;
+  /* Hidden state defined by a class, to be toggled by JS */
+  /* Ensure the inner card adjusts its height naturally */
+}
+main .blog-section .blog-card.blog-card--hidden {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-20px); /* Makes it slide up slightly as it hides */
+}
+main .blog-section .blog-card .card {
+  height: auto;
+}
 
 #footer .footer-section {
   padding: 50px 0;
@@ -1425,7 +1535,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
 
 #up-arrow {
   position: fixed;
-  bottom: 10px;
+  bottom: 52px;
   right: 40px;
   width: 50px;
   height: 50px;
@@ -1492,6 +1602,11 @@ main .blog-section .card .card-footer .post-info .stats svg {
   }
   main .section-health p {
     font-size: 18px;
+  }
+  main .section-health .health-img-box .health-img.health-img--3 {
+    z-index: 2;
+    bottom: 54px;
+    right: 0;
   }
   .btn {
     font-size: 16px;
@@ -1664,6 +1779,9 @@ main .blog-section .card .card-footer .post-info .stats svg {
     display: flex;
     justify-content: center;
   }
+  #up-arrow {
+    bottom: 28px !important;
+  }
 }
 .fade-out {
   opacity: 0;
@@ -1696,6 +1814,9 @@ main .blog-section .card .card-footer .post-info .stats svg {
   }
 }
 @media (max-width: 768.98px) {
+  main .section-health .health-img-box {
+    margin-top: 40px;
+  }
   main .services-section .flip .card .card-body.front .learn-more-btn {
     display: none !important;
   }
@@ -1998,7 +2119,7 @@ main .blog-section .card .card-footer .post-info .stats svg {
     padding: 10px 20px;
   }
   main .section-health .health-img-box {
-    display: none !important;
+    margin-top: 40px;
   }
 }
 @media (max-width: 450.98px) {
@@ -2033,5 +2154,10 @@ main .blog-section .card .card-footer .post-info .stats svg {
   #up-arrow {
     right: 10px;
     height: 50px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  main .section-health {
+    padding-top: 140px !important;
   }
 }/*# sourceMappingURL=style.css.map */
