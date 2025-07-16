@@ -819,7 +819,16 @@ main {
       position: relative;
       text-align: center;
       border-radius: 9px;
-
+      margin-bottom: 30px;
+  
+      &:hover {
+        .card:not(.flipped) {
+          @media (min-width: 992px) {
+            transform: rotatey(-180deg);
+          }
+        }
+      }
+  
       .card {
         min-height: 310px;
         -webkit-transform-style: preserve-3d;
@@ -829,6 +838,7 @@ main {
         background-color: #fff;
         border-radius: 9px;
         border: none;
+        cursor: pointer;
 
         &.flipped {
           -webkit-transform: rotatey(-180deg);
@@ -871,6 +881,7 @@ main {
               color: #fff;
               border: 3px solid #fff;
               transition: 0.5s all;
+              display: none;
             }
 
             .service-box-info {
@@ -896,6 +907,7 @@ main {
               border-radius: 50%;
               margin: 10px auto 0;
               padding: 0;
+              transition: all 0.3s ease;
             }
 
             .service-box-info {
@@ -1017,6 +1029,7 @@ main {
               justify-content: space-between;
               padding: 12px 20px;
               border-bottom: 1px solid #ccc;
+              transition: all 0.3s ease;
 
               &:last-child {
                 border-bottom: none;

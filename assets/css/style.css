@@ -639,6 +639,12 @@ main .services-section .flip {
   position: relative;
   text-align: center;
   border-radius: 9px;
+  margin-bottom: 30px;
+}
+@media (min-width: 992px) {
+  main .services-section .flip:hover .card:not(.flipped) {
+    transform: rotatey(-180deg);
+  }
 }
 main .services-section .flip .card {
   min-height: 310px;
@@ -649,6 +655,7 @@ main .services-section .flip .card {
   background-color: #fff;
   border-radius: 9px;
   border: none;
+  cursor: pointer;
 }
 main .services-section .flip .card.flipped {
   transform: rotatey(-180deg);
@@ -684,6 +691,7 @@ main .services-section .flip .card .card-body.front .learn-more-btn {
   color: #fff;
   border: 3px solid #fff;
   transition: 0.5s all;
+  display: none;
 }
 main .services-section .flip .card .card-body.front .service-box-info {
   padding-bottom: 0;
@@ -705,6 +713,7 @@ main .services-section .flip .card .card-body.back .btn-arrow {
   border-radius: 50%;
   margin: 10px auto 0;
   padding: 0;
+  transition: all 0.3s ease;
 }
 main .services-section .flip .card .card-body.back .service-box-info {
   height: auto;
@@ -812,6 +821,7 @@ main .services-section .flip .card .card-body .service-list div {
   justify-content: space-between;
   padding: 12px 20px;
   border-bottom: 1px solid #ccc;
+  transition: all 0.3s ease;
 }
 main .services-section .flip .card .card-body .service-list div:last-child {
   border-bottom: none;

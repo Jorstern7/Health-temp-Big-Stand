@@ -116,28 +116,30 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================    Flip Cards     =====================================
   // ====================================================================================
 
-  const flips = document.querySelectorAll(".flip");
-
-  // Set up mobile observer once
-  let io;
-  if (window.innerWidth < 768) {
-    io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(({ target, isIntersecting }) => {
-          const card = target.querySelector(".card");
-          card.classList.toggle("flipped", isIntersecting);
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    flips.forEach((flip) => io.observe(flip));
-  }
-
-  flips.forEach((flip) => {
-    const card = flip.querySelector(".card");
-    const learnMoreBtn = flip.querySelector(".learn-more-btn");
-
+  document.addEventListener("DOMContentLoaded", function() {
+    const flips = document.querySelectorAll(".flip");
+  
+    // Mobile behavior (Intersection Observer)
+    if (window.innerWidth < 768) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(({ target, isIntersecting }) => {
+            const card = target.querySelector(".card");
+            card.classList.toggle("flipped", isIntersecting);
+          });
+        },
+        { threshold: 0.6 }
+      );
+  
+      flips.forEach((flip) => io.observe(flip));
+    }
+  
+    // Tablet behavior (click to flip)
+    if (window.innerWidth >= 576 && window.innerWidth < 992) {
+      flips.forEach((flip) => {
+        const card = flip.querySelector(".card");
+        const learnMoreBtn = flip.querySelector(".learn-more-btn");
+  
     // if (window.innerWidth >= 992) {
     //   // Desktop: hover to flip
     //   flip.addEventListener("mouseenter", () => card.classList.add("flipped"));
@@ -145,50 +147,69 @@ document.addEventListener("DOMContentLoaded", function () {
     //     card.classList.remove("flipped")
     //   );
     // } 
-     if (window.innerWidth >= 576) {
-      // Tablet: click to flip/unflip
-      if (!learnMoreBtn) return;
+        if (!learnMoreBtn) return;
 
 
-      // ============== Old Logic ============== 
-      // learnMoreBtn.addEventListener("click", (e) => {
-      //   e.stopPropagation(); // prevent immediate document click
-      //   learnMoreBtn.style.opacity = "0"; // hide the button
-      //   setTimeout(() => card.classList.add("flipped"), 200);
-      // });
-// ==================== End ============
-
-
-
-      learnMoreBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-
-  // Flip back all other flipped cards first
-  flips.forEach((otherFlip) => {
-    const otherCard = otherFlip.querySelector(".card");
-    const otherBtn = otherFlip.querySelector(".learn-more-btn");
-    if (otherCard !== card && otherCard.classList.contains("flipped")) {
-      otherCard.classList.remove("flipped");
-      if (otherBtn) otherBtn.style.opacity = "1";
-    }
-  });
-
-  // Then flip the current card
-  learnMoreBtn.style.opacity = "0";
-  setTimeout(() => card.classList.add("flipped"), 200);
-});
-
-
-
-
-      document.addEventListener("click", (e) => {
-        if (!flip.contains(e.target) && card.classList.contains("flipped")) {
-          card.classList.remove("flipped");
-          learnMoreBtn.style.opacity = "1"; // restore button
-        }
+        // ============== Old Logic ============== 
+        // learnMoreBtn.addEventListener("click", (e) => {
+        //   e.stopPropagation(); // prevent immediate document click
+        //   learnMoreBtn.style.opacity = "0"; // hide the button
+        //   setTimeout(() => card.classList.add("flipped"), 200);
+        // });
+  // ==================== End ============
+  
+  
+  
+        learnMoreBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+  
+          // Flip back all other flipped cards first
+          flips.forEach((otherFlip) => {
+            const otherCard = otherFlip.querySelector(".card");
+            const otherBtn = otherFlip.querySelector(".learn-more-btn");
+            if (otherCard !== card && otherCard.classList.contains("flipped")) {
+              otherCard.classList.remove("flipped");
+              if (otherBtn) otherBtn.style.opacity = "1";
+            }
+          });
+  
+          // Then flip the current card
+          learnMoreBtn.style.opacity = "0";
+          setTimeout(() => card.classList.add("flipped"), 200);
+        });
+  
+        document.addEventListener("click", (e) => {
+          if (!flip.contains(e.target) && card.classList.contains("flipped")) {
+            card.classList.remove("flipped");
+            const btn = flip.querySelector(".learn-more-btn");
+            if (btn) btn.style.opacity = "1";
+          }
+        });
       });
     }
-    // else (<576) — already handled by IntersectionObserver; no click handlers
+  
+    // Desktop behavior (hover to flip)
+    if (window.innerWidth >= 992) {
+      flips.forEach((flip) => {
+        const card = flip.querySelector(".card");
+  
+        flip.addEventListener("mouseenter", () => {
+          // Flip back all other cards first
+          flips.forEach((otherFlip) => {
+            const otherCard = otherFlip.querySelector(".card");
+            if (otherCard !== card && otherCard.classList.contains("flipped")) {
+              otherCard.classList.remove("flipped");
+            }
+          });
+          // Then flip the current card
+          card.classList.add("flipped");
+        });
+  
+        flip.addEventListener("mouseleave", () => {
+          card.classList.remove("flipped");
+        });
+      });
+    }
   });
 
 
