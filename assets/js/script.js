@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================       Blog Sectoin     =====================================
   // ====================================================================================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".blog-section .row");
   const cards = container.querySelectorAll(":scope > .blog-card");
   const toggleBtn = document.getElementById("toggleBlogBtn");
@@ -465,68 +465,72 @@ document.addEventListener("DOMContentLoaded", function () {
   const transitionDuration = 800; // Must match the CSS transition duration in milliseconds (0.8s = 800ms)
 
   let visibleCount = cardsToShow;
-let firstLoad = true;
-function updateCardsVisibility() {
-  cards.forEach((card, index) => {
-    if (index < visibleCount) {
-      // SHOW CARD
-      card.style.display = "block"; // Ensure it's visible (only needed for first load)
-      setTimeout(() => {
-        card.classList.remove("blog-card--hidden");
-      }, 10); // Allow browser to register display
-    } else {
-      if (firstLoad) {
-        // On first load, immediately hide with no animation
-        card.style.display = "none";
+  let firstLoad = true;
+  const updateCardsVisibility = () => {
+    cards.forEach((card, index) => {
+      if (index < visibleCount) {
+        // SHOW CARD
+        card.style.display = "block"; // Ensure it's visible (only needed for first load)
+        requestAnimationFrame(() => card.classList.remove("blog-card--hidden"));
       } else {
-        // HIDE with animation
-        card.classList.add("blog-card--hidden");
+        if (firstLoad) {
+          // On first load, immediately hide with no animation
+          card.style.display = "none";
+        } else {
+          // HIDE with animation
+          card.classList.add("blog-card--hidden");
+          setTimeout(() => {
+            if (index >= visibleCount) card.style.display = "none";
+          }, transitionDuration);
+        }
       }
-    }
-  });
+    });
 
-  firstLoad = false; // Now we only animate
-
-  // Update button text and visibility
-  if (cards.length <= cardsToShow) {
-    toggleBtn.style.display = "none";
-  } else {
-    toggleBtn.style.display = "inline-block";
+    firstLoad = false;
     toggleBtn.textContent = visibleCount >= cards.length ? "Show Less" : "Show More";
-  }
-}
+    toggleBtn.style.display = cards.length <= cardsToShow ? "none" : "inline-block";
+  };
 
-  toggleBtn.addEventListener("click", function () {
-    // Disable button temporarily to prevent rapid clicks during transition
+  // ──────────────────────────────────────────────────────────────
+  //  Utility: smooth-scroll to an element but stop 98 px earlier
+  // ──────────────────────────────────────────────────────────────
+  const SCROLL_OFFSET = 113;            // change once, use everywhere
+  function scrollToWithOffset(el) {
+    const y = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+
+  // --------------------------------------------------------------
+  //  Toggle handler
+  // --------------------------------------------------------------
+  toggleBtn.addEventListener("click", () => {
     toggleBtn.disabled = true;
 
-    if (visibleCount >= cards.length) {
-      // If currently showing all, revert to initial count
-      visibleCount = cardsToShow;
-    } else {
-      // Show more cards, up to the total count
-      visibleCount = Math.min(visibleCount + cardsToShow, cards.length);
-    }
+    const expanding = visibleCount < cards.length;
+    visibleCount = expanding
+      ? Math.min(visibleCount + cardsToShow, cards.length)
+      : cardsToShow;
 
     updateCardsVisibility();
 
-    // Re-enable button after the longest possible transition duration
+    // Scroll to the last *visible* card after animation
+    const target = cards[visibleCount - 1];
     setTimeout(() => {
+      // target.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToWithOffset(target);   // ⬅️ use the helper
       toggleBtn.disabled = false;
     }, transitionDuration);
   });
 
-  // Initial setup: Hide cards beyond the initial count on page load
-  // We need to apply the 'hidden' class immediately for initial state
-
+  // --------------------------------------------------------------
+  //  Initial state
+  // --------------------------------------------------------------
   cards.forEach((card, index) => {
-    if (index >= cardsToShow) {
-      card.classList.add("blog-card--hidden");
-      // card.style.display = "none"; 
-    }
+    if (index >= cardsToShow) card.classList.add("blog-card--hidden");
   });
-  updateCardsVisibility(); // Call to set initial button state
+  updateCardsVisibility();
 });
+
 
 
 

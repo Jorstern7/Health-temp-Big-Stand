@@ -1775,6 +1775,8 @@ main {
   // }
 
 
+$blog-transition: 0.8s; // keep in sync with JS (800 ms)
+
 .blog-section {
   padding: 50px 0;
 
@@ -1801,6 +1803,9 @@ main {
     font-weight: bold;
   }
 
+  // ------------------------------------------------------------------
+  //  Card
+  // ------------------------------------------------------------------
   .card {
     background-color: #fff;
     border-radius: 9px;
@@ -1828,31 +1833,30 @@ main {
     }
 
     .card-footer {
-      align-items: center;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 10px 20px;
       border-top: 1px solid #ccc;
       background-color: #fff;
       border-radius: 0 0 9px 9px;
 
       .post-author {
-        gap: 10px;
         display: flex;
         align-items: center;
+        gap: 10px;
 
         img {
           width: 60px;
           height: 60px;
           border-radius: 50%;
-          overflow: hidden;
-          border: 2px solid #ddd;
           object-fit: cover;
+          border: 2px solid #ddd;
         }
 
         h6 {
           font-size: 14px;
-          margin-bottom: 0;
+          margin: 0;
           color: #555;
         }
       }
@@ -1873,29 +1877,27 @@ main {
     }
   }
 
-  // --- UPDATED TRANSITION STYLES FOR BLOG CARDS ---
+  // ------------------------------------------------------------------
+  //  Show / hide behaviour
+  // ------------------------------------------------------------------
   .blog-card {
-    /* Default state (visible) */
-    max-height: 1000px; /* IMPORTANT: Set a value larger than the max possible height of any card */
+    /* visible */
+    max-height: 1000px; // greater than any card’s height
     opacity: 1;
     transform: translateY(0);
-    overflow: hidden; /* Crucial for max-height animation */
-    /* Transition properties applied to all changes */
-    transition: max-height 2s ease-out, opacity 2s ease-out, transform 2s ease-out;
+    overflow: hidden;
+    transition: max-height $blog-transition ease-out,
+                opacity     $blog-transition ease-out,
+                transform   $blog-transition ease-out;
 
-    /* Hidden state defined by a class, to be toggled by JS */
     &.blog-card--hidden {
       max-height: 0;
       opacity: 0;
-      transform: translateY(-20px); /* Makes it slide up slightly as it hides */
-    }
-
-    /* Ensure the inner card adjusts its height naturally */
-    .card {
-      height: auto;
+      transform: translateY(-20px);
     }
   }
 }
+
 
 
 

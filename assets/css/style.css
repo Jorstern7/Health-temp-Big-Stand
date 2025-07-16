@@ -1392,31 +1392,30 @@ main .blog-section .card .card-body p {
   text-align: left;
 }
 main .blog-section .card .card-footer {
-  align-items: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
   border-top: 1px solid #ccc;
   background-color: #fff;
   border-radius: 0 0 9px 9px;
 }
 main .blog-section .card .card-footer .post-author {
-  gap: 10px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 main .blog-section .card .card-footer .post-author img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #ddd;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 2px solid #ddd;
 }
 main .blog-section .card .card-footer .post-author h6 {
   font-size: 14px;
-  margin-bottom: 0;
+  margin: 0;
   color: #555;
 }
 main .blog-section .card .card-footer .post-info {
@@ -1431,23 +1430,17 @@ main .blog-section .card .card-footer .post-info .stats svg {
   stroke-width: 1.2;
 }
 main .blog-section .blog-card {
-  /* Default state (visible) */
-  max-height: 1000px; /* IMPORTANT: Set a value larger than the max possible height of any card */
+  /* visible */
+  max-height: 1000px;
   opacity: 1;
   transform: translateY(0);
-  overflow: hidden; /* Crucial for max-height animation */
-  /* Transition properties applied to all changes */
-  transition: max-height 2s ease-out, opacity 2s ease-out, transform 2s ease-out;
-  /* Hidden state defined by a class, to be toggled by JS */
-  /* Ensure the inner card adjusts its height naturally */
+  overflow: hidden;
+  transition: max-height 0.8s ease-out, opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 main .blog-section .blog-card.blog-card--hidden {
   max-height: 0;
   opacity: 0;
-  transform: translateY(-20px); /* Makes it slide up slightly as it hides */
-}
-main .blog-section .blog-card .card {
-  height: auto;
+  transform: translateY(-20px);
 }
 
 #footer .footer-section {
