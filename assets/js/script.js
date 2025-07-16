@@ -539,30 +539,57 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!appointmentSection) return;
 
   const customSelects = appointmentSection.querySelectorAll(".custom-select");
+  let activeSelect = null;
+
+  // Close all dropdowns except the one passed as parameter
+  function closeAllDropdowns(exceptThis = null) {
+    customSelects.forEach(select => {
+      if (select !== exceptThis) {
+        const options = select.querySelector(".options");
+        options.classList.remove("show-drop");
+      }
+    });
+  }
+
+  // Handle clicks outside dropdowns
+  document.addEventListener("click", function (e) {
+    const isClickInside = Array.from(customSelects).some(select => 
+      select.contains(e.target)
+    );
+
+    if (!isClickInside) {
+      closeAllDropdowns();
+      activeSelect = null;
+    }
+  });
 
   customSelects.forEach(customSelect => {
     const selected = customSelect.querySelector(".selected");
     const options = customSelect.querySelector(".options");
-    let hideTimeout;
 
-    selected.addEventListener("click", function () {
-      // options.style.display = "block";
-      options.classList.add("show-drop");
+    selected.addEventListener("click", function (e) {
+      e.stopPropagation();
       
-
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(function () {
-        // options.style.display = "none";
+      // If this dropdown is already active, close it
+      if (customSelect === activeSelect) {
         options.classList.remove("show-drop");
-      }, 2600);
+        activeSelect = null;
+        return;
+      }
+
+      // Close all other dropdowns and open this one
+      closeAllDropdowns(customSelect);
+      options.classList.add("show-drop");
+      activeSelect = customSelect;
     });
 
+    // Handle option selection
     customSelect.querySelectorAll(".option").forEach(option => {
-      option.addEventListener("click", function () {
+      option.addEventListener("click", function (e) {
+        e.stopPropagation();
         selected.textContent = this.textContent;
-        // options.style.display = "none";
-         options.classList.remove("show-drop");
-        clearTimeout(hideTimeout);
+        options.classList.remove("show-drop");
+        activeSelect = null;
       });
     });
   });
