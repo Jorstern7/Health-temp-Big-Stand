@@ -635,20 +635,49 @@ main .services-section h1 {
   font-weight: bold;
 }
 main .services-section .flip {
-  perspective: 800;
+  perspective: 800px;
   position: relative;
   text-align: center;
   border-radius: 9px;
+  margin-bottom: 30px;
+}
+@-moz-document url-prefix() {
+  main .services-section .flip {
+    transform-style: preserve-3d;
+    overflow: visible;
+  }
+}
+@media (min-width: 992px) {
+  main .services-section .flip:hover .card:not(.flipped) {
+    transform: rotatey(-180deg);
+  }
+  @-moz-document url-prefix() {
+    main .services-section .flip:hover .card:not(.flipped) .front {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    main .services-section .flip:hover .card:not(.flipped) .back {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
 main .services-section .flip .card {
   min-height: 310px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: 0.5s;
   transform-style: preserve-3d;
   transition: 0.5s;
   background-color: #fff;
   border-radius: 9px;
   border: none;
+  cursor: pointer;
+  position: relative;
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card {
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
 }
 main .services-section .flip .card.flipped {
   transform: rotatey(-180deg);
@@ -665,11 +694,28 @@ main .services-section .flip .card .card-body {
   height: 100%;
   border-radius: 9px;
   border: 1px solid #37b24d;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card .card-body {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
 }
 main .services-section .flip .card .card-body.front {
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card .card-body.front {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
 }
 main .services-section .flip .card .card-body.front .learn-more-btn {
   bottom: -27px;
@@ -684,15 +730,24 @@ main .services-section .flip .card .card-body.front .learn-more-btn {
   color: #fff;
   border: 3px solid #fff;
   transition: 0.5s all;
+  display: none;
 }
 main .services-section .flip .card .card-body.front .service-box-info {
   padding-bottom: 0;
 }
 main .services-section .flip .card .card-body.back {
-  transform: rotatey(-180deg);
+  transform: rotatey(180deg);
   position: absolute;
   width: 100%;
   z-index: 1;
+  backface-visibility: hidden;
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card .card-body.back {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
 }
 main .services-section .flip .card .card-body.back .btn-arrow {
   opacity: 0;
@@ -705,6 +760,7 @@ main .services-section .flip .card .card-body.back .btn-arrow {
   border-radius: 50%;
   margin: 10px auto 0;
   padding: 0;
+  transition: all 0.3s ease;
 }
 main .services-section .flip .card .card-body.back .service-box-info {
   height: auto;
@@ -812,6 +868,7 @@ main .services-section .flip .card .card-body .service-list div {
   justify-content: space-between;
   padding: 12px 20px;
   border-bottom: 1px solid #ccc;
+  transition: all 0.3s ease;
 }
 main .services-section .flip .card .card-body .service-list div:last-child {
   border-bottom: none;
@@ -1382,31 +1439,30 @@ main .blog-section .card .card-body p {
   text-align: left;
 }
 main .blog-section .card .card-footer {
-  align-items: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
   border-top: 1px solid #ccc;
   background-color: #fff;
   border-radius: 0 0 9px 9px;
 }
 main .blog-section .card .card-footer .post-author {
-  gap: 10px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 main .blog-section .card .card-footer .post-author img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #ddd;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 2px solid #ddd;
 }
 main .blog-section .card .card-footer .post-author h6 {
   font-size: 14px;
-  margin-bottom: 0;
+  margin: 0;
   color: #555;
 }
 main .blog-section .card .card-footer .post-info {
@@ -1421,23 +1477,17 @@ main .blog-section .card .card-footer .post-info .stats svg {
   stroke-width: 1.2;
 }
 main .blog-section .blog-card {
-  /* Default state (visible) */
-  max-height: 1000px; /* IMPORTANT: Set a value larger than the max possible height of any card */
+  /* visible */
+  max-height: 1000px;
   opacity: 1;
   transform: translateY(0);
-  overflow: hidden; /* Crucial for max-height animation */
-  /* Transition properties applied to all changes */
-  transition: max-height 2s ease-out, opacity 2s ease-out, transform 2s ease-out;
-  /* Hidden state defined by a class, to be toggled by JS */
-  /* Ensure the inner card adjusts its height naturally */
+  overflow: hidden;
+  transition: max-height 0.8s ease-out, opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 main .blog-section .blog-card.blog-card--hidden {
   max-height: 0;
   opacity: 0;
-  transform: translateY(-20px); /* Makes it slide up slightly as it hides */
-}
-main .blog-section .blog-card .card {
-  height: auto;
+  transform: translateY(-20px);
 }
 
 #footer .footer-section {

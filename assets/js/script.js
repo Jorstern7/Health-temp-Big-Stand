@@ -116,28 +116,30 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================    Flip Cards     =====================================
   // ====================================================================================
 
-  const flips = document.querySelectorAll(".flip");
-
-  // Set up mobile observer once
-  let io;
-  if (window.innerWidth < 768) {
-    io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(({ target, isIntersecting }) => {
-          const card = target.querySelector(".card");
-          card.classList.toggle("flipped", isIntersecting);
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    flips.forEach((flip) => io.observe(flip));
-  }
-
-  flips.forEach((flip) => {
-    const card = flip.querySelector(".card");
-    const learnMoreBtn = flip.querySelector(".learn-more-btn");
-
+  document.addEventListener("DOMContentLoaded", function() {
+    const flips = document.querySelectorAll(".flip");
+  
+    // Mobile behavior (Intersection Observer)
+    if (window.innerWidth < 768) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(({ target, isIntersecting }) => {
+            const card = target.querySelector(".card");
+            card.classList.toggle("flipped", isIntersecting);
+          });
+        },
+        { threshold: 0.6 }
+      );
+  
+      flips.forEach((flip) => io.observe(flip));
+    }
+  
+    // Tablet behavior (click to flip)
+    if (window.innerWidth >= 576 && window.innerWidth < 992) {
+      flips.forEach((flip) => {
+        const card = flip.querySelector(".card");
+        const learnMoreBtn = flip.querySelector(".learn-more-btn");
+  
     // if (window.innerWidth >= 992) {
     //   // Desktop: hover to flip
     //   flip.addEventListener("mouseenter", () => card.classList.add("flipped"));
@@ -145,50 +147,69 @@ document.addEventListener("DOMContentLoaded", function () {
     //     card.classList.remove("flipped")
     //   );
     // } 
-     if (window.innerWidth >= 576) {
-      // Tablet: click to flip/unflip
-      if (!learnMoreBtn) return;
+        if (!learnMoreBtn) return;
 
 
-      // ============== Old Logic ============== 
-      // learnMoreBtn.addEventListener("click", (e) => {
-      //   e.stopPropagation(); // prevent immediate document click
-      //   learnMoreBtn.style.opacity = "0"; // hide the button
-      //   setTimeout(() => card.classList.add("flipped"), 200);
-      // });
-// ==================== End ============
-
-
-
-      learnMoreBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-
-  // Flip back all other flipped cards first
-  flips.forEach((otherFlip) => {
-    const otherCard = otherFlip.querySelector(".card");
-    const otherBtn = otherFlip.querySelector(".learn-more-btn");
-    if (otherCard !== card && otherCard.classList.contains("flipped")) {
-      otherCard.classList.remove("flipped");
-      if (otherBtn) otherBtn.style.opacity = "1";
-    }
-  });
-
-  // Then flip the current card
-  learnMoreBtn.style.opacity = "0";
-  setTimeout(() => card.classList.add("flipped"), 200);
-});
-
-
-
-
-      document.addEventListener("click", (e) => {
-        if (!flip.contains(e.target) && card.classList.contains("flipped")) {
-          card.classList.remove("flipped");
-          learnMoreBtn.style.opacity = "1"; // restore button
-        }
+        // ============== Old Logic ============== 
+        // learnMoreBtn.addEventListener("click", (e) => {
+        //   e.stopPropagation(); // prevent immediate document click
+        //   learnMoreBtn.style.opacity = "0"; // hide the button
+        //   setTimeout(() => card.classList.add("flipped"), 200);
+        // });
+  // ==================== End ============
+  
+  
+  
+        learnMoreBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+  
+          // Flip back all other flipped cards first
+          flips.forEach((otherFlip) => {
+            const otherCard = otherFlip.querySelector(".card");
+            const otherBtn = otherFlip.querySelector(".learn-more-btn");
+            if (otherCard !== card && otherCard.classList.contains("flipped")) {
+              otherCard.classList.remove("flipped");
+              if (otherBtn) otherBtn.style.opacity = "1";
+            }
+          });
+  
+          // Then flip the current card
+          learnMoreBtn.style.opacity = "0";
+          setTimeout(() => card.classList.add("flipped"), 200);
+        });
+  
+        document.addEventListener("click", (e) => {
+          if (!flip.contains(e.target) && card.classList.contains("flipped")) {
+            card.classList.remove("flipped");
+            const btn = flip.querySelector(".learn-more-btn");
+            if (btn) btn.style.opacity = "1";
+          }
+        });
       });
     }
-    // else (<576) — already handled by IntersectionObserver; no click handlers
+  
+    // Desktop behavior (hover to flip)
+    if (window.innerWidth >= 992) {
+      flips.forEach((flip) => {
+        const card = flip.querySelector(".card");
+  
+        flip.addEventListener("mouseenter", () => {
+          // Flip back all other cards first
+          flips.forEach((otherFlip) => {
+            const otherCard = otherFlip.querySelector(".card");
+            if (otherCard !== card && otherCard.classList.contains("flipped")) {
+              otherCard.classList.remove("flipped");
+            }
+          });
+          // Then flip the current card
+          card.classList.add("flipped");
+        });
+  
+        flip.addEventListener("mouseleave", () => {
+          card.classList.remove("flipped");
+        });
+      });
+    }
   });
 
 
@@ -390,21 +411,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
   const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
 
-  let hideTimeout;
+  // let hideTimeout;
 
   dropdownToggle.addEventListener('click', function (e) {
     if (window.innerWidth >= 992) {
       e.preventDefault();
+      e.stopImmediatePropagation();
 
       dropdownMenu.classList.toggle('show');
 
-      clearTimeout(hideTimeout);
+      // clearTimeout(hideTimeout);
 
-      if (dropdownMenu.classList.contains('show')) {
-        hideTimeout = setTimeout(() => {
-          dropdownMenu.classList.remove('show');
-        }, 2600);
-      }
+      // if (dropdownMenu.classList.contains('show')) {
+      //   hideTimeout = setTimeout(() => {
+      //     dropdownMenu.classList.remove('show');
+      //   }, 2600);
+      // }
     }
   });
 
@@ -414,7 +436,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isClickInside) {
       dropdownMenu.classList.remove('show');
-      clearTimeout(hideTimeout);
+      // clearTimeout(hideTimeout);
     }
   });
 
@@ -424,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
   dropdownLinks.forEach(link => {
     link.addEventListener('click', () => {
       dropdownMenu.classList.remove('show');
-      clearTimeout(hideTimeout);
+      // clearTimeout(hideTimeout);
     });
   });
 });
@@ -435,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================       Blog Sectoin     =====================================
   // ====================================================================================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".blog-section .row");
   const cards = container.querySelectorAll(":scope > .blog-card");
   const toggleBtn = document.getElementById("toggleBlogBtn");
@@ -443,68 +465,72 @@ document.addEventListener("DOMContentLoaded", function () {
   const transitionDuration = 800; // Must match the CSS transition duration in milliseconds (0.8s = 800ms)
 
   let visibleCount = cardsToShow;
-let firstLoad = true;
-function updateCardsVisibility() {
-  cards.forEach((card, index) => {
-    if (index < visibleCount) {
-      // SHOW CARD
-      card.style.display = "block"; // Ensure it's visible (only needed for first load)
-      setTimeout(() => {
-        card.classList.remove("blog-card--hidden");
-      }, 10); // Allow browser to register display
-    } else {
-      if (firstLoad) {
-        // On first load, immediately hide with no animation
-        card.style.display = "none";
+  let firstLoad = true;
+  const updateCardsVisibility = () => {
+    cards.forEach((card, index) => {
+      if (index < visibleCount) {
+        // SHOW CARD
+        card.style.display = "block"; // Ensure it's visible (only needed for first load)
+        requestAnimationFrame(() => card.classList.remove("blog-card--hidden"));
       } else {
-        // HIDE with animation
-        card.classList.add("blog-card--hidden");
+        if (firstLoad) {
+          // On first load, immediately hide with no animation
+          card.style.display = "none";
+        } else {
+          // HIDE with animation
+          card.classList.add("blog-card--hidden");
+          setTimeout(() => {
+            if (index >= visibleCount) card.style.display = "none";
+          }, transitionDuration);
+        }
       }
-    }
-  });
+    });
 
-  firstLoad = false; // Now we only animate
-
-  // Update button text and visibility
-  if (cards.length <= cardsToShow) {
-    toggleBtn.style.display = "none";
-  } else {
-    toggleBtn.style.display = "inline-block";
+    firstLoad = false;
     toggleBtn.textContent = visibleCount >= cards.length ? "Show Less" : "Show More";
-  }
-}
+    toggleBtn.style.display = cards.length <= cardsToShow ? "none" : "inline-block";
+  };
 
-  toggleBtn.addEventListener("click", function () {
-    // Disable button temporarily to prevent rapid clicks during transition
+  // ──────────────────────────────────────────────────────────────
+  //  Utility: smooth-scroll to an element but stop 98 px earlier
+  // ──────────────────────────────────────────────────────────────
+  const SCROLL_OFFSET = 113;            // change once, use everywhere
+  function scrollToWithOffset(el) {
+    const y = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+
+  // --------------------------------------------------------------
+  //  Toggle handler
+  // --------------------------------------------------------------
+  toggleBtn.addEventListener("click", () => {
     toggleBtn.disabled = true;
 
-    if (visibleCount >= cards.length) {
-      // If currently showing all, revert to initial count
-      visibleCount = cardsToShow;
-    } else {
-      // Show more cards, up to the total count
-      visibleCount = Math.min(visibleCount + cardsToShow, cards.length);
-    }
+    const expanding = visibleCount < cards.length;
+    visibleCount = expanding
+      ? Math.min(visibleCount + cardsToShow, cards.length)
+      : cardsToShow;
 
     updateCardsVisibility();
 
-    // Re-enable button after the longest possible transition duration
+    // Scroll to the last *visible* card after animation
+    const target = cards[visibleCount - 1];
     setTimeout(() => {
+      // target.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToWithOffset(target);   // ⬅️ use the helper
       toggleBtn.disabled = false;
     }, transitionDuration);
   });
 
-  // Initial setup: Hide cards beyond the initial count on page load
-  // We need to apply the 'hidden' class immediately for initial state
-
+  // --------------------------------------------------------------
+  //  Initial state
+  // --------------------------------------------------------------
   cards.forEach((card, index) => {
-    if (index >= cardsToShow) {
-      card.classList.add("blog-card--hidden");
-      // card.style.display = "none"; 
-    }
+    if (index >= cardsToShow) card.classList.add("blog-card--hidden");
   });
-  updateCardsVisibility(); // Call to set initial button state
+  updateCardsVisibility();
 });
+
 
 
 
@@ -517,30 +543,57 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!appointmentSection) return;
 
   const customSelects = appointmentSection.querySelectorAll(".custom-select");
+  let activeSelect = null;
+
+  // Close all dropdowns except the one passed as parameter
+  function closeAllDropdowns(exceptThis = null) {
+    customSelects.forEach(select => {
+      if (select !== exceptThis) {
+        const options = select.querySelector(".options");
+        options.classList.remove("show-drop");
+      }
+    });
+  }
+
+  // Handle clicks outside dropdowns
+  document.addEventListener("click", function (e) {
+    const isClickInside = Array.from(customSelects).some(select => 
+      select.contains(e.target)
+    );
+
+    if (!isClickInside) {
+      closeAllDropdowns();
+      activeSelect = null;
+    }
+  });
 
   customSelects.forEach(customSelect => {
     const selected = customSelect.querySelector(".selected");
     const options = customSelect.querySelector(".options");
-    let hideTimeout;
 
-    selected.addEventListener("click", function () {
-      // options.style.display = "block";
-      options.classList.add("show-drop");
+    selected.addEventListener("click", function (e) {
+      e.stopPropagation();
       
-
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(function () {
-        // options.style.display = "none";
+      // If this dropdown is already active, close it
+      if (customSelect === activeSelect) {
         options.classList.remove("show-drop");
-      }, 2600);
+        activeSelect = null;
+        return;
+      }
+
+      // Close all other dropdowns and open this one
+      closeAllDropdowns(customSelect);
+      options.classList.add("show-drop");
+      activeSelect = customSelect;
     });
 
+    // Handle option selection
     customSelect.querySelectorAll(".option").forEach(option => {
-      option.addEventListener("click", function () {
+      option.addEventListener("click", function (e) {
+        e.stopPropagation();
         selected.textContent = this.textContent;
-        // options.style.display = "none";
-         options.classList.remove("show-drop");
-        clearTimeout(hideTimeout);
+        options.classList.remove("show-drop");
+        activeSelect = null;
       });
     });
   });

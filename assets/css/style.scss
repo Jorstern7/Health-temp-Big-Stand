@@ -814,21 +814,57 @@ main {
     }
 
     .flip {
-      -webkit-perspective: 800;
-      perspective: 800;
+      -webkit-perspective: 800px;
+      perspective: 800px;
       position: relative;
       text-align: center;
       border-radius: 9px;
+      margin-bottom: 30px;
 
+      // Firefox-specific fix
+      @-moz-document url-prefix() {
+        transform-style: preserve-3d;
+        overflow: visible; // Important for Firefox
+      }
+
+      &:hover {
+        .card:not(.flipped) {
+          @media (min-width: 992px) {
+            transform: rotatey(-180deg);
+          
+            // Firefox-specific hover fix
+            @-moz-document url-prefix() {
+              .front {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+              }
+              .back {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+  
       .card {
         min-height: 310px;
         -webkit-transform-style: preserve-3d;
-        -webkit-transition: 0.5s;
         transform-style: preserve-3d;
+        -webkit-transition: 0.5s;
         transition: 0.5s;
         background-color: #fff;
         border-radius: 9px;
         border: none;
+        cursor: pointer;
+        position: relative; // Added for better 3D context
+
+        // Firefox-specific fix
+        @-moz-document url-prefix() {
+          backface-visibility: hidden;
+          transform: translate3d(0,0,0); // Force hardware acceleration
+        }
 
         &.flipped {
           -webkit-transform: rotatey(-180deg);
@@ -853,11 +889,27 @@ main {
           height: 100%;
           border-radius: 9px;
           border: 1px solid #37b24d;
+          transform-style: preserve-3d; // Added for Firefox
+          position: absolute; // Changed for Firefox
+          top: 0;
+          left: 0;
+          width: 100%;
+  
+          // Firefox-specific fix
+          @-moz-document url-prefix() {
+            will-change: transform;
+            transform: translate3d(0,0,0);
+          }
 
           &.front {
             position: absolute;
             width: 100%;
-            z-index: 1;
+            z-index: 2; // Increased from 1 to 2
+            transform: rotateY(0deg); // Explicitly set
+          
+            @-moz-document url-prefix() {
+              transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
 
             .learn-more-btn {
               bottom: -27px;
@@ -871,6 +923,7 @@ main {
               color: #fff;
               border: 3px solid #fff;
               transition: 0.5s all;
+              display: none;
             }
 
             .service-box-info {
@@ -879,11 +932,18 @@ main {
           }
 
           &.back {
-            -webkit-transform: rotatey(-180deg);
-            transform: rotatey(-180deg);
+            -webkit-transform: rotatey(180deg);
+            transform: rotatey(180deg);
             position: absolute;
             width: 100%;
             z-index: 1;
+            backface-visibility: hidden; // Explicitly set
+          
+            @-moz-document url-prefix() {
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
 
             .btn-arrow {
               opacity: 0;
@@ -896,6 +956,7 @@ main {
               border-radius: 50%;
               margin: 10px auto 0;
               padding: 0;
+              transition: all 0.3s ease;
             }
 
             .service-box-info {
@@ -1007,16 +1068,15 @@ main {
           .service-list {
             display: flex;
             flex-direction: column;
-            // gap: 12px;
             justify-content: center;
             align-items: stretch;
 
-            // padding: 20px 0;
             div {
               display: flex;
               justify-content: space-between;
               padding: 12px 20px;
               border-bottom: 1px solid #ccc;
+              transition: all 0.3s ease;
 
               &:last-child {
                 border-bottom: none;
@@ -1032,8 +1092,6 @@ main {
 
               span {
                 font-size: 16px;
-                // color: #37b24d;
-                // font-weight: bold;
               }
             }
           }
@@ -1762,6 +1820,8 @@ main {
   // }
 
 
+$blog-transition: 0.8s; // keep in sync with JS (800 ms)
+
 .blog-section {
   padding: 50px 0;
 
@@ -1788,6 +1848,9 @@ main {
     font-weight: bold;
   }
 
+  // ------------------------------------------------------------------
+  //  Card
+  // ------------------------------------------------------------------
   .card {
     background-color: #fff;
     border-radius: 9px;
@@ -1815,31 +1878,30 @@ main {
     }
 
     .card-footer {
-      align-items: center;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 10px 20px;
       border-top: 1px solid #ccc;
       background-color: #fff;
       border-radius: 0 0 9px 9px;
 
       .post-author {
-        gap: 10px;
         display: flex;
         align-items: center;
+        gap: 10px;
 
         img {
           width: 60px;
           height: 60px;
           border-radius: 50%;
-          overflow: hidden;
-          border: 2px solid #ddd;
           object-fit: cover;
+          border: 2px solid #ddd;
         }
 
         h6 {
           font-size: 14px;
-          margin-bottom: 0;
+          margin: 0;
           color: #555;
         }
       }
@@ -1860,29 +1922,27 @@ main {
     }
   }
 
-  // --- UPDATED TRANSITION STYLES FOR BLOG CARDS ---
+  // ------------------------------------------------------------------
+  //  Show / hide behaviour
+  // ------------------------------------------------------------------
   .blog-card {
-    /* Default state (visible) */
-    max-height: 1000px; /* IMPORTANT: Set a value larger than the max possible height of any card */
+    /* visible */
+    max-height: 1000px; // greater than any card’s height
     opacity: 1;
     transform: translateY(0);
-    overflow: hidden; /* Crucial for max-height animation */
-    /* Transition properties applied to all changes */
-    transition: max-height 2s ease-out, opacity 2s ease-out, transform 2s ease-out;
+    overflow: hidden;
+    transition: max-height $blog-transition ease-out,
+                opacity     $blog-transition ease-out,
+                transform   $blog-transition ease-out;
 
-    /* Hidden state defined by a class, to be toggled by JS */
     &.blog-card--hidden {
       max-height: 0;
       opacity: 0;
-      transform: translateY(-20px); /* Makes it slide up slightly as it hides */
-    }
-
-    /* Ensure the inner card adjusts its height naturally */
-    .card {
-      height: auto;
+      transform: translateY(-20px);
     }
   }
 }
+
 
 
 
