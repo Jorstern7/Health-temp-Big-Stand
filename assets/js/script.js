@@ -333,7 +333,48 @@ document.querySelectorAll(".custom-select").forEach((select) => {
 // =====================================================================================================================================
 
 
+// ==================== Auto Hide Dropdown Menu On Header ================================
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
+  const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
 
+  dropdownToggle.addEventListener('click', function (e) {
+    if (window.innerWidth < 992) {
+      // Mobile/tablet behavior - toggle collapse
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      
+      // Close all other dropdowns first
+      document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+        if (menu !== dropdownMenu) menu.classList.remove('show');
+      });
+      
+      // Toggle this dropdown
+      dropdownMenu.classList.toggle('show');
+    }
+    // Desktop behavior remains the same
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth < 992) {
+      const isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
+      if (!isClickInside) {
+        dropdownMenu.classList.remove('show');
+      }
+    }
+  });
+
+  // Close when selecting any dropdown link
+  const dropdownLinks = dropdownMenu.querySelectorAll('a');
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 992) {
+        dropdownMenu.classList.remove('show');
+      }
+    });
+  });
+});
 
 
 // ==============================  Reduce Nav Link OPacity ==================

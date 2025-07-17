@@ -380,23 +380,23 @@ footer {
 
     
     /* Smooth dropdown override */
-.dropdown-menu {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  display: block !important; /* Keep it always in flow for transition */
-  visibility: hidden;
-  pointer-events: none;
-  height: auto !important;
-}
+    .dropdown-menu {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      display: block !important; /* Keep it always in flow for transition */
+      visibility: hidden;
+      pointer-events: none;
+      height: auto !important;
+    }
 
-/* When dropdown is open (Bootstrap adds .show) */
-.dropdown-menu.show {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-  pointer-events: auto;
-}
+    /* When dropdown is open (Bootstrap adds .show) */
+    .dropdown-menu.show {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
 
 
     ul:not(.dropdown-menu) {
@@ -513,12 +513,17 @@ footer {
           min-width: auto;
           top: 0;
 
-          li a {
-            color: #333;
-            padding: 8px 8px;
-            border-radius: 9px;
-            display: flex;
-            justify-content: center;
+          li {
+            margin-top: 3px;
+            margin-bottom: 3px;
+            a {
+              font-size: 14px;
+              color: #333;
+              padding: 8px 8px;
+              border-radius: 9px;
+              display: flex;
+              justify-content: center;
+            }
           }
         }
 
@@ -558,6 +563,49 @@ footer {
             }
           }
         }
+      }
+    }
+    
+    @media (max-width: 991.98px) {
+      .dropdown-menu {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        display: none !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        height: auto !important;
+        margin-top: 0 !important;
+        border: none !important;
+        padding: 0 !important;
+        
+        &.show {
+          display: block !important;
+          // Add collapse animation
+          animation: fadeIn 0.3s ease;
+        }
+      }
+    }
+
+    // Keep desktop transition
+    @media (min-width: 992px) {
+      /* Smooth dropdown override */
+      .dropdown-menu {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: block !important;
+        visibility: hidden;
+        pointer-events: none;
+        height: auto !important;
+      }
+
+      /* When dropdown is open (Bootstrap adds .show) */
+      .dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
       }
     }
   }
