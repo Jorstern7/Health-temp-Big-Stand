@@ -814,17 +814,36 @@ main {
     }
 
     .flip {
-      -webkit-perspective: 800;
-      perspective: 800;
+      -webkit-perspective: 800px;
+      perspective: 800px;
       position: relative;
       text-align: center;
       border-radius: 9px;
       margin-bottom: 30px;
-  
+
+      // Firefox-specific fix
+      @-moz-document url-prefix() {
+        transform-style: preserve-3d;
+        overflow: visible; // Important for Firefox
+      }
+
       &:hover {
         .card:not(.flipped) {
           @media (min-width: 992px) {
             transform: rotatey(-180deg);
+          
+            // Firefox-specific hover fix
+            @-moz-document url-prefix() {
+              .front {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+              }
+              .back {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
           }
         }
       }
@@ -832,13 +851,20 @@ main {
       .card {
         min-height: 310px;
         -webkit-transform-style: preserve-3d;
-        -webkit-transition: 0.5s;
         transform-style: preserve-3d;
+        -webkit-transition: 0.5s;
         transition: 0.5s;
         background-color: #fff;
         border-radius: 9px;
         border: none;
         cursor: pointer;
+        position: relative; // Added for better 3D context
+
+        // Firefox-specific fix
+        @-moz-document url-prefix() {
+          backface-visibility: hidden;
+          transform: translate3d(0,0,0); // Force hardware acceleration
+        }
 
         &.flipped {
           -webkit-transform: rotatey(-180deg);
@@ -863,11 +889,27 @@ main {
           height: 100%;
           border-radius: 9px;
           border: 1px solid #37b24d;
+          transform-style: preserve-3d; // Added for Firefox
+          position: absolute; // Changed for Firefox
+          top: 0;
+          left: 0;
+          width: 100%;
+  
+          // Firefox-specific fix
+          @-moz-document url-prefix() {
+            will-change: transform;
+            transform: translate3d(0,0,0);
+          }
 
           &.front {
             position: absolute;
             width: 100%;
-            z-index: 1;
+            z-index: 2; // Increased from 1 to 2
+            transform: rotateY(0deg); // Explicitly set
+          
+            @-moz-document url-prefix() {
+              transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
 
             .learn-more-btn {
               bottom: -27px;
@@ -890,11 +932,18 @@ main {
           }
 
           &.back {
-            -webkit-transform: rotatey(-180deg);
-            transform: rotatey(-180deg);
+            -webkit-transform: rotatey(180deg);
+            transform: rotatey(180deg);
             position: absolute;
             width: 100%;
             z-index: 1;
+            backface-visibility: hidden; // Explicitly set
+          
+            @-moz-document url-prefix() {
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
 
             .btn-arrow {
               opacity: 0;
@@ -1019,11 +1068,9 @@ main {
           .service-list {
             display: flex;
             flex-direction: column;
-            // gap: 12px;
             justify-content: center;
             align-items: stretch;
 
-            // padding: 20px 0;
             div {
               display: flex;
               justify-content: space-between;
@@ -1045,8 +1092,6 @@ main {
 
               span {
                 font-size: 16px;
-                // color: #37b24d;
-                // font-weight: bold;
               }
             }
           }

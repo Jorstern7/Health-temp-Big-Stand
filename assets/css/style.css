@@ -635,27 +635,49 @@ main .services-section h1 {
   font-weight: bold;
 }
 main .services-section .flip {
-  perspective: 800;
+  perspective: 800px;
   position: relative;
   text-align: center;
   border-radius: 9px;
   margin-bottom: 30px;
 }
+@-moz-document url-prefix() {
+  main .services-section .flip {
+    transform-style: preserve-3d;
+    overflow: visible;
+  }
+}
 @media (min-width: 992px) {
   main .services-section .flip:hover .card:not(.flipped) {
     transform: rotatey(-180deg);
   }
+  @-moz-document url-prefix() {
+    main .services-section .flip:hover .card:not(.flipped) .front {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    main .services-section .flip:hover .card:not(.flipped) .back {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
 main .services-section .flip .card {
   min-height: 310px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: 0.5s;
   transform-style: preserve-3d;
   transition: 0.5s;
   background-color: #fff;
   border-radius: 9px;
   border: none;
   cursor: pointer;
+  position: relative;
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card {
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
 }
 main .services-section .flip .card.flipped {
   transform: rotatey(-180deg);
@@ -672,11 +694,28 @@ main .services-section .flip .card .card-body {
   height: 100%;
   border-radius: 9px;
   border: 1px solid #37b24d;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card .card-body {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
 }
 main .services-section .flip .card .card-body.front {
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card .card-body.front {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
 }
 main .services-section .flip .card .card-body.front .learn-more-btn {
   bottom: -27px;
@@ -697,10 +736,18 @@ main .services-section .flip .card .card-body.front .service-box-info {
   padding-bottom: 0;
 }
 main .services-section .flip .card .card-body.back {
-  transform: rotatey(-180deg);
+  transform: rotatey(180deg);
   position: absolute;
   width: 100%;
   z-index: 1;
+  backface-visibility: hidden;
+}
+@-moz-document url-prefix() {
+  main .services-section .flip .card .card-body.back {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
 }
 main .services-section .flip .card .card-body.back .btn-arrow {
   opacity: 0;
