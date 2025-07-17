@@ -140,25 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const card = flip.querySelector(".card");
         const learnMoreBtn = flip.querySelector(".learn-more-btn");
   
-    // if (window.innerWidth >= 992) {
-    //   // Desktop: hover to flip
-    //   flip.addEventListener("mouseenter", () => card.classList.add("flipped"));
-    //   flip.addEventListener("mouseleave", () =>
-    //     card.classList.remove("flipped")
-    //   );
-    // } 
         if (!learnMoreBtn) return;
-
-
-        // ============== Old Logic ============== 
-        // learnMoreBtn.addEventListener("click", (e) => {
-        //   e.stopPropagation(); // prevent immediate document click
-        //   learnMoreBtn.style.opacity = "0"; // hide the button
-        //   setTimeout(() => card.classList.add("flipped"), 200);
-        // });
-  // ==================== End ============
-  
-  
   
         learnMoreBtn.addEventListener("click", (e) => {
           e.stopPropagation();

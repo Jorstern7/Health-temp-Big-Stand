@@ -949,6 +949,12 @@ main {
             transform: translate3d(0,0,0);
           }
 
+          @media (min-width: 992px) {
+            .learn-more-btn {
+              display: none;
+            }
+          }
+
           &.front {
             position: absolute;
             width: 100%;
@@ -971,7 +977,7 @@ main {
               color: #fff;
               border: 3px solid #fff;
               transition: 0.5s all;
-              display: none;
+              // display: none;
             }
 
             .service-box-info {
@@ -2460,9 +2466,9 @@ main .section-health .health-img-box .health-img.health-img--3 {
     display: none;
   }
 
-  .card-body.back .learn-more-btn {
-    display: none; 
-  }
+  // .card-body.back .learn-more-btn {
+  //   display: none; 
+  // }
 
   main .section-health .header-swiper {
     display: none;
@@ -2475,9 +2481,9 @@ main .section-health .health-img-box .health-img.health-img--3 {
     // padding: 40px;
     margin-top: 40px;
   }
-  main .services-section .flip .card .card-body.front .learn-more-btn {
-    display: none !important;
-  }
+  // main .services-section .flip .card .card-body.front .learn-more-btn {
+  //   display: none !important;
+  // }
 
   main .services-section .flip .card .card-body.back .learn-more-btn {
     bottom: -20px;

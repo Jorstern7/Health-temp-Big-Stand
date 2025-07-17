@@ -750,6 +750,11 @@ main .services-section .flip .card .card-body {
     transform: translate3d(0, 0, 0);
   }
 }
+@media (min-width: 992px) {
+  main .services-section .flip .card .card-body .learn-more-btn {
+    display: none;
+  }
+}
 main .services-section .flip .card .card-body.front {
   position: absolute;
   width: 100%;
@@ -774,7 +779,6 @@ main .services-section .flip .card .card-body.front .learn-more-btn {
   color: #fff;
   border: 3px solid #fff;
   transition: 0.5s all;
-  display: none;
 }
 main .services-section .flip .card .card-body.front .service-box-info {
   padding-bottom: 0;
@@ -1900,9 +1904,6 @@ main .blog-section .blog-card.blog-card--hidden {
   #tabOrMobOnly {
     display: none;
   }
-  .card-body.back .learn-more-btn {
-    display: none;
-  }
   main .section-health .header-swiper {
     display: none;
   }
@@ -1910,9 +1911,6 @@ main .blog-section .blog-card.blog-card--hidden {
 @media (max-width: 768.98px) {
   main .section-health .health-img-box {
     margin-top: 40px;
-  }
-  main .services-section .flip .card .card-body.front .learn-more-btn {
-    display: none !important;
   }
   main .services-section .flip .card .card-body.back .learn-more-btn {
     bottom: -20px;
