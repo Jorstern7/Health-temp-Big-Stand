@@ -116,29 +116,32 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================    Flip Cards     =====================================
   // ====================================================================================
 
-  document.addEventListener("DOMContentLoaded", function() {
+  // document.addEventListener("DOMContentLoaded", function() {
     const flips = document.querySelectorAll(".flip");
   
     // Mobile behavior (Intersection Observer)
-    if (window.innerWidth < 768) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(({ target, isIntersecting }) => {
-            const card = target.querySelector(".card");
-            card.classList.toggle("flipped", isIntersecting);
-          });
-        },
-        { threshold: 0.6 }
-      );
+    // if (window.innerWidth < 768) {
+    //   const io = new IntersectionObserver(
+    //     (entries) => {
+    //       entries.forEach(({ target, isIntersecting }) => {
+    //         const card = target.querySelector(".card");
+    //         card.classList.toggle("flipped", isIntersecting);
+    //       });
+    //     },
+    //     { threshold: 0.6 }
+    //   );
   
-      flips.forEach((flip) => io.observe(flip));
-    }
+    //   flips.forEach((flip) => io.observe(flip));
+    // }
   
     // Tablet behavior (click to flip)
-    if (window.innerWidth >= 576 && window.innerWidth < 992) {
+    // if (window.innerWidth >= 576 && window.innerWidth < 992) {
+    if (window.innerWidth < 992) {
       flips.forEach((flip) => {
         const card = flip.querySelector(".card");
         const learnMoreBtn = flip.querySelector(".learn-more-btn");
+
+        console.log("learnMoreBtn: ", learnMoreBtn)
   
         if (!learnMoreBtn) return;
   
@@ -192,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     }
-  });
+  // });
 
 
 

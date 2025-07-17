@@ -726,11 +726,6 @@ main .services-section .flip .card {
 main .services-section .flip .card.flipped {
   transform: rotatey(-180deg);
 }
-main .services-section .flip .card.flipped .card-body.back .btn-arrow {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
 main .services-section .flip .card .card-body {
   backface-visibility: hidden;
   z-index: 2;
@@ -809,6 +804,7 @@ main .services-section .flip .card .card-body.back .btn-arrow {
   margin: 10px auto 0;
   padding: 0;
   transition: all 0.3s ease;
+  display: none;
 }
 main .services-section .flip .card .card-body.back .service-box-info {
   height: auto;

@@ -918,15 +918,15 @@ main {
           -webkit-transform: rotatey(-180deg);
           transform: rotatey(-180deg);
 
-          .card-body {
-            &.back {
-              .btn-arrow {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-              }
-            }
-          }
+          // .card-body {
+          //   &.back {
+          //     .btn-arrow {
+          //       opacity: 1;
+          //       visibility: visible;
+          //       transform: translateY(0);
+          //     }
+          //   }
+          // }
         }
 
         .card-body {
@@ -1011,6 +1011,7 @@ main {
               margin: 10px auto 0;
               padding: 0;
               transition: all 0.3s ease;
+              display: none;
             }
 
             .service-box-info {
