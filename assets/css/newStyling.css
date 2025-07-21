@@ -20,7 +20,7 @@
   border: 3px solid #fff;
 }
 .btn.btn-default:hover, .btn.btn-default:active {
-  background-color: #2b8b3c;
+  background-color: rgb(42.9613733906, 139.0386266094, 60.1459227468);
   color: #fff;
 }
 .btn.btn-default::before, .btn.btn-default::after {
