@@ -667,6 +667,36 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const customSelects = document.querySelectorAll('.custom-popup');
+  
+  customSelects.forEach(select => {
+    const selected = select.querySelector('.popup');
+    const optionsPopup = select.querySelector('.options-popup');
+    
+    selected.addEventListener('click', function(e) {
+      e.stopPropagation();
+      select.classList.toggle('active');
+    });
+    
+    // Close when clicking on an option
+    const options = select.querySelectorAll('.option-popup');
+    options.forEach(option => {
+      option.addEventListener('click', function() {
+        selected.textContent = this.textContent;
+        select.classList.remove('active');
+      });
+    });
+  });
+  
+  // Close when clicking outside
+  document.addEventListener('click', function() {
+    customSelects.forEach(select => {
+      select.classList.remove('active');
+    });
+  });
+});
+
 
 
 // ====================================================================================

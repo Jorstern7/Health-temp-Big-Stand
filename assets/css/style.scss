@@ -190,6 +190,76 @@ footer {
   font-weight: bold;
 }
 
+.custom-popup {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  display: block;
+  width: 100%;
+  border: 2px solid #fff;
+  font-size: 16px;
+  line-height: normal;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-visible {
+    box-shadow: 0 0 6px #37b24d;
+    outline: none;
+    transition: 0.5s all;
+  }
+
+  border-radius: 9px;
+}
+
+.popup {
+  padding: 20px;
+  border-radius: 9px;
+  cursor: pointer;
+  background: #fff;
+
+  font-size: 16px;
+}
+  
+.options-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.options-container {
+  background-color: #37b24d;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 4px;
+  // box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.option-popup {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+.option-popup:hover {
+  background-color: #d7f0db;
+  color: #37b24d;
+}
+
+.custom-popup.active .options-popup {
+  display: flex;
+}
+
 .custom-select {
   position: relative;
   -webkit-user-select: none;
@@ -1557,38 +1627,38 @@ main {
         top: 0px !important;
         margin-top: 0px !important;
       } 
-        .options {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 4px;
-  right: 0;
-  background-color: #37b24d;
-  border-radius: 4px;
-  display: none;
+      .options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 4px;
+        right: 0;
+        background-color: #37b24d;
+        border-radius: 4px;
+        display: none;
 
-  font-size: 16px;
-  z-index: 5;
-  padding: 5px 0;
+        font-size: 16px;
+        z-index: 5;
+        padding: 5px 0;
 
-  border-radius: 4px;
-  display: block;
-   opacity: 0;
-   max-height: 0px;
-  visibility: hidden;
-  transition: all 1s ease-in-out;
+        border-radius: 4px;
+        display: block;
+        opacity: 0;
+        max-height: 0px;
+        visibility: hidden;
+        transition: all 1s ease-in-out;
 
-}
-.options.show-drop{
-  opacity: 1;
-  visibility: visible;
-  max-height: 140px;
+      }
+      .options.show-drop{
+        opacity: 1;
+        visibility: visible;
+        max-height: 140px;
 
-}
-.options.hide-drop{
-  opacity: 0;
-  visibility: hidden;
-}
+      }
+      .options.hide-drop{
+        opacity: 0;
+        visibility: hidden;
+      }
 
       .form-control,
       .form-select {
