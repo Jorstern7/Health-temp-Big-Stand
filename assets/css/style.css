@@ -1086,20 +1086,24 @@ main .section-pricing {
   position: relative;
 }
 main .section-pricing .container {
-  padding: 50px 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
   position: relative;
 }
 main .section-pricing .container:before {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - var(--bs-gutter-x, 0.75rem) * 2);
   background-color: #d7f0db;
   height: 50%;
   border-radius: 0 0 100% 100%;
+}
+main .section-pricing .container .swiper-container {
+  padding-left: 36px;
+  padding-right: 36px;
 }
 main .section-pricing p,
 main .section-pricing h1 {
@@ -1113,12 +1117,12 @@ main .section-pricing h1 {
   font-weight: bold;
 }
 main .section-pricing .card {
-  width: 85%;
+  width: 80%;
   border-radius: 9px;
   text-align: center;
   background-color: #f1f3f5;
   border: 0;
-  margin: 50px auto 0;
+  margin: 55px auto 0;
 }
 main .section-pricing .card .card-header {
   position: relative;
