@@ -741,19 +741,22 @@ main {
 
         &.health-img--1 {
           z-index: 3;
-          top: 54%;
-          transform: translateY(-50%);
+          // top: 54%;
+          // transform: translateY(-50%);
+          bottom: 0;
           left: 0;
 
           &:hover {
-            transform: translateY(-50%) scale(1.1);
+            // transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
             z-index: 4;
           }
         }
 
         &.health-img--2 {
           z-index: 1;
-          top: -56px;
+          // top: -56px;
+          top: 0;
           left: 50%;
           transform: translateX(-50%);
 
@@ -765,7 +768,8 @@ main {
 
         &.health-img--3 {
           z-index: 2;
-          bottom: 40px;
+          // bottom: 40px;
+          bottom: 0;
           right: 0;
 
           &:hover {
@@ -2229,7 +2233,8 @@ $blog-transition: 0.8s; // keep in sync with JS (800 ms)
 @media (min-width:1400px){
   main .section-health .health-img-box .health-img.health-img--2 {
     z-index: 1;
-    top: -96px;  
+    // top: -96px;  
+    top: 0;
     left: 50%;
 }
 }
@@ -2273,7 +2278,8 @@ $blog-transition: 0.8s; // keep in sync with JS (800 ms)
   }
 main .section-health .health-img-box .health-img.health-img--3 {
     z-index: 2;
-    bottom: 54px;
+    // bottom: 54px;
+    bottom: 0;
     right: 0;
 }
   .btn {
@@ -2369,7 +2375,7 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
 
   main .section-health .health-img-box .health-img {
-    width: 220px;
+    width: 240px;
   }
 
   // main .section-health .health-img-box .health-img.health-img--1 {
