@@ -987,16 +987,6 @@ main {
         &.flipped {
           -webkit-transform: rotatey(-180deg);
           transform: rotatey(-180deg);
-
-          // .card-body {
-          //   &.back {
-          //     .btn-arrow {
-          //       opacity: 1;
-          //       visibility: visible;
-          //       transform: translateY(0);
-          //     }
-          //   }
-          // }
         }
 
         .card-body {
@@ -1068,7 +1058,6 @@ main {
 
             .btn-arrow {
               opacity: 0;
-              visibility: hidden;
               transform: translateY(50px);
               background-color: #37b24d;
               color: #fff;
@@ -1077,8 +1066,8 @@ main {
               border-radius: 50%;
               margin: 10px auto 0;
               padding: 0;
-              transition: all 0.3s ease;
-              display: none;
+              transition: all 0.6s ease 0.3;
+              // display: none;
             }
 
             .service-box-info {
@@ -1217,6 +1206,11 @@ main {
               }
             }
           }
+        }
+
+        &:hover .card-body.back .btn-arrow {
+          transform: translateY(0);
+          opacity: 1;
         }
       }
     }
@@ -2472,6 +2466,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
     width: 200px;
   }
 
+  main .services-section .flip .card .card-body.back .btn-arrow {
+    display: none;
+  }
+
   #header nav ul:not(.dropdown-menu) {
     align-items: stretch;
     gap: 5px;
@@ -2844,10 +2842,6 @@ main .section-health .health-img-box .health-img.health-img--3 {
 
   .heading-primary {
     font-size: 38px;
-  }
-
-  main .services-section .flip .card .card-body.back .btn-arrow {
-    display: none;
   }
 
   main .services-section .flip .card {

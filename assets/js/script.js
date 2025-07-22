@@ -116,34 +116,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================    Flip Cards     =====================================
   // ====================================================================================
 
-  // document.addEventListener("DOMContentLoaded", function() {
-  
-    // Mobile behavior (Intersection Observer)
-    // if (window.innerWidth < 768) {
-    //   const io = new IntersectionObserver(
-    //     (entries) => {
-    //       entries.forEach(({ target, isIntersecting }) => {
-    //         const card = target.querySelector(".card");
-    //         card.classList.toggle("flipped", isIntersecting);
-    //       });
-    //     },
-    //     { threshold: 0.6 }
-    //   );
-  
-    //   flips.forEach((flip) => io.observe(flip));
-    // }
-  
-    // Tablet behavior (click to flip)
-    // if (window.innerWidth >= 576 && window.innerWidth < 992) {
-
     const flips = document.querySelectorAll(".flip");
-    // if (window.innerWidth < 992) {
       flips.forEach((flip) => {
         const card = flip.querySelector(".card");
         const learnMoreBtn = flip.querySelector(".learn-more-btn");
 
-        console.log("learnMoreBtn: ", learnMoreBtn)
-  
         if (!learnMoreBtn) return;
   
         learnMoreBtn.addEventListener("click", (e) => {
@@ -172,33 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       });
-    // }
-  
-    // Desktop behavior (hover to flip)
-    // if (window.innerWidth >= 992) {
-    //   flips.forEach((flip) => {
-    //     const card = flip.querySelector(".card");
-  
-    //     flip.addEventListener("mouseenter", () => {
-    //       // Flip back all other cards first
-    //       flips.forEach((otherFlip) => {
-    //         const otherCard = otherFlip.querySelector(".card");
-    //         if (otherCard !== card && otherCard.classList.contains("flipped")) {
-    //           otherCard.classList.remove("flipped");
-    //         }
-    //       });
-    //       // Then flip the current card
-    //       card.classList.add("flipped");
-    //     });
-  
-    //     flip.addEventListener("mouseleave", () => {
-    //       card.classList.remove("flipped");
-    //     });
-    //   });
-    // }
-  // });
-
-
 
 
 
