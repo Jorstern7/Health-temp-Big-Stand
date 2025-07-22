@@ -1,216 +1,287 @@
- // ====================================================================================
-  // ======================      Sticky Header     =====================================
-  // ====================================================================================
-
-const header = document.getElementById("header");
-const hero = document.querySelector(".section-health");
-
-window.addEventListener("load", () => {
-  hero.style.paddingTop = header.offsetHeight + "px";
-});
-const obs = new IntersectionObserver(
-  function (entries) {
-    const ent = entries[0];
-    console.log(ent);
-
-    if (ent.isIntersecting === false) {
-      header.classList.add("sticky");
-      hero.style.paddingTop = header.offsetHeight + "px";
-    }
-
-    if (ent.isIntersecting === true) {
-      header.classList.remove("sticky");
-      // hero.style.paddingTop = "50px";
-    }
-  },
-  {
-    // In the viewport
-    root: null,
-    threshold: 0,
-    rootMargin: "-100px",
-  }
-);
-obs.observe(hero);
-
+// ====================================================================================
+// ============================== MAIN DOCUMENT READY =================================
+// ====================================================================================
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Initialize all components
+  initStickyHeader();
+  initMobileMenu();
+  initSwipers();
+  initFlipCards();
+  initBackToTop();
+  initSmoothScrolling();
+  initCustomSelects();
+  initBlogSection();
+  initDropdownBehaviors();
+  initNavLinkEffects();
+});
+
+// ====================================================================================
+// ============================== COMPONENT INITIALIZERS ==============================
+// ====================================================================================
+
+/**
+ * Sticky Header with Intersection Observer
+ */
+function initStickyHeader() {
+  const header = document.getElementById("header");
+  const hero = document.querySelector(".section-health");
+
+  if (!header || !hero) return;
+
+  // Set initial padding
+  const updateHeroPadding = () => {
+    hero.style.paddingTop = `${header.offsetHeight}px`;
+  };
+
+  window.addEventListener("load", updateHeroPadding);
+
+  // Intersection Observer for sticky behavior
+  const obs = new IntersectionObserver(
+    (entries) => {
+      const [entry] = entries;
+      if (!entry) return;
+
+      header.classList.toggle("sticky", !entry.isIntersecting);
+      if (!entry.isIntersecting) updateHeroPadding();
+    },
+    {
+      root: null,
+      threshold: 0,
+      rootMargin: "-100px",
+    }
+  );
+
+  obs.observe(hero);
+}
+
+/**
+ * Mobile Menu Toggle
+ */
+function initMobileMenu() {
   const toggler = document.querySelector(".navbar-toggler");
-  toggler.addEventListener("click", () => {
-    toggler.classList.toggle("opened");
-  });
+  if (toggler) {
+    toggler.addEventListener("click", () => {
+      toggler.classList.toggle("opened");
+    });
+  }
+}
 
-
-  // ======== MObile imags on Hero Section ==========
+/**
+ * Initialize all Swiper instances
+ */
+function initSwipers() {
+  // Header Swiper
   const headerSwiper = new Swiper(".header-swiper", {
-    slidesPerView: 3, // Important: 'auto' allows flexible number of slides
+    slidesPerView: 3,
     spaceBetween: 0,
-    loop: true, // Enable seamless infinite looping
-    speed: 5000, // Speed of transition
+    loop: true,
+    speed: 5000,
     autoplay: {
-      delay: 0, // No pause between transitions
-      pauseOnMouseEnter: false, // Don't pause on mouse enter
-      disableOnInteraction: false, // Keep autoplay even if user touches
+      delay: 0,
+      pauseOnMouseEnter: false,
+      disableOnInteraction: false,
     },
     grabCursor: true,
     allowTouchMove: true,
-    // runCallbacksOnInit: true, // 🔸 Important to fire slideChange/init
     on: {
-      init: function (swiper) {
-        scaleMiddleSlide(swiper);
-      },
-      slideChangeTransitionEnd: function (swiper) {
-        scaleMiddleSlide(swiper);
-      },
+      init: scaleMiddleSlide,
+      slideChangeTransitionEnd: scaleMiddleSlide,
     },
   });
-// =========================== End ============
 
-
-  function scaleMiddleSlide(swiper) {
-    // Remove from all
-    swiper.slides.forEach((slide) => slide.classList.remove("is-scaled"));
-
-    // Get all visible slides
-    const visibleSlides = swiper.slides.filter((slide) =>
-      slide.classList.contains("swiper-slide-visible")
-    );
-
-    // Scale middle one only if exactly 3 are visible
-    if (visibleSlides.length === 3) {
-      visibleSlides[1].classList.add("is-scaled");
-    }
-  }
-
-
-  // ====================================================================================
-  // ======================     Featured Swiper     =====================================
-  // ====================================================================================
-
+  // Featured Swiper
   new Swiper(".featured-swiper", {
-    slidesPerView: 4, // Important: 'auto' allows flexible number of slides
+    slidesPerView: 4,
     spaceBetween: 0,
-    loop: true, // Enable seamless infinite looping
-    speed: 3000, // Speed of transition
+    loop: true,
+    speed: 3000,
     autoplay: {
-      delay: 0, // No pause between transitions
-      pauseOnMouseEnter: false, // Don't pause on mouse enter
-      disableOnInteraction: false, // Keep autoplay even if user touches
+      delay: 0,
+      pauseOnMouseEnter: false,
+      disableOnInteraction: false,
     },
     grabCursor: true,
     allowTouchMove: true,
     breakpoints: {
-      500: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-      1199: {
-        slidesPerView: 4,
-      },
+      500: { slidesPerView: 2 },
+      991: { slidesPerView: 3 },
+      1199: { slidesPerView: 4 },
     },
   });
 
-
- // ====================================================================================
-  // ======================    Flip Cards     =====================================
-  // ====================================================================================
-
-    const flips = document.querySelectorAll(".flip");
-      flips.forEach((flip) => {
-        const card = flip.querySelector(".card");
-        const learnMoreBtn = flip.querySelector(".learn-more-btn");
-
-        if (!learnMoreBtn) return;
-  
-        learnMoreBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-  
-          // Flip back all other flipped cards first
-          flips.forEach((otherFlip) => {
-            const otherCard = otherFlip.querySelector(".card");
-            const otherBtn = otherFlip.querySelector(".learn-more-btn");
-            if (otherCard !== card && otherCard.classList.contains("flipped")) {
-              otherCard.classList.remove("flipped");
-              if (otherBtn) otherBtn.style.opacity = "1";
-            }
-          });
-  
-          // Then flip the current card
-          learnMoreBtn.style.opacity = "0";
-          setTimeout(() => card.classList.add("flipped"), 200);
-        });
-  
-        document.addEventListener("click", (e) => {
-          if (!flip.contains(e.target) && card.classList.contains("flipped")) {
-            card.classList.remove("flipped");
-            const btn = flip.querySelector(".learn-more-btn");
-            if (btn) btn.style.opacity = "1";
-          }
-        });
-      });
-
-
-
- // ====================================================================================
-  // ======================      Back To Top Button    =================================
-  // ====================================================================================
-  const goTopButton = document.getElementById("up-arrow");
-
-  // Show button when user scrolls down 300px
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 300) {
-      goTopButton.classList.add("show");
-    } else {
-      goTopButton.classList.remove("show");
-    }
+  // Doctors Swiper
+  const doctorsSwiper = new Swiper(".doctors-swiper", {
+    slidesPerView: 2,
+    spaceBetween: 40,
+    loop: true,
+    grabCursor: true,
+    allowTouchMove: true,
+    speed: 2200,
+    autoplay: {
+      delay: 2600,
+      disableOnInteraction: false,
+      enabled: false,
+    },
+    navigation: {
+      nextEl: ".doctors-next",
+      prevEl: ".doctors-prev",
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 2 },
+    },
   });
 
-  // Scroll to top smoothly when clicked
+  // Pricing Swiper
+  const pricingSwiper = new Swiper(".pricing-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 10,
+    loop: true,
+    grabCursor: true,
+    allowTouchMove: true,
+    speed: 2200,
+    autoplay: {
+      delay: 2600,
+      disableOnInteraction: false,
+      enabled: false,
+    },
+    navigation: {
+      nextEl: ".pricing-next",
+      prevEl: ".pricing-prev",
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 3 },
+    },
+  });
+
+  // Testimonials Swiper
+  const testimonialsSwiper = new Swiper(".testimonial-swiper", {
+    slidesPerView: 1,
+    loop: true,
+    grabCursor: true,
+    allowTouchMove: true,
+    speed: 3000,
+    autoplay: {
+      delay: 3200,
+      disableOnInteraction: false,
+      enabled: false,
+    },
+    pagination: {
+      el: ".testimonial-swiper .swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".testimonials-next",
+      prevEl: ".testmonials-prev",
+    },
+  });
+
+  // Setup swiper navigation autoplay triggers
+  setupSwiperNavigation(doctorsSwiper, ".doctors-next", ".doctors-prev");
+  setupSwiperNavigation(pricingSwiper, ".pricing-next", ".pricing-prev");
+  
+  // Setup pagination bullets for testimonials
+  document.querySelectorAll(".testimonial-swiper .swiper-pagination .swiper-pagination-bullet").forEach(bullet => {
+    bullet.addEventListener("click", () => {
+      testimonialsSwiper.autoplay.start();
+    });
+  });
+}
+
+/**
+ * Flip Cards functionality
+ */
+function initFlipCards() {
+  const flips = document.querySelectorAll(".flip");
+  if (!flips.length) return;
+
+  flips.forEach((flip) => {
+    const card = flip.querySelector(".card");
+    const learnMoreBtn = flip.querySelector(".learn-more-btn");
+
+    if (!learnMoreBtn) return;
+
+    learnMoreBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      resetOtherFlipCards(flips, card);
+      flipCard(card, learnMoreBtn);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!flip.contains(e.target) && card.classList.contains("flipped")) {
+        resetCard(card, learnMoreBtn);
+      }
+    });
+  });
+
+  function resetOtherFlipCards(allFlips, currentCard) {
+    allFlips.forEach((otherFlip) => {
+      const otherCard = otherFlip.querySelector(".card");
+      const otherBtn = otherFlip.querySelector(".learn-more-btn");
+      if (otherCard !== currentCard && otherCard.classList.contains("flipped")) {
+        resetCard(otherCard, otherBtn);
+      }
+    });
+  }
+
+  function flipCard(card, btn) {
+    btn.style.opacity = "0";
+    setTimeout(() => card.classList.add("flipped"), 200);
+  }
+
+  function resetCard(card, btn) {
+    card.classList.remove("flipped");
+    if (btn) btn.style.opacity = "1";
+  }
+}
+
+/**
+ * Back to Top Button
+ */
+function initBackToTop() {
+  const goTopButton = document.getElementById("up-arrow");
+  if (!goTopButton) return;
+
+  window.addEventListener("scroll", function () {
+    goTopButton.classList.toggle("show", window.scrollY > 300);
+  });
+
   goTopButton.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   });
+}
 
+/**
+ * Smooth Scrolling for Navigation
+ */
+function initSmoothScrolling() {
   const header = document.getElementById("header");
+  if (!header) return;
 
-  // 1. Target all nav links, dropdown toggles, and also offcanvas links
+  // Target all nav links, dropdown toggles, and also offcanvas links
   const navLinks = document.querySelectorAll(
     '.navbar-nav a[href^="#"], .offcanvas-body a[href^="#"]'
   );
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
   const offcanvasElement = document.getElementById("offcanvasNavbar");
-  const offcanvasInstance =
-    bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
-
-  // Collapse navbar menu (for standard `.navbar-collapse`)
-  // const collapseEl = document.getElementById("navbarSupportedContent");
-  // const collapseInstance =
-  //   collapseEl && bootstrap.Collapse.getOrCreateInstance(collapseEl);
+  const offcanvasInstance = offcanvasElement ? 
+    bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement) : null;
 
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // 2. Remove 'active' from all links and dropdown toggles
-      navLinks.forEach((l) => l.classList.remove("active"));
-      dropdownToggles.forEach((t) => t.classList.remove("active"));
+      // Update active states
+      updateActiveStates(this, navLinks, dropdownToggles);
 
-      // 3. Add 'active' to the clicked link
-      this.classList.add("active");
-
-      // 4. If inside dropdown, activate parent toggle too
-      const dropdown = this.closest(".dropdown-menu");
-      if (dropdown) {
-        const toggle = dropdown.previousElementSibling;
-        if (toggle && toggle.classList.contains("dropdown-toggle")) {
-          toggle.classList.add("active");
-        }
-      }
-
-      // 5. Smooth scroll to the section
+      // Smooth scroll to the section
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
         const offsetTop = target.offsetTop - header.offsetHeight;
@@ -220,241 +291,105 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      // 6. Close the offcanvas if open (for mobile)
-      if (offcanvasElement.classList.contains("show")) {
+      // Close the offcanvas if open (for mobile)
+      if (offcanvasInstance && offcanvasElement.classList.contains("show")) {
         offcanvasInstance.hide();
       }
-
-      // 6. Close collapsed navbar if open (for .navbar-collapse)
-      // if (collapseEl && collapseEl.classList.contains("show")) {
-      //   collapseInstance.hide();
-      // }
     });
   });
- 
 
-document.querySelectorAll(".custom-select").forEach((select) => {
-  const selected = select.querySelector(".selected");
-  const options = select.querySelector(".options");
-  const optionItems = select.querySelectorAll(".option");
+  function updateActiveStates(clickedLink, allLinks, allToggles) {
+    // Remove 'active' from all links and dropdown toggles
+    allLinks.forEach((l) => l.classList.remove("active"));
+    allToggles.forEach((t) => t.classList.remove("active"));
 
-  selected.addEventListener("click", (e) => {
-    document.querySelectorAll(".options").forEach((opt) => {
-      if (opt !== options) {
-        opt.classList.remove("show-drop");
-      }
-    });
+    // Add 'active' to the clicked link
+    clickedLink.classList.add("active");
 
-    // Toggle the "show-drop" class on the current dropdown's options
-    options.classList.toggle("show-drop");
-    e.stopPropagation();
-  });
-
-  optionItems.forEach((option) => {
-    option.addEventListener("click", (e) => {
-      selected.textContent = option.textContent;
-      // Remove the "show-drop" class when an option is selected
-      options.classList.remove("show-drop");
-      e.stopPropagation();
-    });
-  });
-});
-
-
-
-});
-
-// =====================================================================================================================================
-// =============================                  Updated Script                   =====================================================
-// =====================================================================================================================================
-
-
-// ==================== Auto Hide Dropdown Menu On Header ================================
-document.addEventListener("DOMContentLoaded", function () {
-  const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
-  const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
-
-  dropdownToggle.addEventListener('click', function (e) {
-    if (window.innerWidth < 992) {
-      // Mobile/tablet behavior - toggle collapse
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      
-      // Close all other dropdowns first
-      document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
-        if (menu !== dropdownMenu) menu.classList.remove('show');
-      });
-      
-      // Toggle this dropdown
-      dropdownMenu.classList.toggle('show');
-    }
-    // Desktop behavior remains the same
-  });
-
-  // Close when clicking outside
-  document.addEventListener('click', function (e) {
-    if (window.innerWidth < 992) {
-      const isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
-      if (!isClickInside) {
-        dropdownMenu.classList.remove('show');
+    // If inside dropdown, activate parent toggle too
+    const dropdown = clickedLink.closest(".dropdown-menu");
+    if (dropdown) {
+      const toggle = dropdown.previousElementSibling;
+      if (toggle && toggle.classList.contains("dropdown-toggle")) {
+        toggle.classList.add("active");
       }
     }
-  });
-
-  // Close when selecting any dropdown link
-  const dropdownLinks = dropdownMenu.querySelectorAll('a');
-  dropdownLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 992) {
-        dropdownMenu.classList.remove('show');
-      }
-    });
-  });
-});
-
-
-// ==============================  Reduce Nav Link OPacity ==================
-
-document.addEventListener("DOMContentLoaded", function () {
-  const allLinks = document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item");
-  const dropdown = document.querySelector(".nav-item.dropdown");
-  const dropdownToggle = dropdown.querySelector(".nav-link");
-  const dropdownItems = dropdown.querySelectorAll(".dropdown-item");
-
-  // Smooth transitions
-  allLinks.forEach(link => {
-    link.style.transition = "opacity 0.3s ease";
-  });
-
-  if (window.innerWidth >= 992) {
-    allLinks.forEach(link => {
-      link.addEventListener("mouseenter", () => {
-        // CASE 1: Hovering a dropdown item
-        if (link.classList.contains('dropdown-item')) {
-          allLinks.forEach(other => {
-            if (
-              other === link ||                              // hovered item
-              other === dropdownToggle                       // keep More Help toggle visible
-            ) {
-              other.style.opacity = "1";
-            } else if (other.classList.contains('dropdown-item')) {
-              other.style.opacity = "0.3"; // dim other dropdown items
-            } else {
-              other.style.opacity = "0.3"; // dim top-level nav items
-            }
-          });
-        }
-
-        // CASE 2: Hovering the dropdown toggle (More Help)
-        else if (link === dropdownToggle) {
-          allLinks.forEach(other => {
-            if (
-              other === dropdownToggle ||
-              other.classList.contains('dropdown-item')
-            ) {
-              other.style.opacity = "1";
-            } else {
-              other.style.opacity = "0.3";
-            }
-          });
-        }
-
-        // CASE 3: Hovering a normal top-level nav item (not dropdown)
-        else {
-          allLinks.forEach(other => {
-            other.style.opacity = other === link ? "1" : "0.3";
-          });
-        }
-      });
-
-      link.addEventListener("mouseleave", () => {
-        allLinks.forEach(l => (l.style.opacity = "1"));
-      });
-    });
-
-    // Handle mouse leaving the whole dropdown menu area
-    dropdown.addEventListener("mouseleave", () => {
-      allLinks.forEach(link => {
-        link.style.opacity = "1";
-      });
-    });
   }
-});
+}
 
+/**
+ * Custom Select Dropdowns
+ */
+function initCustomSelects() {
+  // Generic select handler
+  const handleCustomSelect = (containerClass, selectedClass, optionsClass) => {
+    document.querySelectorAll(containerClass).forEach((select) => {
+      const selected = select.querySelector(selectedClass);
+      const options = select.querySelector(optionsClass);
+      const optionItems = select.querySelectorAll(".option, .option-popup");
 
+      selected.addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.querySelectorAll(optionsClass).forEach((opt) => {
+          if (opt !== options) opt.classList.remove("show-drop", "active");
+        });
+        options.classList.toggle("show-drop");
+        select.classList.toggle("active");
+      });
 
-// ==================== Auto Hide Dropdown Menu On Header ================================
-document.addEventListener("DOMContentLoaded", function () {
-  const dropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
-  const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
-
-  // let hideTimeout;
-
-  dropdownToggle.addEventListener('click', function (e) {
-    if (window.innerWidth >= 992) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      dropdownMenu.classList.toggle('show');
-
-      // clearTimeout(hideTimeout);
-
-      // if (dropdownMenu.classList.contains('show')) {
-      //   hideTimeout = setTimeout(() => {
-      //     dropdownMenu.classList.remove('show');
-      //   }, 2600);
-      // }
-    }
-  });
-
-  // ✅ Close when clicking outside
-  document.addEventListener('click', function (e) {
-    const isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
-
-    if (!isClickInside) {
-      dropdownMenu.classList.remove('show');
-      // clearTimeout(hideTimeout);
-    }
-  });
-
-  // ✅ Close when selecting any dropdown link
-  const dropdownLinks = dropdownMenu.querySelectorAll('a');
-
-  dropdownLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      dropdownMenu.classList.remove('show');
-      // clearTimeout(hideTimeout);
+      optionItems.forEach((option) => {
+        option.addEventListener("click", (e) => {
+          e.stopPropagation();
+          selected.textContent = option.textContent;
+          options.classList.remove("show-drop");
+          select.classList.remove("active");
+        });
+      });
     });
-  });
-});
 
+    // Close when clicking outside
+    document.addEventListener("click", () => {
+      document.querySelectorAll(optionsClass).forEach((options) => {
+        options.classList.remove("show-drop");
+      });
+      document.querySelectorAll(containerClass).forEach((select) => {
+        select.classList.remove("active");
+      });
+    });
+  };
 
+  // Initialize different types of selects
+  handleCustomSelect(".custom-select", ".selected", ".options");
+  handleCustomSelect(".custom-popup", ".popup", ".options-popup");
+}
 
- // ====================================================================================
-  // ======================       Blog Sectoin     =====================================
-  // ====================================================================================
-
-document.addEventListener("DOMContentLoaded", () => {
+/**
+ * Blog Section with Show More/Less functionality
+ */
+function initBlogSection() {
   const container = document.querySelector(".blog-section .row");
+  if (!container) return;
+
   const cards = container.querySelectorAll(":scope > .blog-card");
   const toggleBtn = document.getElementById("toggleBlogBtn");
-  const cardsToShow = 3; // Initial number of cards to show
-  const transitionDuration = 800; // Must match the CSS transition duration in milliseconds (0.8s = 800ms)
+  if (!cards.length || !toggleBtn) return;
+
+  const cardsToShow = 3;
+  const transitionDuration = 800;
+  const SCROLL_OFFSET = 113;
 
   let visibleCount = cardsToShow;
   let firstLoad = true;
+
   const updateCardsVisibility = () => {
     cards.forEach((card, index) => {
       if (index < visibleCount) {
-        // SHOW CARD
-        card.style.display = "block"; // Ensure it's visible (only needed for first load)
+        card.style.display = "block";
         requestAnimationFrame(() => card.classList.remove("blog-card--hidden"));
       } else {
         if (firstLoad) {
-          // On first load, immediately hide with no animation
           card.style.display = "none";
         } else {
-          // HIDE with animation
           card.classList.add("blog-card--hidden");
           setTimeout(() => {
             if (index >= visibleCount) card.style.display = "none";
@@ -468,279 +403,224 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn.style.display = cards.length <= cardsToShow ? "none" : "inline-block";
   };
 
-  // ──────────────────────────────────────────────────────────────
-  //  Utility: smooth-scroll to an element but stop 98 px earlier
-  // ──────────────────────────────────────────────────────────────
-  const SCROLL_OFFSET = 113;            // change once, use everywhere
-  function scrollToWithOffset(el) {
+  const scrollToWithOffset = (el) => {
     const y = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
     window.scrollTo({ top: y, behavior: "smooth" });
-  }
+  };
 
-  // --------------------------------------------------------------
-  //  Toggle handler
-  // --------------------------------------------------------------
   toggleBtn.addEventListener("click", () => {
     toggleBtn.disabled = true;
-
     const expanding = visibleCount < cards.length;
-    visibleCount = expanding
-      ? Math.min(visibleCount + cardsToShow, cards.length)
-      : cardsToShow;
+    visibleCount = expanding ? 
+      Math.min(visibleCount + cardsToShow, cards.length) : 
+      cardsToShow;
 
     updateCardsVisibility();
 
-    // Scroll to the last *visible* card after animation
     const target = cards[visibleCount - 1];
     setTimeout(() => {
-      // target.scrollIntoView({ behavior: "smooth", block: "start" });
-      scrollToWithOffset(target);   // ⬅️ use the helper
+      scrollToWithOffset(target);
       toggleBtn.disabled = false;
     }, transitionDuration);
   });
 
-  // --------------------------------------------------------------
-  //  Initial state
-  // --------------------------------------------------------------
+  // Initial state
   cards.forEach((card, index) => {
     if (index >= cardsToShow) card.classList.add("blog-card--hidden");
   });
   updateCardsVisibility();
-});
+}
 
+/**
+ * Dropdown Behaviors for different sections
+ */
+function initDropdownBehaviors() {
+  // Navbar dropdown
+  const navDropdownToggle = document.querySelector('.nav-item.dropdown .nav-link.dropdown-toggle');
+  const navDropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
 
-
-
-// ====================================================================================
-// ==================== Auto Hide Dropdown Menu On Book An Appointment Section ================================
-// ====================================================================================
-
-document.addEventListener("DOMContentLoaded", function () {
-  const appointmentSection = document.querySelector("#appointment-cta");
-  if (!appointmentSection) return;
-
-  const customSelects = appointmentSection.querySelectorAll(".custom-select");
-  let activeSelect = null;
-
-  // Close all dropdowns except the one passed as parameter
-  function closeAllDropdowns(exceptThis = null) {
-    customSelects.forEach(select => {
-      if (select !== exceptThis) {
-        const options = select.querySelector(".options");
-        options.classList.remove("show-drop");
+  if (navDropdownToggle && navDropdownMenu) {
+    navDropdownToggle.addEventListener('click', function (e) {
+      if (window.innerWidth < 992) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+          if (menu !== navDropdownMenu) menu.classList.remove('show');
+        });
+        navDropdownMenu.classList.toggle('show');
       }
+    });
+
+    // Close when clicking outside or selecting item
+    setupDropdownCloseBehavior(navDropdownToggle, navDropdownMenu);
+  }
+
+  // Appointment section dropdowns
+  const appointmentSection = document.querySelector("#appointment-cta");
+  if (appointmentSection) {
+    const appointmentSelects = appointmentSection.querySelectorAll(".custom-select");
+    let activeAppointmentSelect = null;
+
+    appointmentSelects.forEach(select => {
+      const selected = select.querySelector(".selected");
+      const options = select.querySelector(".options");
+
+      selected.addEventListener("click", function (e) {
+        e.stopPropagation();
+        
+        if (select === activeAppointmentSelect) {
+          options.classList.remove("show-drop");
+          activeAppointmentSelect = null;
+          return;
+        }
+
+        closeAllDropdowns(appointmentSelects, select);
+        options.classList.add("show-drop");
+        activeAppointmentSelect = select;
+      });
+
+      select.querySelectorAll(".option").forEach(option => {
+        option.addEventListener("click", function (e) {
+          e.stopPropagation();
+          selected.textContent = this.textContent;
+          options.classList.remove("show-drop");
+          activeAppointmentSelect = null;
+        });
+      });
     });
   }
 
-  // Handle clicks outside dropdowns
-  document.addEventListener("click", function (e) {
-    const isClickInside = Array.from(customSelects).some(select => 
-      select.contains(e.target)
-    );
+  // Find Doctor section dropdown
+  const findDoctorSection = document.querySelector("#find-doctor-cta");
+  if (findDoctorSection) {
+    const doctorSelect = findDoctorSection.querySelector(".custom-select");
+    if (doctorSelect) {
+      const selected = doctorSelect.querySelector(".selected");
+      const options = doctorSelect.querySelector(".options");
+      let hideTimeout;
 
-    if (!isClickInside) {
-      closeAllDropdowns();
-      activeSelect = null;
+      selected.addEventListener("click", function () {
+        options.classList.add("show-drop");
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          options.classList.remove("show-drop");
+        }, 2600);
+      });
+
+      doctorSelect.querySelectorAll(".option").forEach(option => {
+        option.addEventListener("click", function () {
+          selected.textContent = this.textContent;
+          options.classList.remove("show-drop");
+          clearTimeout(hideTimeout);
+        });
+      });
+    }
+  }
+}
+
+/**
+ * Nav Link Hover Effects
+ */
+function initNavLinkEffects() {
+  const allLinks = document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item");
+  const dropdown = document.querySelector(".nav-item.dropdown");
+  if (!allLinks.length || !dropdown) return;
+
+  // Only apply on desktop
+  if (window.innerWidth >= 992) {
+    const dropdownToggle = dropdown.querySelector(".nav-link");
+    
+    // Smooth transitions
+    allLinks.forEach(link => {
+      link.style.transition = "opacity 0.3s ease";
+    });
+
+    const handleLinkHover = (hoveredLink) => {
+      allLinks.forEach(other => {
+        if (hoveredLink.classList.contains('dropdown-item')) {
+          // Case 1: Hovering a dropdown item
+          other.style.opacity = 
+            (other === hoveredLink || other === dropdownToggle) ? "1" : "0.3";
+        } else if (hoveredLink === dropdownToggle) {
+          // Case 2: Hovering the dropdown toggle
+          other.style.opacity = 
+            (other === dropdownToggle || other.classList.contains('dropdown-item')) ? "1" : "0.3";
+        } else {
+          // Case 3: Hovering a normal top-level nav item
+          other.style.opacity = other === hoveredLink ? "1" : "0.3";
+        }
+      });
+    };
+
+    allLinks.forEach(link => {
+      link.addEventListener("mouseenter", () => handleLinkHover(link));
+      link.addEventListener("mouseleave", () => {
+        allLinks.forEach(l => (l.style.opacity = "1"));
+      });
+    });
+
+    dropdown.addEventListener("mouseleave", () => {
+      allLinks.forEach(link => (link.style.opacity = "1"));
+    });
+  }
+}
+
+// ====================================================================================
+// ============================== HELPER FUNCTIONS ====================================
+// ====================================================================================
+
+/**
+ * Scale middle slide in header swiper
+ */
+function scaleMiddleSlide(swiper) {
+  // Remove from all
+  swiper.slides.forEach(slide => slide.classList.remove("is-scaled"));
+
+  // Get all visible slides
+  const visibleSlides = Array.from(swiper.slides).filter(slide =>
+    slide.classList.contains("swiper-slide-visible")
+  );
+
+  // Scale middle one only if exactly 3 are visible
+  if (visibleSlides.length === 3) {
+    visibleSlides[1].classList.add("is-scaled");
+  }
+}
+
+/**
+ * Setup swiper navigation with autoplay
+ */
+function setupSwiperNavigation(swiper, nextSelector, prevSelector) {
+  const nextBtn = document.querySelector(nextSelector);
+  const prevBtn = document.querySelector(prevSelector);
+
+  if (nextBtn) nextBtn.addEventListener("click", () => swiper.autoplay.start());
+  if (prevBtn) prevBtn.addEventListener("click", () => swiper.autoplay.start());
+}
+
+/**
+ * Setup dropdown close behavior
+ */
+function setupDropdownCloseBehavior(toggle, menu) {
+  document.addEventListener('click', function (e) {
+    const isClickInside = toggle.contains(e.target) || menu.contains(e.target);
+    if (!isClickInside) menu.classList.remove('show');
+  });
+
+  const links = menu.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => menu.classList.remove('show'));
+  });
+}
+
+/**
+ * Close all dropdowns except the specified one
+ */
+function closeAllDropdowns(allDropdowns, exceptThis = null) {
+  allDropdowns.forEach(select => {
+    if (select !== exceptThis) {
+      const options = select.querySelector(".options");
+      options.classList.remove("show-drop");
     }
   });
-
-  customSelects.forEach(customSelect => {
-    const selected = customSelect.querySelector(".selected");
-    const options = customSelect.querySelector(".options");
-
-    selected.addEventListener("click", function (e) {
-      e.stopPropagation();
-      
-      // If this dropdown is already active, close it
-      if (customSelect === activeSelect) {
-        options.classList.remove("show-drop");
-        activeSelect = null;
-        return;
-      }
-
-      // Close all other dropdowns and open this one
-      closeAllDropdowns(customSelect);
-      options.classList.add("show-drop");
-      activeSelect = customSelect;
-    });
-
-    // Handle option selection
-    customSelect.querySelectorAll(".option").forEach(option => {
-      option.addEventListener("click", function (e) {
-        e.stopPropagation();
-        selected.textContent = this.textContent;
-        options.classList.remove("show-drop");
-        activeSelect = null;
-      });
-    });
-  });
-});
-
-
-
-
-// ====================================================================================
-// ================ Auto Hide Dropdown Menu On Find A Doc Section =====================
-// ====================================================================================
-
-document.addEventListener("DOMContentLoaded", function () {
-  const section = document.querySelector("#find-doctor-cta");
-  if (!section) return;
-
-  const customSelect = section.querySelector(".custom-select");
-  const selected = customSelect.querySelector(".selected");
-  const options = customSelect.querySelector(".options");
-  let hideTimeout;
-
-  selected.addEventListener("click", function () {
-    // options.style.display = "block";
-    options.classList.add("show-drop");
-
-    // Clear any existing timeout
-    clearTimeout(hideTimeout);
-
-    // Hide after 2 seconds
-    hideTimeout = setTimeout(function () {
-      // options.style.display = "none";
-         options.classList.remove("show-drop");
-    }, 2600);
-  });
-
-  // Optional: update selected and hide immediately on option click
-  customSelect.querySelectorAll(".option").forEach(option => {
-    option.addEventListener("click", function () {
-      selected.textContent = this.textContent;
-      // options.style.display = "none";
-         options.classList.remove("show-drop");
-      clearTimeout(hideTimeout);
-    });
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const customSelects = document.querySelectorAll('.custom-popup');
-  
-  customSelects.forEach(select => {
-    const selected = select.querySelector('.popup');
-    const optionsPopup = select.querySelector('.options-popup');
-    
-    selected.addEventListener('click', function(e) {
-      e.stopPropagation();
-      select.classList.toggle('active');
-    });
-    
-    // Close when clicking on an option
-    const options = select.querySelectorAll('.option-popup');
-    options.forEach(option => {
-      option.addEventListener('click', function() {
-        selected.textContent = this.textContent;
-        select.classList.remove('active');
-      });
-    });
-  });
-  
-  // Close when clicking outside
-  document.addEventListener('click', function() {
-    customSelects.forEach(select => {
-      select.classList.remove('active');
-    });
-  });
-});
-
-
-
-// ====================================================================================
-// ======================= Auto Scroll when click on Navigation Arrow =================
-// ====================================================================================
-
-// Doctors Swiper
-const doctorsSwiper = new Swiper(".doctors-swiper", {
-  slidesPerView: 2,
-  spaceBetween: 40,
-  loop: true,
-  grabCursor: true,
-  allowTouchMove: true,
-  speed: 2200,
-  autoplay: {
-    delay: 2600,
-    disableOnInteraction: false,
-    enabled: false,
-  },
-  navigation: {
-    nextEl: ".doctors-next",
-    prevEl: ".doctors-prev",
-  },
-  breakpoints: {
-    0: { slidesPerView: 1 },
-    768: { slidesPerView: 2 },
-    992: { slidesPerView: 2 },
-  },
-});
-
-document.querySelector(".doctors-next").addEventListener("click", () => {
-  doctorsSwiper.autoplay.start();
-});
-document.querySelector(".doctors-prev").addEventListener("click", () => {
-  doctorsSwiper.autoplay.start();
-});
-
-// Pricing Swiper
-const pricingSwiper = new Swiper(".pricing-swiper", {
-  slidesPerView: 3,
-  spaceBetween: 10,
-  loop: true,
-  grabCursor: true,
-  allowTouchMove: true,
- speed: 2200,
-  autoplay: {
-    delay: 2600,
-    disableOnInteraction: false,
-    enabled: false,
-  },
-  navigation: {
-    nextEl: ".pricing-next",
-    prevEl: ".pricing-prev",
-  },
-  breakpoints: {
-    0: { slidesPerView: 1 },
-    768: { slidesPerView: 2 },
-    992: { slidesPerView: 3 },
-  },
- 
-});
-
-document.querySelector(".pricing-next").addEventListener("click", () => {
-  pricingSwiper.autoplay.start();
-});
-document.querySelector(".pricing-prev").addEventListener("click", () => {
-  pricingSwiper.autoplay.start();
-});
-
-// Testimonials Swiper
-const TestimonialsSwiper=  new Swiper(".testimonial-swiper", {
-   slidesPerView: 1,
-  // spaceBetween: 10,
-  loop: true,
-  grabCursor: true,
-  allowTouchMove: true,
- speed: 3000,
-  autoplay: {
-    delay: 3200,
-    disableOnInteraction: false,
-    enabled: false,
-  },
-  pagination: {
-  el: ".testimonial-swiper .swiper-pagination",
-  clickable: true,
-},
-  navigation: {
-    nextEl: ".testimonials-next",
-    prevEl: ".testmonials-prev",
-  },
-  });
-
-document.querySelectorAll(".testimonial-swiper .swiper-pagination .swiper-pagination-bullet").forEach(bullet => {
-  bullet.addEventListener("click", () => {
-    TestimonialsSwiper.autoplay.start();
-  });
-});
+}
