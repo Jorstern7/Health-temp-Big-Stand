@@ -581,6 +581,8 @@ main .section-health .health-img-box .health-img.health-img--1 {
   z-index: 3;
   bottom: 0;
   left: 0;
+  height: 216.13px;
+  width: auto;
 }
 main .section-health .health-img-box .health-img.health-img--1:hover {
   transform: scale(1.1);
@@ -975,7 +977,7 @@ main .services-section .flip .card .card-body .service-list div span {
   font-size: 16px;
 }
 main .services-section .flip .card:hover .card-body.back .btn-arrow {
-  bottom: 0;
+  bottom: 10px;
   opacity: 1;
 }
 main .appointment-form-section {
@@ -1735,6 +1737,9 @@ main .blog-section .blog-card.blog-card--hidden {
   main .section-health .health-img-box .health-img {
     width: 280px;
   }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 172.91px;
+  }
 }
 @media (max-width: 1199.98px) {
   #header nav .navbar-brand {
@@ -1837,6 +1842,9 @@ main .blog-section .blog-card.blog-card--hidden {
   main .section-health .health-img-box .health-img {
     width: 240px;
   }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 148.2px;
+  }
 }
 @media (max-width: 991.98px) {
   main .section-about h1,
@@ -1902,6 +1910,10 @@ main .blog-section .blog-card.blog-card--hidden {
   }
   main .section-health .health-img-box .health-img {
     width: 200px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    width: 200px;
+    height: auto;
   }
   main .services-section .flip .card .card-body.back .btn-arrow {
     display: none;
