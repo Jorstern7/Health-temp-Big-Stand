@@ -765,7 +765,7 @@ main .services-section .flip {
     backface-visibility: hidden;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   main .services-section .flip:hover .card:not(.flipped) {
     transform: rotatey(-180deg);
   }
@@ -807,7 +807,7 @@ main .services-section .flip .card .card-body {
     will-change: transform;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   main .services-section .flip .card .card-body .learn-more-btn {
     display: none;
   }
@@ -1851,6 +1851,31 @@ main .blog-section .blog-card.blog-card--hidden {
     height: 148.2px;
   }
 }
+@media (max-width: 1023.98px) {
+  #header nav .navbar-brand {
+    margin-top: 13px;
+  }
+  .offcanvas-body ul li {
+    margin-bottom: 10px;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a {
+    padding: 8px 16px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a.active,
+  #header nav ul:not(.dropdown-menu) > li > a:hover {
+    color: #fff;
+    background-color: #37b24d;
+  }
+  #header nav ul:not(.dropdown-menu) > li > a::before {
+    display: none;
+  }
+  main .services-section .flip .card .card-body.back .btn-arrow {
+    display: none;
+  }
+}
 @media (max-width: 991.98px) {
   main .section-about h1,
   main .services-section h1,
@@ -1919,9 +1944,6 @@ main .blog-section .blog-card.blog-card--hidden {
   main .section-health .health-img-box .health-img.health-img--1 {
     height: 123.5px;
   }
-  main .services-section .flip .card .card-body.back .btn-arrow {
-    display: none;
-  }
   #header nav ul:not(.dropdown-menu) {
     align-items: stretch;
     gap: 5px;
@@ -1952,28 +1974,6 @@ main .blog-section .blog-card.blog-card--hidden {
   }
   #up-arrow {
     bottom: 28px !important;
-  }
-}
-@media (max-width: 1023.98px) {
-  #header nav .navbar-brand {
-    margin-top: 13px;
-  }
-  .offcanvas-body ul li {
-    margin-bottom: 10px;
-  }
-  #header nav ul:not(.dropdown-menu) > li > a {
-    padding: 8px 16px;
-    border-radius: 9px;
-    display: flex;
-    justify-content: center;
-  }
-  #header nav ul:not(.dropdown-menu) > li > a.active,
-  #header nav ul:not(.dropdown-menu) > li > a:hover {
-    color: #fff;
-    background-color: #37b24d;
-  }
-  #header nav ul:not(.dropdown-menu) > li > a::before {
-    display: none;
   }
 }
 .fade-out {

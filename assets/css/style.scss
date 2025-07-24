@@ -967,7 +967,7 @@ main {
 
       &:hover {
         .card:not(.flipped) {
-          @media (min-width: 992px) {
+          @media (min-width: 1024px) {
             transform: rotatey(-180deg);
           }
         }
@@ -1015,7 +1015,7 @@ main {
             will-change: transform;
           }
 
-          @media (min-width: 992px) {
+          @media (min-width: 1024px) {
             .learn-more-btn {
               display: none;
             }
@@ -2395,6 +2395,37 @@ main .section-health .health-img-box .health-img.health-img--3 {
   // }
 }
 
+@media (max-width: 1023.98px) {
+  #header nav .navbar-brand {
+    margin-top: 13px;
+  }
+
+  .offcanvas-body ul li {
+    margin-bottom: 10px;
+  }
+
+  #header nav ul:not(.dropdown-menu)>li>a {
+    padding: 8px 16px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #header nav ul:not(.dropdown-menu)>li>a.active,
+  #header nav ul:not(.dropdown-menu)>li>a:hover {
+    color: #fff;
+    background-color: #37b24d;
+  }
+
+  #header nav ul:not(.dropdown-menu)>li>a::before {
+    display: none;
+  }
+
+  main .services-section .flip .card .card-body.back .btn-arrow {
+    display: none;
+  }
+}
+
 @media (max-width: 991.98px) {
 
   main .section-about h1,
@@ -2482,10 +2513,6 @@ main .section-health .health-img-box .health-img.health-img--3 {
     height: 123.5px;
   }
 
-  main .services-section .flip .card .card-body.back .btn-arrow {
-    display: none;
-  }
-
   #header nav ul:not(.dropdown-menu) {
     align-items: stretch;
     gap: 5px;
@@ -2526,33 +2553,6 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
   #up-arrow {
   bottom: 28px !important; 
-  }
-}
-
-@media (max-width: 1023.98px) {
-  #header nav .navbar-brand {
-    margin-top: 13px;
-  }
-
-  .offcanvas-body ul li {
-    margin-bottom: 10px;
-  }
-
-  #header nav ul:not(.dropdown-menu)>li>a {
-    padding: 8px 16px;
-    border-radius: 9px;
-    display: flex;
-    justify-content: center;
-  }
-
-  #header nav ul:not(.dropdown-menu)>li>a.active,
-  #header nav ul:not(.dropdown-menu)>li>a:hover {
-    color: #fff;
-    background-color: #37b24d;
-  }
-
-  #header nav ul:not(.dropdown-menu)>li>a::before {
-    display: none;
   }
 }
 
