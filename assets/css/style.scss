@@ -1401,7 +1401,8 @@ main {
 
       .card-header {
         position: relative;
-        padding: 60px;
+        padding-top: 60px;
+        padding-bottom: 60px;
         background-size: cover;
         background-position: center;
         margin: 0;
@@ -1498,6 +1499,13 @@ main {
         ul {
           li {
             font-size: 16px;
+            @media (min-width: 992px) and (max-width: 1199.98px) {
+              font-size: 14px;
+            }
+
+            @media (min-width: 768px) and (max-width: 991.98px) {
+              font-size: 15px;
+            }
           }
         }
       }
