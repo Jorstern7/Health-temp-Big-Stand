@@ -2473,8 +2473,9 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
 
   main .section-health .health-img-box .health-img.health-img--1 {
-    width: 200px;
-    height: auto;
+    // width: 200px;
+    // height: auto;
+    height: 123.5px;
   }
 
   main .services-section .flip .card .card-body.back .btn-arrow {
@@ -2568,6 +2569,51 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
 }
 
+@media (max-width: 799.98px) {
+  main .section-health .health-img-box .health-img {
+    width: 335px;
+  }
+
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 206.88px;
+  }
+
+  main .section-health .health-img-box {
+    min-height: 265px; // enough space for overlaps on small screens
+  }
+  main .section-health .health-img-box {
+   margin-top: 40px;
+  }
+
+  main .section-health p {
+    margin-bottom: 20px;
+  }
+
+  .cta-group {
+    margin-top: 20px;
+  }
+
+  main .section-health p {
+    text-align: center;
+  }
+
+  .cta-group {
+    justify-content: center;
+  }
+  .heading-primary,
+  .health-description {
+    text-align: center;
+  }
+
+  main .section-health {
+    padding: 50px 0 50px 0;
+  }
+
+  .heading-primary {
+    font-size: 38px;
+  }
+}
+
 @media (min-width: 767.98px) {
   .visibleOnTablet {
     display: none;
@@ -2586,7 +2632,7 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
 }
 
-@media (max-width: 768.98px) {
+@media (max-width: 767.98px) {
    main .section-health .health-img-box {
     // display: none !important;
     // padding: 40px;
@@ -2642,6 +2688,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
 
   main .section-health .health-img-box .health-img {
     width: 270px;
+  }
+
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 166.73px;
   }
 
   main .appointment-form-section .cta-group {
@@ -3024,6 +3074,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
     width: 260px;
   }
 
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 160.55px;
+  }
+
   main .section-testimonial .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     width: 30px;
     height: 30px;
@@ -3071,6 +3125,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
   main .section-health .health-img-box {
     min-height: 205px;
   }
+
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 154.38px;
+  }
 }
 
 @media (max-width: 425.98px) {
@@ -3081,6 +3139,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
   main .section-health .health-img-box {
     min-height: 200px;
   }
+
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 142.03px;
+  }
 }
 
 @media (max-width: 375.98px) {
@@ -3090,6 +3152,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
 
   main .section-health .health-img-box {
     min-height: 170px;
+  }
+
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 114.23px;
   }
 
   #up-arrow {

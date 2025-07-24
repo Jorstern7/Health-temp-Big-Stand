@@ -1402,6 +1402,180 @@ progress {
     --bs-gutter-y: 3rem;
   }
 }
+@media (min-width: 800px) {
+  .col-ipad-mini-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .col-ipad-mini-1 {
+    flex: 0 0 auto;
+    width: 8.33333333%;
+  }
+
+  .col-ipad-mini-2 {
+    flex: 0 0 auto;
+    width: 16.66666667%;
+  }
+
+  .col-ipad-mini-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+
+  .col-ipad-mini-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+
+  .col-ipad-mini-5 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+  }
+
+  .col-ipad-mini-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+
+  .col-ipad-mini-7 {
+    flex: 0 0 auto;
+    width: 58.33333333%;
+  }
+
+  .col-ipad-mini-8 {
+    flex: 0 0 auto;
+    width: 66.66666667%;
+  }
+
+  .col-ipad-mini-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+
+  .col-ipad-mini-10 {
+    flex: 0 0 auto;
+    width: 83.33333333%;
+  }
+
+  .col-ipad-mini-11 {
+    flex: 0 0 auto;
+    width: 91.66666667%;
+  }
+
+  .col-ipad-mini-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .offset-ipad-mini-0 {
+    margin-left: 0;
+  }
+
+  .offset-ipad-mini-1 {
+    margin-left: 8.33333333%;
+  }
+
+  .offset-ipad-mini-2 {
+    margin-left: 16.66666667%;
+  }
+
+  .offset-ipad-mini-3 {
+    margin-left: 25%;
+  }
+
+  .offset-ipad-mini-4 {
+    margin-left: 33.33333333%;
+  }
+
+  .offset-ipad-mini-5 {
+    margin-left: 41.66666667%;
+  }
+
+  .offset-ipad-mini-6 {
+    margin-left: 50%;
+  }
+
+  .offset-ipad-mini-7 {
+    margin-left: 58.33333333%;
+  }
+
+  .offset-ipad-mini-8 {
+    margin-left: 66.66666667%;
+  }
+
+  .offset-ipad-mini-9 {
+    margin-left: 75%;
+  }
+
+  .offset-ipad-mini-10 {
+    margin-left: 83.33333333%;
+  }
+
+  .offset-ipad-mini-11 {
+    margin-left: 91.66666667%;
+  }
+
+  .g-ipad-mini-0,
+.gx-ipad-mini-0 {
+    --bs-gutter-x: 0;
+  }
+
+  .g-ipad-mini-0,
+.gy-ipad-mini-0 {
+    --bs-gutter-y: 0;
+  }
+
+  .g-ipad-mini-1,
+.gx-ipad-mini-1 {
+    --bs-gutter-x: 0.25rem;
+  }
+
+  .g-ipad-mini-1,
+.gy-ipad-mini-1 {
+    --bs-gutter-y: 0.25rem;
+  }
+
+  .g-ipad-mini-2,
+.gx-ipad-mini-2 {
+    --bs-gutter-x: 0.5rem;
+  }
+
+  .g-ipad-mini-2,
+.gy-ipad-mini-2 {
+    --bs-gutter-y: 0.5rem;
+  }
+
+  .g-ipad-mini-3,
+.gx-ipad-mini-3 {
+    --bs-gutter-x: 1rem;
+  }
+
+  .g-ipad-mini-3,
+.gy-ipad-mini-3 {
+    --bs-gutter-y: 1rem;
+  }
+
+  .g-ipad-mini-4,
+.gx-ipad-mini-4 {
+    --bs-gutter-x: 1.5rem;
+  }
+
+  .g-ipad-mini-4,
+.gy-ipad-mini-4 {
+    --bs-gutter-y: 1.5rem;
+  }
+
+  .g-ipad-mini-5,
+.gx-ipad-mini-5 {
+    --bs-gutter-x: 3rem;
+  }
+
+  .g-ipad-mini-5,
+.gy-ipad-mini-5 {
+    --bs-gutter-y: 3rem;
+  }
+}
 @media (min-width: 992px) {
   .col-lg-auto {
     flex: 0 0 auto;
@@ -8846,6 +9020,11 @@ textarea.form-control-lg {
 
   .text-md-center {
     text-align: center !important;
+  }
+}
+@media (min-width: 800px) {
+  .mb-ipad-mini-0 {
+    margin-bottom: 0 !important;
   }
 }
 @media (min-width: 992px) {
