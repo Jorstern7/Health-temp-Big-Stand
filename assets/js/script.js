@@ -441,7 +441,7 @@ function initDropdownBehaviors() {
 
   if (navDropdownToggle && navDropdownMenu) {
     navDropdownToggle.addEventListener('click', function (e) {
-      if (window.innerWidth < 992) {
+      if (window.innerWidth < 1024) {
         e.preventDefault();
         e.stopImmediatePropagation();
         document.querySelectorAll('.dropdown-menu.show').forEach(menu => {

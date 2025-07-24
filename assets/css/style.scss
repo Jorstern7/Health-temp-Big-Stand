@@ -374,7 +374,7 @@ footer {
       color: #d7f0db;
       position: absolute;
       z-index: 2000;
-      top: 7px;
+      top: 27px;
       right: 0;
       border-color: #37b24d;
       background-color: #37b24d;
@@ -644,7 +644,7 @@ footer {
       }
     }
     
-    @media (max-width: 991.98px) {
+    @media (max-width: 1023.98px) {
       .dropdown-menu {
         opacity: 1 !important;
         transform: none !important;
@@ -666,7 +666,7 @@ footer {
     }
 
     // Keep desktop transition
-    @media (min-width: 992px) {
+    @media (min-width: 1024px) {
       /* Smooth dropdown override */
       .dropdown-menu {
         opacity: 0;
@@ -2521,6 +2521,33 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
   #up-arrow {
   bottom: 28px !important; 
+  }
+}
+
+@media (max-width: 1023.98px) {
+  #header nav .navbar-brand {
+    margin-top: 13px;
+  }
+
+  .offcanvas-body ul li {
+    margin-bottom: 10px;
+  }
+
+  #header nav ul:not(.dropdown-menu)>li>a {
+    padding: 8px 16px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #header nav ul:not(.dropdown-menu)>li>a.active,
+  #header nav ul:not(.dropdown-menu)>li>a:hover {
+    color: #fff;
+    background-color: #37b24d;
+  }
+
+  #header nav ul:not(.dropdown-menu)>li>a::before {
+    display: none;
   }
 }
 
