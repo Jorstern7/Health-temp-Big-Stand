@@ -129,7 +129,7 @@ function initSwipers() {
     },
     breakpoints: {
       0: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
+      800: { slidesPerView: 2 },
       992: { slidesPerView: 2 },
     },
   });
