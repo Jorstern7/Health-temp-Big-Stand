@@ -642,6 +642,11 @@ main .section-featured .swiper-slide {
   height: 40px;
   /* ✅ Fixed height for all slides */
 }
+@media (max-width: 991.98px) {
+  main .section-featured .swiper-slide {
+    height: 30px;
+  }
+}
 main .section-featured .swiper-slide a {
   display: flex;
   align-items: center;

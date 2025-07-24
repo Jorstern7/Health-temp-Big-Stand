@@ -823,6 +823,10 @@ main {
       justify-content: center;
       height: 40px;
 
+      @media (max-width: 991.98px) {
+        height: 30px;
+      }
+
       /* ✅ Fixed height for all slides */
       a {
         display: flex;
