@@ -2424,6 +2424,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
   main .services-section .flip .card .card-body.back .btn-arrow {
     display: none;
   }
+
+  main .appointment-form-section .btn-outline {
+    width: max-content;
+  }
 }
 
 @media (max-width: 991.98px) {
