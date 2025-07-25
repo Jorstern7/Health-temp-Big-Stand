@@ -3075,9 +3075,12 @@ main .section-health .health-img-box .health-img.health-img--3 {
 }
 
 // Large Phones
+@media (max-width: 991.98px) {
+  main .blog-section .card .row .col-5 {
+    padding-right: 8px;
+  }
+}
 @media (max-width: 799.98px) and (min-width: 425px) {
-  
-
   .arrow-btn.doctors-nav button {
     position: absolute;
     top: var(--swiper-navigation-top-offset, 50%);

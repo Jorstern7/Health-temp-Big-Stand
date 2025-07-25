@@ -2359,6 +2359,11 @@ main .blog-section .blog-card.blog-card--hidden {
     height: 50px;
   }
 }
+@media (max-width: 991.98px) {
+  main .blog-section .card .row .col-5 {
+    padding-right: 8px;
+  }
+}
 @media (max-width: 799.98px) and (min-width: 425px) {
   .arrow-btn.doctors-nav button {
     position: absolute;
