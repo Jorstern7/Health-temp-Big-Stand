@@ -2114,6 +2114,9 @@ main .blog-section .blog-card.blog-card--hidden {
   }
 }
 @media (max-width: 767.98px) {
+  #header nav .navbar-brand {
+    width: 40%;
+  }
   main .section-health .health-img-box {
     margin-top: 40px;
   }
