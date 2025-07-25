@@ -2005,7 +2005,8 @@ main .blog-section .blog-card.blog-card--hidden {
     padding-left: 0;
   }
   main .blog-section .card .card-footer {
-    padding-left: 0;
+    padding-left: 20px;
+    margin-left: -20px;
   }
   main .blog-section .card .card-img-top {
     height: 100%;
@@ -2059,6 +2060,14 @@ main .blog-section .blog-card.blog-card--hidden {
   }
   #footer .site-footer .row {
     gap: 20px;
+  }
+  #up-arrow {
+    position: fixed;
+    bottom: 120px;
+    right: 40px;
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
   }
 }
 @media (min-width: 767.98px) {
@@ -2151,9 +2160,6 @@ main .blog-section .blog-card.blog-card--hidden {
   main .blog-section .card .card-body {
     padding-left: 0;
   }
-  main .blog-section .card .card-footer {
-    padding-left: 0;
-  }
   main .blog-section .card .card-img-top {
     height: 100%;
     -o-object-fit: cover;
@@ -2191,13 +2197,6 @@ main .blog-section .blog-card.blog-card--hidden {
   }
   #footer .footer-section .heading-four {
     text-align: left;
-  }
-  #up-arrow {
-    position: fixed;
-    right: 40px;
-    width: 50px;
-    border-radius: 50%;
-    height: 50px;
   }
   main .doctor-section .card {
     width: 70%;
@@ -2389,7 +2388,10 @@ main .blog-section .blog-card.blog-card--hidden {
 }
 @media (max-width: 991.98px) {
   main .blog-section .card .row .col-5 {
-    padding-right: 8px;
+    padding-right: 0px;
+  }
+  main .blog-section .card .row .col-7 {
+    padding-left: 20px;
   }
   main .section-health .health-img-box {
     min-height: 130px;
