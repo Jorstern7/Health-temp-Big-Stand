@@ -848,6 +848,9 @@ main .services-section .flip .card .card-body.back {
     visibility: visible;
   }
 }
+main .services-section .flip .card .card-body.back .learn-more-btn {
+  display: none;
+}
 main .services-section .flip .card .card-body.back .btn-arrow {
   opacity: 0;
   position: absolute;
