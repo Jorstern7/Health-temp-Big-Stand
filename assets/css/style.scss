@@ -2200,7 +2200,7 @@ $blog-transition: 0.8s; // keep in sync with JS (800 ms)
 
 #up-arrow {
   position: fixed;
-  bottom: 82px;
+  bottom: 88px;
   right: 40px;
   width: 50px;
   // height: 80px;
@@ -2690,6 +2690,14 @@ main .section-health .health-img-box .health-img.health-img--3 {
   main .doctor-section .card .card-body img {
     border-radius: 9px 9px 0 0;
     object-position: top;
+  }
+
+  #footer .footer-section .heading-four {
+    text-align: left;
+  }
+
+  #footer .site-footer .row {
+    gap: 20px;
   }
 }
 

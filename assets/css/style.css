@@ -1705,7 +1705,7 @@ main .blog-section .blog-card.blog-card--hidden {
 
 #up-arrow {
   position: fixed;
-  bottom: 82px;
+  bottom: 88px;
   right: 40px;
   width: 50px;
   height: 50px;
@@ -2094,6 +2094,12 @@ main .blog-section .blog-card.blog-card--hidden {
     border-radius: 9px 9px 0 0;
     -o-object-position: top;
        object-position: top;
+  }
+  #footer .footer-section .heading-four {
+    text-align: left;
+  }
+  #footer .site-footer .row {
+    gap: 20px;
   }
 }
 @media (min-width: 767.98px) {
