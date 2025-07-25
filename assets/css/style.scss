@@ -1062,7 +1062,7 @@ main {
               opacity: 1;
               visibility: visible;
             }
-            
+
             .learn-more-btn {
               display: none;
             }
@@ -2398,6 +2398,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
     height: 148.2px;
   }
 
+  main .appointment-form-section .btn-outline {
+    width: max-content;
+  }
+
   // main .section-health .health-img-box .health-img.health-img--2 {
   //   transform: translate(50%, -100%);
   // }
@@ -2466,7 +2470,7 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
 
   .heading-primary {
-    font-size: 24px;
+    font-size: 38px;
   }
 
   main .section-health p {
@@ -2565,6 +2569,14 @@ main .section-health .health-img-box .health-img.health-img--3 {
     text-align: center;
   }
 
+  .cta-group {
+    justify-content: center;
+  }
+  .heading-primary,
+  .health-description {
+    text-align: center;
+  }
+
   main .blog-section .card .card-body {
     padding-left: 0;
   }
@@ -2584,6 +2596,12 @@ main .section-health .health-img-box .health-img.health-img--3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+  }
+
+  .cta-group .btn:not(.noTransition).btn-outline svg,
+  .cta-group .btn:not(.noTransition).btn-outline.no-effect svg {
+    transform: rotate(90deg) !important;
+    margin: 0;
   }
 }
 
@@ -2617,20 +2635,8 @@ main .section-health .health-img-box .health-img.health-img--3 {
     text-align: center;
   }
 
-  .cta-group {
-    justify-content: center;
-  }
-  .heading-primary,
-  .health-description {
-    text-align: center;
-  }
-
   main .section-health {
     padding: 50px 0 50px 0;
-  }
-
-  .heading-primary {
-    font-size: 38px;
   }
 
   #footer .footer-section .heading-four {
@@ -2821,12 +2827,6 @@ main .section-health .health-img-box .health-img.health-img--3 {
 
   #footer .site-footer .row {
     gap: 20px;
-  }
-
-  .cta-group .btn:not(.noTransition).btn-outline svg,
-  .cta-group .btn:not(.noTransition).btn-outline.no-effect svg {
-    transform: rotate(90deg) !important;
-    margin: 0;
   }
 
   main .section-pricing .card {
