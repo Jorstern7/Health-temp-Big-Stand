@@ -1987,6 +1987,30 @@ main .blog-section .blog-card.blog-card--hidden {
     display: flex;
     justify-content: center;
   }
+  .heading-four,
+  main .find-a-doc-section p.heading-four,
+  main .section-testimonial p.heading-four,
+  main .blog-section p.heading-four {
+    text-align: center;
+  }
+  main .blog-section .card .card-body {
+    padding-left: 0;
+  }
+  main .blog-section .card .card-footer {
+    padding-left: 0;
+  }
+  main .blog-section .card .card-img-top {
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 9px 0 0 9px;
+  }
+  main .blog-section .card .card-body p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
 }
 .fade-out {
   opacity: 0;
