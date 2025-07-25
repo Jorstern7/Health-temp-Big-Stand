@@ -2117,9 +2117,6 @@ main .blog-section .blog-card.blog-card--hidden {
   #header nav .navbar-brand {
     width: 40%;
   }
-  main .section-health .health-img-box {
-    margin-top: 40px;
-  }
   main .services-section .flip .card .card-body.back .learn-more-btn {
     bottom: -20px;
     position: absolute;
@@ -2152,12 +2149,6 @@ main .blog-section .blog-card.blog-card--hidden {
   .hideOnTablet {
     display: none;
   }
-  main .section-health .health-img-box .health-img {
-    width: 270px;
-  }
-  main .section-health .health-img-box .health-img.health-img--1 {
-    height: 166.73px;
-  }
   main .appointment-form-section .cta-group {
     margin-bottom: 40px;
   }
@@ -2181,9 +2172,6 @@ main .blog-section .blog-card.blog-card--hidden {
   }
   main .find-a-doc-section {
     padding: 45px 0;
-  }
-  main .section-health .health-img-box {
-    min-height: 265px;
   }
   main .section-health p {
     margin-bottom: 20px;
@@ -2401,12 +2389,6 @@ main .blog-section .blog-card.blog-card--hidden {
   #footer .site-footer p {
     font-size: 13px;
   }
-  main .section-health .health-img-box .health-img {
-    width: 260px;
-  }
-  main .section-health .health-img-box .health-img.health-img--1 {
-    height: 160.55px;
-  }
   main .section-testimonial .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     width: 30px;
     height: 30px;
@@ -2420,9 +2402,6 @@ main .blog-section .blog-card.blog-card--hidden {
   main .services-section .flip .card .card-body.back .service-box-info {
     padding: 10px 20px;
   }
-  main .section-health .health-img-box {
-    margin-top: 40px;
-  }
 }
 @media (max-width: 450.98px) {
   #header nav .offcanvas .offcanvas-header {
@@ -2431,52 +2410,70 @@ main .blog-section .blog-card.blog-card--hidden {
   #header nav .offcanvas .offcanvas-header .logo-link img {
     width: 50%;
   }
-  main .section-health .health-img-box .health-img {
-    width: 250px;
-  }
-  main .section-health .health-img-box {
-    min-height: 205px;
-  }
-  main .section-health .health-img-box .health-img.health-img--1 {
-    height: 154.38px;
-  }
 }
-@media (max-width: 425.98px) {
-  main .section-health .health-img-box .health-img {
-    width: 230px;
-  }
-  main .section-health .health-img-box {
-    min-height: 200px;
-  }
-  main .section-health .health-img-box .health-img.health-img--1 {
-    height: 142.03px;
-  }
-}
-@media (max-width: 375.98px) {
-  main .section-health .health-img-box .health-img {
-    width: 185px;
-  }
-  main .section-health .health-img-box {
-    min-height: 170px;
-  }
-  main .section-health .health-img-box .health-img.health-img--1 {
-    height: 114.23px;
-  }
+@media (max-width: 374.98px) {
   #up-arrow {
     right: 10px;
     height: 50px;
   }
 }
-@media (min-width: 375px) and (max-width: 424.98px) {
+@media (max-width: 767.98px) {
+  main .section-health .health-img-box {
+    min-height: 110px;
+  }
+  main .section-health .health-img-box .health-img {
+    width: 200px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 123.5px;
+    z-index: 2;
+  }
+  main .section-health .health-img-box .health-img.health-img--2 {
+    z-index: 3;
+  }
+  main .section-health .health-img-box .health-img.health-img--3 {
+    z-index: 1;
+  }
+}
+@media (max-width: 519.98px) {
+  main .section-health .health-img-box {
+    min-height: 90px;
+  }
+  main .section-health .health-img-box .health-img {
+    width: 170px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 105px;
+  }
+}
+@media (max-width: 424.98px) {
   #header nav.navbar-light .navbar-toggler {
     width: 40px;
     height: 40px;
+  }
+  main .section-health .health-img-box {
+    min-height: 70px;
+  }
+  main .section-health .health-img-box .health-img {
+    width: 150px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 93px;
   }
 }
 @media (max-width: 374.98px) {
   #header nav.navbar-light .navbar-toggler {
     width: 38px;
     height: 38px;
+  }
+  main .section-health .health-img-box {
+    min-height: 55px;
+  }
+  main .section-health .health-img-box .health-img {
+    width: 130px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 80px;
   }
 }
 @media screen and (min-width: 1400px) {
