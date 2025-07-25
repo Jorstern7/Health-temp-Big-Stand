@@ -3255,6 +3255,25 @@ main .section-health .health-img-box .health-img.health-img--3 {
   }
 }
 
+// Large Phones
+@media (min-width: 425px) and (max-width: 767.98px) {}
+
+// Standard phones
+@media (min-width: 375px) and (max-width: 424.98px) {
+  #header nav.navbar-light .navbar-toggler {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// Small phones
+@media (max-width: 374.98px) {
+  #header nav.navbar-light .navbar-toggler {
+    width: 38px;
+    height: 38px;
+  }
+}
+
 @media screen and (min-width:1400px){
   main .section-health {
     padding-top: 140px !important;
