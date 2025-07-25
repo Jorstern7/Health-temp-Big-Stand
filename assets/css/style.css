@@ -1994,6 +1994,9 @@ main .blog-section .blog-card.blog-card--hidden {
   main .blog-section p.heading-four {
     text-align: center;
   }
+  #footer .footer-section .heading-four {
+    text-align: left;
+  }
   .cta-group {
     justify-content: center;
   }
