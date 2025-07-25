@@ -2793,14 +2793,6 @@ main .section-health .health-img-box .health-img.health-img--3 {
     padding: 0;
   }
 
-  .arrow-btn button {
-    background-color: #37b24d;
-  }
-
-  .arrow-btn button svg {
-    color: #fff;
-  }
-
   main .find-a-doc-section .findDocform .btn-submit,
   main .find-a-doc-section .findDocform input[type="submit"] {
     margin-top: 20px;
@@ -2894,26 +2886,6 @@ main .section-health .health-img-box .health-img.health-img--3 {
   .cta-group .btn:not(.noTransition).btn-outline.no-effect svg {
     transform: rotate(90deg) !important;
     margin: 0;
-  }
-
-  .arrow-btn button {
-    position: absolute;
-    top: var(--swiper-navigation-top-offset, 50%);
-    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .arrow-btn button.left-btn {
-    left: 0;
-    right: auto;
-  }
-
-  .arrow-btn button.right-btn {
-    right: 0;
-    left: auto;
   }
 
   main .section-pricing .card {
@@ -3141,6 +3113,35 @@ main .section-health .health-img-box .health-img.health-img--3 {
 }
 
 // Large Phones
+@media (max-width: 767.98px) and (min-width: 425px) {
+  .arrow-btn button {
+    position: absolute;
+    top: var(--swiper-navigation-top-offset, 50%);
+    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrow-btn button.left-btn {
+    left: 0;
+    right: auto;
+  }
+
+  .arrow-btn button.right-btn {
+    right: 0;
+    left: auto;
+  }
+  
+  .arrow-btn button {
+    background-color: #37b24d;
+  }
+
+  .arrow-btn button svg {
+    color: #fff;
+  }
+}
 @media (max-width: 767.98px) {
   main .section-health .health-img-box {
     min-height: 110px;
@@ -3194,6 +3195,23 @@ main .section-health .health-img-box .health-img.health-img--3 {
   main .section-health .health-img-box .health-img.health-img--1{
     height: 93px;
   }
+
+  .section-pricing .arrow-btn {
+    margin-top: 20px;
+  }
+
+  main .section-pricing .card {
+    width: 85%;
+  }
+
+  main .section-pricing .container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  main .section-pricing .container:before {
+    height: 20%;
+  }
 }
 
 // Small phones
@@ -3212,6 +3230,10 @@ main .section-health .health-img-box .health-img.health-img--3 {
 
   main .section-health .health-img-box .health-img.health-img--1{
     height: 80px;
+  }
+
+  main .section-pricing .card {
+    width: 100%;
   }
 }
 
