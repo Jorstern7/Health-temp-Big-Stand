@@ -2407,29 +2407,6 @@ main .blog-section .blog-card.blog-card--hidden {
   }
 }
 @media (max-width: 799.98px) and (min-width: 425px) {
-  .arrow-btn.doctors-nav button {
-    position: absolute;
-    top: var(--swiper-navigation-top-offset, 50%);
-    margin-top: calc(0px - var(--swiper-navigation-size) / 2);
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .arrow-btn.doctors-nav button.left-btn {
-    left: 0;
-    right: auto;
-  }
-  .arrow-btn.doctors-nav button.right-btn {
-    right: 0;
-    left: auto;
-  }
-  .arrow-btn.doctors-nav button {
-    background-color: #37b24d;
-  }
-  .arrow-btn.doctors-nav button svg {
-    color: #fff;
-  }
   main .doctor-section .card {
     width: 70%;
     margin: 0 auto;
@@ -2438,31 +2415,6 @@ main .blog-section .blog-card.blog-card--hidden {
     border-radius: 9px 9px 0 0;
     -o-object-position: top;
        object-position: top;
-  }
-}
-@media (max-width: 767.98px) and (min-width: 425px) {
-  .arrow-btn button {
-    position: absolute;
-    top: var(--swiper-navigation-top-offset, 50%);
-    margin-top: calc(0px - var(--swiper-navigation-size) / 2);
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .arrow-btn button.left-btn {
-    left: 0;
-    right: auto;
-  }
-  .arrow-btn button.right-btn {
-    right: 0;
-    left: auto;
-  }
-  .arrow-btn button {
-    background-color: #37b24d;
-  }
-  .arrow-btn button svg {
-    color: #fff;
   }
 }
 @media (max-width: 767.98px) {
