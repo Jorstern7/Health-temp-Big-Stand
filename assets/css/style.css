@@ -2327,9 +2327,6 @@ main .blog-section .blog-card.blog-card--hidden {
   .featured-swiper .swiper-wrapper {
     gap: 25px !important;
   }
-  main .services-section {
-    padding: 0px 0 45px;
-  }
   main .services-section .flip .card .card-body .service-box-info .rating {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
