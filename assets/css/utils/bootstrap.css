@@ -4299,6 +4299,10 @@ textarea.form-control-lg {
   .navbar-expand-ipad-pro .navbar-toggler {
     display: none;
   }
+  .col-ipad-pro-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
 }
 @media (min-width: 1200px) {
   .navbar-expand-xl {

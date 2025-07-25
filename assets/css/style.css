@@ -1953,12 +1953,6 @@ main .blog-section .blog-card.blog-card--hidden {
   .offcanvas-body ul li {
     margin-bottom: 10px;
   }
-  main .section-health .health-img-box .health-img {
-    width: 200px;
-  }
-  main .section-health .health-img-box .health-img.health-img--1 {
-    height: 123.5px;
-  }
   #header nav ul:not(.dropdown-menu) {
     align-items: stretch;
     gap: 5px;
@@ -2029,18 +2023,6 @@ main .blog-section .blog-card.blog-card--hidden {
   }
 }
 @media (max-width: 799.98px) {
-  main .section-health .health-img-box .health-img {
-    width: 335px;
-  }
-  main .section-health .health-img-box .health-img.health-img--1 {
-    height: 206.88px;
-  }
-  main .section-health .health-img-box {
-    min-height: 265px;
-  }
-  main .section-health .health-img-box {
-    margin-top: 40px;
-  }
   main .section-health p {
     margin-bottom: 20px;
   }
@@ -2359,9 +2341,63 @@ main .blog-section .blog-card.blog-card--hidden {
     height: 50px;
   }
 }
+@media (max-width: 1023.98px) {
+  main .section-health .health-img-box {
+    min-height: 200px;
+    margin-top: 40px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    top: 0;
+    left: 50%;
+    bottom: auto;
+    transform: translateX(-50%);
+  }
+  main .section-health .health-img-box .health-img.health-img--1:hover {
+    transform: translateX(-50%) scale(1.1);
+    z-index: 4;
+  }
+  main .section-health .health-img-box .health-img.health-img--2 {
+    bottom: 0;
+    left: 0;
+    top: auto;
+    transform: translateX(0);
+  }
+  main .section-health .health-img-box .health-img.health-img--2:hover {
+    transform: scale(1.1);
+    z-index: 4;
+  }
+  main .section-health .health-img-box .health-img {
+    width: 350px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 216.13px;
+    width: auto;
+    z-index: 3;
+  }
+  main .section-health .health-img-box .health-img.health-img--2 {
+    z-index: 2;
+    width: auto;
+    height: 216.13px;
+  }
+  main .section-health .health-img-box .health-img.health-img--3 {
+    z-index: 1;
+  }
+}
 @media (max-width: 991.98px) {
   main .blog-section .card .row .col-5 {
     padding-right: 8px;
+  }
+  main .section-health .health-img-box {
+    min-height: 130px;
+  }
+  main .section-health .health-img-box .health-img {
+    width: 250px;
+  }
+  main .section-health .health-img-box .health-img.health-img--1 {
+    height: 154.38px;
+  }
+  main .section-health .health-img-box .health-img.health-img--2 {
+    height: 154.38px;
   }
 }
 @media (max-width: 799.98px) and (min-width: 425px) {
@@ -2432,13 +2468,9 @@ main .blog-section .blog-card.blog-card--hidden {
   }
   main .section-health .health-img-box .health-img.health-img--1 {
     height: 123.5px;
-    z-index: 2;
   }
   main .section-health .health-img-box .health-img.health-img--2 {
-    z-index: 3;
-  }
-  main .section-health .health-img-box .health-img.health-img--3 {
-    z-index: 1;
+    height: 123.5px;
   }
 }
 @media (max-width: 519.98px) {
@@ -2449,6 +2481,9 @@ main .blog-section .blog-card.blog-card--hidden {
     width: 170px;
   }
   main .section-health .health-img-box .health-img.health-img--1 {
+    height: 105px;
+  }
+  main .section-health .health-img-box .health-img.health-img--2 {
     height: 105px;
   }
 }
@@ -2464,6 +2499,9 @@ main .blog-section .blog-card.blog-card--hidden {
     width: 150px;
   }
   main .section-health .health-img-box .health-img.health-img--1 {
+    height: 93px;
+  }
+  main .section-health .health-img-box .health-img.health-img--2 {
     height: 93px;
   }
   .section-pricing .arrow-btn, .doctor-section .arrow-btn {
@@ -2492,6 +2530,9 @@ main .blog-section .blog-card.blog-card--hidden {
     width: 130px;
   }
   main .section-health .health-img-box .health-img.health-img--1 {
+    height: 80px;
+  }
+  main .section-health .health-img-box .health-img.health-img--2 {
     height: 80px;
   }
   main .section-pricing .card, main .doctor-section .card {
