@@ -2563,9 +2563,6 @@ main .section-health .health-img-box .health-img.health-img--3 {
     display: flex;
     justify-content: center;
   }
-  #up-arrow {
-  bottom: 28px !important; 
-  }
 }
 
 .fade-out {
@@ -2656,7 +2653,7 @@ main .section-health .health-img-box .health-img.health-img--3 {
   .arrow-btn.doctors-nav button svg {
     color: #fff;
   }
-  
+
   main .doctor-section .card {
     width: 70%;
     margin: 0 auto;
@@ -2955,7 +2952,7 @@ main .section-health .health-img-box .health-img.health-img--3 {
 
   #up-arrow {
     position: fixed;
-    bottom: 100px;
+    // bottom: 100px;
     right: 40px;
     width: 50px;
     border-radius: 50%;
